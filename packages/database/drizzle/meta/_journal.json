@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1794283195111,
+      "tag": "0000_great_mephisto",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1794283973333,
+      "tag": "0001_ancient_nuke",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1794285397605,
+      "tag": "0002_yellow_viper",
+      "breakpoints": true
+    }
+  ]
+}
