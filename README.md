@@ -26,10 +26,11 @@ yarn install
 yarn dev
 ```
 
-The root `dev` script starts all three apps:
+The root `dev` script starts all four apps:
 
 - Website app: [http://localhost:3000](http://localhost:3000)
 - Docs app: [http://localhost:3001](http://localhost:3001)
+- Staff/admin dashboard: [http://localhost:3002](http://localhost:3002)
 - API: [http://localhost:4000](http://localhost:4000)
 
 To run one app at a time:
@@ -37,6 +38,7 @@ To run one app at a time:
 ```bash
 yarn workspace web dev
 yarn workspace docs dev
+yarn workspace admin dev
 yarn dev:api
 ```
 
@@ -71,6 +73,7 @@ yarn turbo run lint --filter=docs
 apps/
   web/                 Next.js app intended for the hospital website
   docs/                Separate Next.js app (currently a starter page)
+  admin/               Separate Next.js + Ant Design staff dashboard
   api/                 Express + TypeScript backend
 packages/
   ui/                  Shared React components

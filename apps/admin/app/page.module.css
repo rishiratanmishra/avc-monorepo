@@ -1,0 +1,257 @@
+.dashboard {
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed !important;
+  inset: 0 auto 0 0;
+  overflow: auto;
+  height: 100vh;
+  background: #fff !important;
+  border-right: 1px solid #e8edf2;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 22px 30px;
+}
+
+.brandMark {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 12px;
+  background: #147d73;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.brandName,
+.brandCaption,
+.locationName,
+.locationCaption {
+  display: block;
+}
+
+.brandName {
+  color: #172b4d;
+  font-size: 14px;
+}
+
+.brandCaption,
+.menuCaption,
+.locationCaption {
+  color: #8a97a8;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.menuCaption {
+  display: block;
+  padding: 0 24px 10px;
+}
+
+.menu {
+  border-inline-end: 0 !important;
+}
+
+.menu :global(.ant-menu-item) {
+  width: auto;
+  margin: 3px 12px;
+}
+
+.sidebarFooter {
+  position: absolute;
+  right: 16px;
+  bottom: 20px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  border: 1px solid #e8edf2;
+  border-radius: 12px;
+}
+
+.locationDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #30a46c;
+  box-shadow: 0 0 0 4px #e8f7ef;
+}
+
+.locationName {
+  color: #344563;
+  font-size: 12px;
+}
+
+.locationCaption {
+  margin-top: 3px;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+.header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 32px;
+  background: #fff;
+  border-bottom: 1px solid #e8edf2;
+}
+
+.breadcrumb {
+  color: #738198;
+  font-size: 13px;
+  line-height: 72px;
+}
+
+.search {
+  width: 200px;
+}
+
+.avatar {
+  background: #e7f4f2;
+  color: #147d73;
+  font-weight: 700;
+}
+
+.account {
+  display: grid;
+  gap: 1px;
+  font-size: 12px;
+}
+
+.content {
+  margin-left: 248px;
+  padding: 32px;
+}
+
+.pageHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.dateLabel {
+  color: #8090a5;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.title {
+  margin: 7px 0 2px !important;
+  color: #172b4d !important;
+}
+
+.subtitle {
+  margin: 0 !important;
+  color: #738198;
+}
+
+.stats {
+  margin-bottom: 22px;
+}
+
+.statCard,
+.appointmentsCard {
+  border-color: #e8edf2;
+  box-shadow: 0 3px 12px rgb(23 43 77 / 3%);
+}
+
+.statCard :global(.ant-statistic-title) {
+  color: #738198;
+  font-size: 13px;
+}
+
+.statCard :global(.ant-statistic-content) {
+  color: #172b4d;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.statIcon {
+  color: #147d73;
+  font-size: 18px;
+}
+
+.statHint {
+  display: block;
+  margin-top: 8px;
+  color: #8190a5;
+  font-size: 11px;
+}
+
+.appointmentsCard :global(.ant-card-head) {
+  min-height: 72px;
+}
+
+.tableHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tableHeading h5 {
+  margin: 0 0 3px !important;
+}
+
+.tableHeading :global(.ant-typography-secondary) {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.previewNote {
+  display: block;
+  margin-top: 16px;
+  color: #8a97a8;
+  font-size: 12px;
+  text-align: right;
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    position: fixed !important;
+    z-index: 3;
+  }
+
+  .header {
+    padding: 0 20px;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .header {
+    padding: 0 14px;
+  }
+
+  .search,
+  .account {
+    display: none;
+  }
+
+  .content {
+    padding: 22px 14px;
+  }
+
+  .pageHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
