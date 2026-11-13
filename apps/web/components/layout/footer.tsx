@@ -2,222 +2,247 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "./container";
-import { HOSPITAL_INFO, FOOTER_LINKS } from "../../constants";
-import { PhoneIcon, CalendarDaysIcon, StarIcon } from "@heroicons/react/24/solid";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { HOSPITAL_INFO } from "../../constants";
+import { PhoneCall, Calendar, MapPin, Clock, ArrowUpRight } from "lucide-react";
 import styles from "./footer.module.css";
+
+const GOOGLE_G_ICON = (
+  <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true">
+    <path
+      fill="#4285F4"
+      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+    />
+    <path
+      fill="#34A853"
+      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+    />
+    <path
+      fill="#FBBC05"
+      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+    />
+    <path
+      fill="#EA4335"
+      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+    />
+  </svg>
+);
 
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer} id="contact">
-      {/* 1. Grounded Emergency & Consultation Contact Strip */}
-      <div className={styles.contactStrip}>
+      {/* 1. Pre-Footer Reassurance Banner */}
+      <div className={styles.preFooter}>
         <Container>
-          <div className={styles.contactStripInner}>
-            <div className={styles.contactText}>
-              <span className={styles.contactEyebrow}>24/7 Veterinary Emergency Care</span>
-              <h3 className={styles.contactTitle}>
-                Immediate medical support for your pet in Gurugram
-              </h3>
-              <p className={styles.contactDesc}>
-                Our critical care ICU, surgical operating theaters, and diagnostic lab are fully staffed
-                day and night. No prior appointment is needed for emergencies.
+          <div className={styles.preFooterCard}>
+            <div className={styles.preFooterContent}>
+              <span className={styles.preFooterTag}>AVC Multi-Speciality Care</span>
+              <h2 className={styles.preFooterTitle}>
+                Ready to give your pet the best medical care in Gurugram?
+              </h2>
+              <p className={styles.preFooterDesc}>
+                Our Sector 90 Trauma ICU is fully staffed by surgeons and critical care nurses day and night. No prior appointment is required for emergencies.
               </p>
             </div>
 
-            <div className={styles.contactButtons}>
-              <a
-                href={`tel:${HOSPITAL_INFO.emergencyPhone}`}
-                className={styles.emergencyBtn}
-              >
-                <span className={styles.btnIcon}>
-                  <PhoneIcon style={{ width: 22, height: 22 }} aria-hidden="true" />
-                </span>
-                <span>
-                  <strong className={styles.btnLabel}>Emergency Helpline</strong>
-                  <span className={styles.btnValue}>{HOSPITAL_INFO.emergencyPhone}</span>
-                </span>
+            <div className={styles.preFooterActions}>
+              <a href={`tel:${HOSPITAL_INFO.emergencyPhone}`} className={styles.emergencyCtaBtn}>
+                <PhoneCall size={16} aria-hidden="true" />
+                <div className={styles.btnTextGroup}>
+                  <span className={styles.btnSmallText}>24/7 Emergency Helpline</span>
+                  <strong className={styles.btnMainText}>{HOSPITAL_INFO.emergencyPhone}</strong>
+                </div>
               </a>
 
-              <a
-                href="#services"
-                className={styles.consultBtn}
-              >
-                <span className={styles.btnIcon}>
-                  <CalendarDaysIcon style={{ width: 22, height: 22 }} aria-hidden="true" />
-                </span>
-                <span>
-                  <strong className={styles.btnLabel}>Routine Care &amp; Boarding</strong>
-                  <span className={styles.btnValue}>Book OPD Consultation</span>
-                </span>
+              <a href="#services" className={styles.consultCtaBtn}>
+                <Calendar size={16} aria-hidden="true" />
+                <div className={styles.btnTextGroup}>
+                  <span className={styles.btnSmallText}>Routine OPD &amp; Resort</span>
+                  <strong className={styles.btnMainText}>Book Consultation</strong>
+                </div>
               </a>
             </div>
           </div>
         </Container>
       </div>
 
-      {/* 2. Main Clinical Directory */}
+      {/* 2. Main Hospital Directory */}
       <div className={styles.main}>
         <Container>
           <div className={styles.grid}>
-            {/* Column 1: Hospital Identity & Mission */}
-            <div className={styles.aboutCol}>
-              <div className={styles.logoContainer}>
+            {/* Column 1: Hospital Identity & Philosophy */}
+            <div className={styles.brandCol}>
+              <Link href="/" className={styles.logoContainer}>
                 <Image
                   src="/images/logo-avc-hospital.png"
                   alt="AVC Multispeciality Pet Care Hospital"
                   width={180}
                   height={44}
-                  className={styles.logoImage}
+                  className={styles.brandLogo}
                 />
-              </div>
+              </Link>
 
-              <p className={styles.missionText}>
-                Animates Vet Care (AVC) is New Gurugram&apos;s premier multi-speciality veterinary
-                center and luxury pet resort, led by Dr. Hardeep Beniwal. Dedicated to advanced
-                diagnostics, surgical precision, and compassionate animal recovery.
+              <p className={styles.philosophyText}>
+                &ldquo;The bond between humans and animals is a silent language of trust and love.&rdquo;
               </p>
+              <span className={styles.founderCredit}>— Dr. Hardeep Beniwal &amp; Medical Team</span>
 
-              <div className={styles.ratingBox}>
-                <span className={styles.ratingStars} aria-label="5 out of 5 stars">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon key={i} style={{ width: 14, height: 14, color: "#f59e0b", display: "inline-block" }} aria-hidden="true" />
-                  ))}
-                </span>
-                <span className={styles.ratingNumber}>4.9/5</span>
-                <span className={styles.ratingSource}>on Google Reviews</span>
+              <div className={styles.googleTrustBadge}>
+                {GOOGLE_G_ICON}
+                <span className={styles.googleScore}>4.8 / 5.0</span>
+                <span className={styles.googleDivider}>•</span>
+                <span className={styles.googleCount}>700+ Google Reviews</span>
               </div>
             </div>
 
-            {/* Column 2: Clinical Services */}
-            <div>
-              <h4 className={styles.colHeading}>Medical Services</h4>
+            {/* Column 2: Clinical Departments */}
+            <div className={styles.linksCol}>
+              <h3 className={styles.colTitle}>Medical Services</h3>
               <ul className={styles.linkList}>
-                {FOOTER_LINKS.services.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href} className={styles.link}>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
                 <li>
-                  <Link href="#services" className={styles.link}>
-                    Feline Cat Care OPD
+                  <Link href="#services" className={styles.footerLink}>
+                    24/7 Trauma ICU &amp; Emergency
                   </Link>
                 </li>
                 <li>
-                  <Link href="#services" className={styles.link}>
-                    Medicated Grooming &amp; Spa
+                  <Link href="#services" className={styles.footerLink}>
+                    In-House IDEXX Diagnostics Lab
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#services" className={styles.footerLink}>
+                    Sterile Modular Operating Theaters
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#services" className={styles.footerLink}>
+                    Quiet Cat-Friendly OPD
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#services" className={styles.footerLink}>
+                    Digital X-Ray &amp; Color Doppler
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#services" className={styles.footerLink}>
+                    Therapeutic Medicated Grooming
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Patient Care Links */}
-            <div>
-              <h4 className={styles.colHeading}>Quick Links</h4>
+            {/* Column 3: Quick Navigation */}
+            <div className={styles.linksCol}>
+              <h3 className={styles.colTitle}>Hospital &amp; Care</h3>
               <ul className={styles.linkList}>
                 <li>
-                  <Link href="#about" className={styles.link}>
-                    About Our Hospital
+                  <Link href="#why-choose-us" className={styles.footerLink}>
+                    Why Choose AVC
                   </Link>
                 </li>
                 <li>
-                  <Link href="#process" className={styles.link}>
-                    Care Journey &amp; Process
+                  <Link href="#process" className={styles.footerLink}>
+                    Pet Care Journey
                   </Link>
                 </li>
                 <li>
-                  <Link href="#faq" className={styles.link}>
+                  <Link href="#testimonials" className={styles.footerLink}>
+                    Verified Patient Stories
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#faq" className={styles.footerLink}>
                     Pet Parent FAQs
                   </Link>
                 </li>
                 <li>
-                  <Link href="#testimonials" className={styles.link}>
-                    Client Experiences
-                  </Link>
+                  <a
+                    href="https://maps.google.com/?q=AVC+Multispeciality+Pet+Hospital+Sector+90+Gurugram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.footerLink}
+                  >
+                    <span>Sector 90 Directions</span>
+                    <ArrowUpRight size={12} className={styles.inlineArrow} aria-hidden="true" />
+                  </a>
                 </li>
                 <li>
                   <a
-                    href="http://localhost:3002"
+                    href="https://maps.google.com/?q=AVC+Pet+World+Sector+87+Gurugram"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.link}
+                    className={styles.footerLink}
                   >
-                    <span>Hospital Staff Portal</span>
-                    <ArrowTopRightOnSquareIcon style={{ width: 13, height: 13, marginLeft: 4, display: "inline-block", verticalAlign: "middle" }} aria-hidden="true" />
+                    <span>Sector 87 Resort Directions</span>
+                    <ArrowUpRight size={12} className={styles.inlineArrow} aria-hidden="true" />
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* Column 4: Gurugram Hospital & Resort Campuses */}
+            {/* Column 4: Both Hospital Campuses */}
             <div className={styles.campusCol}>
-              <h4 className={styles.colHeading}>Our Hospital Centres</h4>
+              <h3 className={styles.colTitle}>Hospital Campuses</h3>
 
-              <div className={styles.campusItem}>
-                <div className={styles.campusTitleRow}>
-                  <strong className={styles.campusName}>Sector 90 Hospital &amp; Emergency</strong>
-                  <span className={styles.openPill}>24/7 Open</span>
+              {/* Campus 1: Sector 90 Hospital */}
+              <div className={styles.campusCard}>
+                <div className={styles.campusHeader}>
+                  <strong className={styles.campusName}>Sector 90 Hospital</strong>
+                  <span className={styles.campusOpenBadge}>24/7 Open</span>
                 </div>
-                <p className={styles.campusDetails}>
-                  {HOSPITAL_INFO.hospitalCenter.address}, {HOSPITAL_INFO.hospitalCenter.landmark},{" "}
-                  {HOSPITAL_INFO.hospitalCenter.city} - {HOSPITAL_INFO.hospitalCenter.pincode}
+                <p className={styles.campusAddress}>
+                  Near DLF Regal Garden, Badha-Hayatpur Road, Sector 90, Gurugram – 122505
                 </p>
-                <div className={styles.campusContactRow}>
-                  <a href={`tel:${HOSPITAL_INFO.emergencyPhone}`} className={styles.phoneLink}>
+                <div className={styles.campusFooter}>
+                  <div className={styles.metaRow}>
+                    <Clock size={12} className={styles.metaIcon} aria-hidden="true" />
+                    <span>Emergency ICU 24/7/365</span>
+                  </div>
+                  <a href={`tel:${HOSPITAL_INFO.emergencyPhone}`} className={styles.campusPhone}>
                     {HOSPITAL_INFO.emergencyPhone}
-                  </a>
-                  <a
-                    href="https://maps.google.com/?q=DLF+Regal+Garden+Sector+90+Gurugram+Animates+Vet+Care"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.mapLink}
-                  >
-                    <span>Directions</span>
-                    <ArrowTopRightOnSquareIcon style={{ width: 12, height: 12, marginLeft: 3, display: "inline-block", verticalAlign: "middle" }} aria-hidden="true" />
                   </a>
                 </div>
               </div>
 
-              <div className={styles.campusItem}>
-                <div className={styles.campusTitleRow}>
-                  <strong className={styles.campusName}>Sector 87 Luxury Resort</strong>
-                  <span className={styles.routinePill}>OPD &amp; Boarding</span>
+              {/* Campus 2: Sector 87 Pet World */}
+              <div className={styles.campusCard}>
+                <div className={styles.campusHeader}>
+                  <strong className={styles.campusName}>Sector 87 Pet World</strong>
+                  <span className={styles.campusResortBadge}>Resort &amp; OPD</span>
                 </div>
-                <p className={styles.campusDetails}>
-                  {HOSPITAL_INFO.resortCenter.landmark}, {HOSPITAL_INFO.resortCenter.address},{" "}
-                  {HOSPITAL_INFO.resortCenter.city}
+                <p className={styles.campusAddress}>
+                  Opp. Bharat Ram Global School Road, Sector 87, Gurugram
                 </p>
-                <div className={styles.campusContactRow}>
-                  <a href={`tel:${HOSPITAL_INFO.secondaryPhone}`} className={styles.phoneLink}>
-                    {HOSPITAL_INFO.secondaryPhone}
+                <div className={styles.campusFooter}>
+                  <div className={styles.metaRow}>
+                    <Clock size={12} className={styles.metaIcon} aria-hidden="true" />
+                    <span>9:00 AM – 8:00 PM</span>
+                  </div>
+                  <a href={`tel:${HOSPITAL_INFO.emergencyPhone}`} className={styles.campusPhone}>
+                    {HOSPITAL_INFO.emergencyPhone}
                   </a>
-                  <span className={styles.hoursNote}>
-                    9:00 AM – 8:00 PM
-                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 3. Bottom Legal & Copyright Bar */}
+          {/* 3. Bottom Legal & Registered Bar */}
           <div className={styles.bottomBar}>
             <p className={styles.copyright}>
               © {new Date().getFullYear()} {HOSPITAL_INFO.name}. Registered Veterinary Healthcare Establishment.
             </p>
 
-            <div className={styles.bottomNav}>
-              <Link href="#contact" className={styles.bottomNavLink}>
-                Contact Hospital
+            <div className={styles.legalNav}>
+              <Link href="#contact" className={styles.legalLink}>
+                Hospital Contact
               </Link>
-              <span className={styles.divider}>•</span>
-              <Link href="#about" className={styles.bottomNavLink}>
+              <span className={styles.legalDivider}>•</span>
+              <Link href="#about" className={styles.legalLink}>
                 Privacy Policy
               </Link>
-              <span className={styles.divider}>•</span>
-              <Link href="#contact" className={styles.bottomNavLink}>
-                Terms
+              <span className={styles.legalDivider}>•</span>
+              <Link href="#contact" className={styles.legalLink}>
+                Terms &amp; Medical Conditions
               </Link>
             </div>
           </div>

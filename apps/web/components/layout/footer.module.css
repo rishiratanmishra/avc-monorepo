@@ -1,343 +1,457 @@
+/* ==========================================================================
+   FOOTER — Apple / Linear Minimalist Hospital Directory
+   Pre-footer reassurance banner + Deep midnight 4-column clinical directory.
+   ========================================================================== */
+
 .footer {
-  margin-top: 80px;
-  background-color: #0f1824;
+  margin-top: 60px;
+  background-color: #09131f;
   color: #94a3b8;
-  border-top: 1px solid #1e293b;
+  position: relative;
 }
 
-/* 1. Grounded Emergency & Consultation Contact Strip */
-.contactStrip {
-  background-color: #141f2e;
-  border-bottom: 1px solid #1e2d42;
-  padding: 40px 0;
+/* --------------------------------------------------------------------------
+   1. Pre-Footer Reassurance Banner (Soft Porcelain & Brand Blue)
+   -------------------------------------------------------------------------- */
+.preFooter {
+  background-color: #ffffff;
+  padding: 0 0 60px 0;
 }
 
-.contactStripInner {
+.preFooterCard {
+  background-color: #f0f7fc;
+  border: 1px solid #d4e7f7;
+  border-radius: 24px;
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  box-shadow: 0 8px 30px rgba(27, 117, 187, 0.05);
+}
+
+.preFooterContent {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-}
-
-.contactText {
+  gap: 8px;
   max-width: 620px;
 }
 
-.contactEyebrow {
-  display: inline-block;
-  font-size: 12px;
+.preFooterTag {
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #38bdf8;
-  margin-bottom: 8px;
+  color: #1b75bb;
 }
 
-.contactTitle {
-  font-family: var(--font-family-heading);
-  font-size: 26px;
-  font-weight: 700;
-  color: #ffffff;
+.preFooterTitle {
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 800;
+  color: #0f2942;
+  letter-spacing: -0.02em;
   line-height: 1.25;
-  margin-bottom: 8px;
+  margin: 0;
 }
 
-.contactDesc {
+.preFooterDesc {
   font-size: 14px;
   line-height: 1.6;
-  color: #94a3b8;
+  color: #52637a;
+  margin: 0;
+  font-weight: 450;
 }
 
-.contactButtons {
+.preFooterActions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
   align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
-.emergencyBtn {
+.emergencyCtaBtn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 20px;
-  border-radius: 8px;
-  background-color: #ba1a1a;
+  padding: 11px 22px;
+  border-radius: 9999px;
+  background-color: #1b75bb;
   color: #ffffff;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(27, 117, 187, 0.25);
 }
 
-.emergencyBtn:hover {
-  background-color: #d32f2f;
+.emergencyCtaBtn:hover {
+  background-color: #155d96;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(27, 117, 187, 0.35);
 }
 
-.consultBtn {
+.consultCtaBtn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 20px;
-  border-radius: 8px;
-  background-color: transparent;
-  border: 1px solid #334155;
-  color: #f1f5f9;
+  padding: 11px 22px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f2942;
   text-decoration: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
-.consultBtn:hover {
-  border-color: #64748b;
-  background-color: rgba(255, 255, 255, 0.04);
+.consultCtaBtn:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
 }
 
-.btnIcon {
-  font-size: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.btnTextGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
-.btnLabel {
-  display: block;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 0.8;
+.btnSmallText {
+  font-size: 10px;
   font-weight: 600;
-}
-
-.btnValue {
-  display: block;
-  font-size: 15px;
-  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
   line-height: 1.2;
 }
 
-/* 2. Main Clinical Directory */
+.btnMainText {
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main Hospital Directory (Deep Midnight Navy)
+   -------------------------------------------------------------------------- */
 .main {
-  padding: 56px 0 32px;
+  padding: 68px 0 32px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid #1e293b;
+  grid-template-columns: 1.2fr 0.95fr 0.95fr 1.3fr;
+  gap: 48px;
+  margin-bottom: 56px;
 }
 
-.aboutCol {
+/* Column 1: Brand & Philosophy */
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.logoContainer {
+  background-color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 4px;
+  transition: transform 0.2s ease;
+}
+
+.logoContainer:hover {
+  transform: translateY(-1px);
+}
+
+.brandLogo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.philosophyText {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.founderCredit {
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.googleTrustBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background-color: #111d2e;
+  border: 1px solid #1c304a;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+.googleScore {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.googleDivider {
+  color: #334155;
+  font-size: 11px;
+}
+
+.googleCount {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+/* Columns 2 & 3: Link Lists */
+.linksCol {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.logoContainer {
-  display: inline-block;
-  padding: 8px 12px;
-  background-color: #ffffff;
-  border-radius: 6px;
-  width: fit-content;
-}
-
-.logoImage {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
-.missionText {
+.colTitle {
   font-size: 13px;
-  line-height: 1.6;
-  color: #94a3b8;
-  max-width: 320px;
-}
-
-.ratingBox {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #cbd5e1;
-}
-
-.ratingStars {
-  color: #f59e0b;
-  letter-spacing: 1px;
-}
-
-.ratingNumber {
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: #ffffff;
-}
-
-.ratingSource {
-  color: #64748b;
-}
-
-/* Section Headings */
-.colHeading {
-  font-family: var(--font-family-heading);
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 18px;
-  letter-spacing: 0.01em;
+  margin: 0;
 }
 
 .linkList {
   list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 11px;
 }
 
-.link {
-  font-size: 13.5px;
+.footerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
   color: #94a3b8;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: all 0.2s ease;
+  line-height: 1.4;
 }
 
-.link:hover {
-  color: #38bdf8;
+.footerLink:hover {
+  color: #ffffff;
+  transform: translateX(2px);
 }
 
-/* Column 4: Gurugram Campuses */
+.inlineArrow {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.footerLink:hover .inlineArrow {
+  opacity: 1;
+}
+
+/* Column 4: Hospital Campuses */
 .campusCol {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-.campusItem {
-  padding-bottom: 16px;
-  border-bottom: 1px solid #1e293b;
+.campusCard {
+  background-color: #111d2e;
+  border: 1px solid #1c304a;
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s ease;
 }
 
-.campusItem:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+.campusCard:hover {
+  border-color: #2b466b;
 }
 
-.campusTitleRow {
+.campusHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 6px;
+  gap: 10px;
 }
 
 .campusName {
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
 }
 
-.openPill {
-  font-size: 11px;
-  font-weight: 600;
-  color: #4ade80;
-  background-color: rgba(34, 197, 94, 0.1);
-  padding: 1px 7px;
-  border-radius: 4px;
-}
-
-.routinePill {
-  font-size: 11px;
-  font-weight: 600;
+.campusOpenBadge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: #38bdf8;
-  background-color: rgba(56, 189, 248, 0.1);
-  padding: 1px 7px;
-  border-radius: 4px;
+  background-color: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  padding: 2px 7px;
+  border-radius: 9999px;
 }
 
-.campusDetails {
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: #64748b;
-  margin-bottom: 8px;
+.campusResortBadge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2px 7px;
+  border-radius: 9999px;
 }
 
-.campusContactRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12.5px;
-}
-
-.phoneLink {
-  color: #38bdf8;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.phoneLink:hover {
-  text-decoration: underline;
-}
-
-.mapLink {
-  color: #94a3b8;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.mapLink:hover {
-  color: #ffffff;
-}
-
-.hoursNote {
-  color: #64748b;
+.campusAddress {
   font-size: 12px;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0;
 }
 
-/* 3. Bottom Legal & Copyright Bar */
-.bottomBar {
-  padding-top: 24px;
+.campusFooter {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
   align-items: center;
   justify-content: space-between;
-  font-size: 12.5px;
+  gap: 10px;
+  padding-top: 6px;
+  border-top: 1px solid #162438;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
   color: #64748b;
+  font-weight: 500;
+}
+
+.metaIcon {
+  color: #38bdf8;
+}
+
+.campusPhone {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.campusPhone:hover {
+  color: #7dd3fc;
+}
+
+/* --------------------------------------------------------------------------
+   3. Bottom Legal Bar
+   -------------------------------------------------------------------------- */
+.bottomBar {
+  padding-top: 28px;
+  border-top: 1px solid #162438;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .copyright {
+  font-size: 12px;
   color: #64748b;
+  margin: 0;
 }
 
-.bottomNav {
+.legalNav {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.bottomNavLink {
+.legalLink {
+  font-size: 12px;
   color: #64748b;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.2s ease;
 }
 
-.bottomNavLink:hover {
-  color: #94a3b8;
+.legalLink:hover {
+  color: #cbd5e1;
 }
 
-.divider {
-  color: #334155;
+.legalDivider {
+  color: #1e3048;
+  font-size: 11px;
 }
 
-/* Responsive Grid */
-@media (min-width: 768px) {
-  .contactStripInner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .preFooterCard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px;
+    gap: 24px;
   }
 
   .grid {
-    grid-template-columns: 1.4fr 1fr 1fr 1.6fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .preFooterCard {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .preFooterActions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .emergencyCtaBtn,
+  .consultCtaBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .bottomBar {
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
