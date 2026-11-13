@@ -1,0 +1,110 @@
+.barContainer {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .barContainer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    box-shadow: 0 -4px 20px rgba(43, 37, 32, 0.1);
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    user-select: none;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+  }
+
+  .emergencyBtn {
+    background-color: #d9383a;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(217, 56, 58, 0.3);
+  }
+
+  .emergencyBtn:hover {
+    background-color: #c42b2d;
+  }
+
+  .bookingBtn {
+    background-color: var(--md-sys-color-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(27, 117, 187, 0.25);
+  }
+
+  .bookingBtn:hover {
+    background-color: var(--md-sys-color-primary-hover);
+  }
+
+  .iconPulse {
+    font-size: 18px;
+    display: inline-block;
+    animation: gentlePulse 2s infinite ease-in-out;
+  }
+
+  .icon {
+    font-size: 18px;
+    display: inline-block;
+  }
+
+  .btnText {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1.15;
+  }
+
+  .btnSub {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.88;
+  }
+
+  .btnMain {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  @keyframes gentlePulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+  }
+}

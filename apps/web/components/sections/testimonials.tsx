@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Container } from "../layout/container";
 import { Badge } from "../ui/badge";
 import { TESTIMONIALS } from "../../constants";
@@ -25,11 +26,12 @@ export const Testimonials: React.FC = () => {
               </div>
 
               <div className={styles.authorRow}>
-                <img
+                <Image
                   src={item.avatar}
                   alt={item.author}
+                  width={48}
+                  height={48}
                   className={styles.avatar}
-                  loading="lazy"
                 />
                 <div>
                   <h4 className={styles.authorName}>{item.author}</h4>

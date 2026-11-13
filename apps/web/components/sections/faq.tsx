@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { Container } from "../layout/container";
 import { FAQS } from "../../constants";
 import styles from "./faq.module.css";
@@ -19,11 +20,12 @@ export const FaqSection: React.FC = () => {
           {/* Left Column: Team Photo & Experience Badge */}
           <div className={styles.visualCol}>
             <div className={styles.imageFrame}>
-              <img
+              <Image
                 src="/images/team-veterinary-staff.jpg"
                 alt="AVC Veterinary Doctors and Medical Care Staff Team"
+                width={640}
+                height={480}
                 className={styles.teamImage}
-                loading="lazy"
               />
               <div className={styles.accentBadge}>
                 <span className={styles.accentNum}>15+</span>

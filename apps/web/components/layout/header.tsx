@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "./container";
 import { Button } from "../ui/button";
 import { NAV_LINKS, HOSPITAL_INFO } from "../../constants";
@@ -11,9 +12,12 @@ export const Header: React.FC = () => {
       <Container>
         <div className={styles.inner}>
           <Link href="/" className={styles.brand}>
-            <img
+            <Image
               src="/images/logo-avc-hospital.png"
               alt="AVC Pet Hospital Logo"
+              width={180}
+              height={44}
+              priority
               className={styles.brandLogo}
             />
           </Link>

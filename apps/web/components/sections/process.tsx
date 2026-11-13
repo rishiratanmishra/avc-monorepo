@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Container } from "../layout/container";
 import { Badge } from "../ui/badge";
 import { PET_CARE_PROCESS } from "../../constants";
@@ -21,11 +22,12 @@ export const PetCareProcess: React.FC = () => {
             <div key={step.step} className={styles.stepCard}>
               <div className={styles.imageWrap}>
                 <span className={styles.stepBadge}>{step.step}</span>
-                <img
+                <Image
                   src={step.image}
                   alt={step.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className={styles.stepImage}
-                  loading="lazy"
                 />
               </div>
               <div className={styles.content}>

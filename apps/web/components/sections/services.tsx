@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { Container } from "../layout/container";
 import { CORE_SERVICES } from "../../constants";
 import styles from "./services.module.css";
@@ -73,11 +74,12 @@ export const Services: React.FC = () => {
               {/* Visual wrapper with the exact corner notch clip-path */}
               <div className={styles.cardVisual}>
                 {service.image && (
-                  <img
+                  <Image
                     src={service.image}
                     alt={service.title}
+                    fill
+                    sizes="(max-width: 768px) 290px, 370px"
                     className={styles.cardImage}
-                    loading="lazy"
                   />
                 )}
                 {/* Blue Gradient Overlay */}

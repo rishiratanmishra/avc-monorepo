@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "./container";
 import { HOSPITAL_INFO, FOOTER_LINKS } from "../../constants";
 import styles from "./footer.module.css";
@@ -11,10 +12,12 @@ export const Footer: React.FC = () => {
         <div className={styles.grid}>
           <div className={styles.brandCol}>
             <div className={styles.brand}>
-              <img
+              <Image
                 src="/images/logo-avc-hospital.png"
                 alt="AVC Pet Hospital Logo"
-                style={{ height: "42px", width: "auto" }}
+                width={160}
+                height={40}
+                style={{ height: "40px", width: "auto" }}
               />
             </div>
             <p className={styles.brandDesc}>{HOSPITAL_INFO.tagline}</p>

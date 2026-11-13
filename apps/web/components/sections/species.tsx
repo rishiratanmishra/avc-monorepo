@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Container } from "../layout/container";
 import { SPECIES_TREATED } from "../../constants";
 import styles from "./species.module.css";
@@ -17,11 +18,12 @@ export const SpeciesTreated: React.FC = () => {
             return (
               <div key={item.id} className={styles.card}>
                 <div className={styles.imageWrap}>
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 960px) 50vw, 33vw"
                     className={styles.image}
-                    loading="lazy"
                   />
                   <div className={styles.numberBadge}>{num}</div>
                 </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Container } from "../layout/container";
 import { Button } from "../ui/button";
 import { HOSPITAL_INFO, HOSPITAL_STATS } from "../../constants";
@@ -32,19 +33,25 @@ export const Hero: React.FC = () => {
             {/* Social Proof Snippet */}
             <div className={styles.socialProofSnippet}>
               <div className={styles.avatarGroup}>
-                <img
+                <Image
                   src="/images/testimonial-client-chitresh-mittal.png"
                   alt="Chitresh Mittal"
+                  width={34}
+                  height={34}
                   className={styles.miniAvatar}
                 />
-                <img
+                <Image
                   src="/images/testimonial-client-gopa-ghosal.png"
                   alt="Gopa Ghoshal"
+                  width={34}
+                  height={34}
                   className={styles.miniAvatar}
                 />
-                <img
+                <Image
                   src="/images/testimonial-client-sonu-balu.png"
                   alt="Sonu Balu"
+                  width={34}
+                  height={34}
                   className={styles.miniAvatar}
                 />
               </div>
@@ -90,9 +97,12 @@ export const Hero: React.FC = () => {
             <div className={styles.visualCanvas}>
               <div className={styles.canvasGlow} />
 
-              <img
+              <Image
                 src="/images/hero-dog-banner.png"
                 alt="Happy pet dog companion - AVC Multispeciality Pet Hospital"
+                width={560}
+                height={500}
+                priority
                 className={styles.heroVisualImg}
               />
 
@@ -107,9 +117,11 @@ export const Hero: React.FC = () => {
 
               {/* Floating Glassmorphic Card Bottom */}
               <div className={styles.floatingCardBottom}>
-                <img
+                <Image
                   src="/images/doctor-dr-hardeep-with-cat.jpg"
                   alt="Dr. Hardeep Beniwal"
+                  width={46}
+                  height={46}
                   className={styles.doctorAvatar}
                 />
                 <div>
