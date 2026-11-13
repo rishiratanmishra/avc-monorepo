@@ -6,6 +6,7 @@ import {
   Hero,
   Services,
   PetCareProcess,
+  WhyChooseUs,
   SpeciesTreated,
   Testimonials,
   FaqSection,
@@ -19,9 +20,10 @@ export default function Home() {
         <Hero />
         <Services />
         <PetCareProcess />
-        <FaqSection />
+        <WhyChooseUs />
         <SpeciesTreated />
         <Testimonials />
+        <FaqSection />
       </main>
       <Footer />
       <MobileActionBar />
