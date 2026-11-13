@@ -1,0 +1,33 @@
+.banner {
+  background-color: var(--color-emergency-bg);
+  border-bottom: 1px solid var(--color-emergency-border);
+  padding: 10px 0;
+  font-size: 13px;
+  color: var(--color-emergency);
+  font-weight: 600;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.callNow {
+  color: var(--color-emergency);
+  text-decoration: underline;
+  font-weight: 700;
+  transition: opacity 0.2s ease;
+}
+
+.callNow:hover {
+  opacity: 0.8;
+}

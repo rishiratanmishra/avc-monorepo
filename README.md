@@ -36,10 +36,10 @@ The root `dev` script starts all four apps:
 To run one app at a time:
 
 ```bash
-yarn workspace web dev
-yarn workspace docs dev
-yarn workspace admin dev
-yarn dev:api
+yarn start:client # Starts website app (http://localhost:3000) + API backend (http://localhost:4000)
+yarn start:admin  # Starts admin dashboard (http://localhost:3002) + API backend (http://localhost:4000)
+yarn start:api    # Starts API backend server only (http://localhost:4000)
+yarn dev          # Starts all apps (client, admin, docs, api)
 ```
 
 Before starting the API, copy `apps/api/.env.example` to `apps/api/.env` and

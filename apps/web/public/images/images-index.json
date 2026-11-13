@@ -1,0 +1,238 @@
+{
+  "total": 33,
+  "successful": 33,
+  "downloadedAt": "2026-11-13T10:50:35.886Z",
+  "images": [
+    {
+      "fileName": "logo-avc-hospital.png",
+      "category": "branding",
+      "description": "AVC Multispeciality Pet Care Hospital official logo (used in header & footer)",
+      "bytes": 45207,
+      "status": "success"
+    },
+    {
+      "fileName": "hero-dog-banner.png",
+      "category": "hero",
+      "description": "Main hero dog cutout banner for top landing hero section",
+      "bytes": 509189,
+      "status": "success"
+    },
+    {
+      "fileName": "hero-new-center-gurugram.png",
+      "category": "hero",
+      "description": "Announcement banner for the new Gurugram hospital centre",
+      "bytes": 1921043,
+      "status": "success"
+    },
+    {
+      "fileName": "team-veterinary-staff.jpg",
+      "category": "about-team",
+      "description": "AVC veterinary doctors & medical staff group photo",
+      "bytes": 303456,
+      "status": "success"
+    },
+    {
+      "fileName": "team-doctors-banner.png",
+      "category": "about-team",
+      "description": "Banner showcase of AVC specialized veterinary doctors",
+      "bytes": 686291,
+      "status": "success"
+    },
+    {
+      "fileName": "doctor-dr-hardeep-with-cat.jpg",
+      "category": "doctors",
+      "description": "Senior veterinary surgeon Dr. Hardeep Singh with a cat patient",
+      "bytes": 206147,
+      "status": "success"
+    },
+    {
+      "fileName": "doctor-dr-hardeep-opd-consult.jpg",
+      "category": "doctors",
+      "description": "Dr. Hardeep conducting a health checkup in the OPD clinic",
+      "bytes": 235064,
+      "status": "success"
+    },
+    {
+      "fileName": "facility-pet-resort-boarding.jpg",
+      "category": "facilities",
+      "description": "AVC luxury pet boarding and pet resort facility",
+      "bytes": 306916,
+      "status": "success"
+    },
+    {
+      "fileName": "about-pet-wellness-companion.jpg",
+      "category": "about",
+      "description": "Happy pet parent with dogs representing compassionate pet healthcare",
+      "bytes": 192860,
+      "status": "success"
+    },
+    {
+      "fileName": "service-24-7-emergency-care.jpg",
+      "category": "services",
+      "description": "24/7 Veterinary emergency and critical care trauma response",
+      "bytes": 86994,
+      "status": "success"
+    },
+    {
+      "fileName": "service-opd-general-consultation.jpg",
+      "category": "services",
+      "description": "General OPD, routine wellness checkups and diagnosis",
+      "bytes": 323373,
+      "status": "success"
+    },
+    {
+      "fileName": "service-advanced-surgery-ot.jpg",
+      "category": "services",
+      "description": "Advanced surgical procedures and modern modular operation theatre",
+      "bytes": 193895,
+      "status": "success"
+    },
+    {
+      "fileName": "service-pet-vaccination-immunization.jpg",
+      "category": "services",
+      "description": "Vaccination and preventive immunization for dogs & cats",
+      "bytes": 231165,
+      "status": "success"
+    },
+    {
+      "fileName": "service-diagnostic-lab-pathology.jpg",
+      "category": "services",
+      "description": "In-house diagnostic laboratory, blood tests & pathology",
+      "bytes": 183245,
+      "status": "success"
+    },
+    {
+      "fileName": "service-radiology-xray-ultrasound.jpg",
+      "category": "services",
+      "description": "Digital radiography, ultrasound and high-precision imaging",
+      "bytes": 138357,
+      "status": "success"
+    },
+    {
+      "fileName": "service-pet-grooming-spa.jpg",
+      "category": "services",
+      "description": "Professional pet grooming, medicated styling & hygiene care",
+      "bytes": 124605,
+      "status": "success"
+    },
+    {
+      "fileName": "service-feline-cat-care.jpg",
+      "category": "services",
+      "description": "Specialized cat care, quiet feline consultation and treatment",
+      "bytes": 146121,
+      "status": "success"
+    },
+    {
+      "fileName": "service-pain-management-physiotherapy.jpg",
+      "category": "services",
+      "description": "Veterinary pain management, arthritis relief & rehabilitation",
+      "bytes": 112866,
+      "status": "success"
+    },
+    {
+      "fileName": "service-pet-pharmacy-store.jpg",
+      "category": "services",
+      "description": "24-hour veterinary pharmacy, prescription food & pet supplies",
+      "bytes": 132983,
+      "status": "success"
+    },
+    {
+      "fileName": "service-general-treatment-clinic.jpg",
+      "category": "services",
+      "description": "In-clinic animal therapy and medical treatments",
+      "bytes": 109760,
+      "status": "success"
+    },
+    {
+      "fileName": "process-step1-make-appointment.png",
+      "category": "process",
+      "description": "Step 1: Book / Schedule an Appointment illustration",
+      "bytes": 765844,
+      "status": "success"
+    },
+    {
+      "fileName": "process-step2-doctor-assigned.jpg",
+      "category": "process",
+      "description": "Step 2: Expert Doctor Assigned to your pet",
+      "bytes": 408395,
+      "status": "success"
+    },
+    {
+      "fileName": "process-step3-consultation.png",
+      "category": "process",
+      "description": "Step 3: Comprehensive Consultation & Diagnosis",
+      "bytes": 780278,
+      "status": "success"
+    },
+    {
+      "fileName": "process-step4-cure-and-relief.jpg",
+      "category": "process",
+      "description": "Step 4: Care, Treatment & Full Recovery Relief",
+      "bytes": 179543,
+      "status": "success"
+    },
+    {
+      "fileName": "species-dogs-canine.jpg",
+      "category": "species",
+      "description": "Canine / Dog healthcare services section",
+      "bytes": 120536,
+      "status": "success"
+    },
+    {
+      "fileName": "species-birds-avian.jpg",
+      "category": "species",
+      "description": "Avian / Pet Birds healthcare services section",
+      "bytes": 72250,
+      "status": "success"
+    },
+    {
+      "fileName": "species-rabbits.jpg",
+      "category": "species",
+      "description": "Rabbit & small herbivore healthcare section",
+      "bytes": 200418,
+      "status": "success"
+    },
+    {
+      "fileName": "species-guinea-pigs-hamsters.jpg",
+      "category": "species",
+      "description": "Pocket pets: Guinea pigs, hamsters and rodents care",
+      "bytes": 139307,
+      "status": "success"
+    },
+    {
+      "fileName": "species-exotic-turtles-reptiles.jpg",
+      "category": "species",
+      "description": "Exotic pets: Turtles, tortoises and reptiles care",
+      "bytes": 231525,
+      "status": "success"
+    },
+    {
+      "fileName": "decorative-bone-pattern.png",
+      "category": "decorative",
+      "description": "Veterinary decorative dog bone illustration",
+      "bytes": 1459,
+      "status": "success"
+    },
+    {
+      "fileName": "testimonial-client-gopa-ghosal.png",
+      "category": "testimonials",
+      "description": "Client review avatar: Gopa Ghosal",
+      "bytes": 188097,
+      "status": "success"
+    },
+    {
+      "fileName": "testimonial-client-sonu-balu.png",
+      "category": "testimonials",
+      "description": "Client review avatar: Sonu Balu",
+      "bytes": 5389,
+      "status": "success"
+    },
+    {
+      "fileName": "testimonial-client-chitresh-mittal.png",
+      "category": "testimonials",
+      "description": "Client review avatar: Chitresh Mittal",
+      "bytes": 7622,
+      "status": "success"
+    }
+  ]
+}

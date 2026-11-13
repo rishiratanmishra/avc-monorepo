@@ -5,6 +5,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:api": "turbo run dev --filter=api",
+    "dev:admin": "turbo run dev --filter=admin",
+    "dev:client": "turbo run dev --filter=web",
+    "start:admin": "turbo run dev --filter=admin --filter=api",
+    "start:client": "turbo run dev --filter=web --filter=api",
+    "start:api": "turbo run dev --filter=api",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"

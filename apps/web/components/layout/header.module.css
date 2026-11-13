@@ -1,0 +1,85 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brandMark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.brandLogo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brandName {
+  color: var(--md-sys-color-on-surface);
+  font: var(--typescale-title-medium);
+  font-family: var(--font-family-heading);
+  line-height: 1.2;
+}
+
+.brandSubtitle {
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--typescale-label-small);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navLink {
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--typescale-label-large);
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--md-sys-color-primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (min-width: 860px) {
+  .nav {
+    display: flex;
+  }
+}

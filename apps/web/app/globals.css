@@ -1,30 +1,137 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* ==========================================================================
+     GOOGLE MATERIAL DESIGN 3 & GOOGLE FONTS KNOWLEDGE TOKENS
+     ========================================================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  /* Typography Font Families */
+  --font-family-heading: var(--font-heading), Georgia, serif;
+  --font-family-body: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  /* Material 3 Typescale (15-Role Strict System) */
+  --typescale-display-large: 700 56px/64px var(--font-family-heading);
+  --typescale-display-medium: 700 44px/52px var(--font-family-heading);
+  --typescale-display-small: 700 36px/44px var(--font-family-heading);
 
-body {
-  color: var(--foreground);
-  background: var(--background);
+  --typescale-headline-large: 700 32px/40px var(--font-family-heading);
+  --typescale-headline-medium: 600 28px/36px var(--font-family-heading);
+  --typescale-headline-small: 600 24px/32px var(--font-family-heading);
+
+  --typescale-title-large: 600 22px/28px var(--font-family-heading);
+  --typescale-title-medium: 600 16px/24px var(--font-family-body);
+  --typescale-title-small: 600 14px/20px var(--font-family-body);
+
+  --typescale-body-large: 400 16px/26px var(--font-family-body);
+  --typescale-body-medium: 400 14px/22px var(--font-family-body);
+  --typescale-body-small: 400 12px/18px var(--font-family-body);
+
+  --typescale-label-large: 600 14px/20px var(--font-family-body);
+  --typescale-label-medium: 600 12px/16px var(--font-family-body);
+  --typescale-label-small: 700 11px/16px var(--font-family-body);
+
+  /* Letter Spacing (Tracking) */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+
+  /* 8pt Material Grid Spacing System */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Google Material Tonal Color Palette (AVC Hospital Medical Identity) */
+  --md-sys-color-primary: #1b75bb;
+  --md-sys-color-primary-hover: #155e96;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #e6f1f9;
+  --md-sys-color-on-primary-container: #0b3b61;
+
+  --md-sys-color-secondary: #147d73;
+  --md-sys-color-secondary-hover: #0f6159;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #e0f2f1;
+  --md-sys-color-on-secondary-container: #004d40;
+
+  /* Warm Hospital Surfaces */
+  --md-sys-color-surface: #fbf8f3;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container: #f5f0e6;
+  --md-sys-color-surface-container-high: #eae2d3;
+  --md-sys-color-on-surface: #2b2520;
+  --md-sys-color-on-surface-variant: #5e5852;
+  --md-sys-color-outline: #e2dad0;
+  --md-sys-color-outline-variant: #ece6dc;
+
+  /* Functional Status Colors */
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-error-container: #fff1f0;
+  --md-sys-color-on-error: #ffffff;
+
+  /* Legacy mapping aliases */
+  --color-primary: var(--md-sys-color-primary);
+  --color-primary-hover: var(--md-sys-color-primary-hover);
+  --color-primary-light: var(--md-sys-color-primary-container);
+  --color-text-primary: var(--md-sys-color-on-surface);
+  --color-text-secondary: var(--md-sys-color-on-surface-variant);
+  --color-bg-body: var(--md-sys-color-surface);
+  --color-bg-card: var(--md-sys-color-surface-container-lowest);
+  --color-border: var(--md-sys-color-outline);
+  --font-sans: var(--font-family-body);
+  --font-heading: var(--font-family-heading);
+
+  /* Elevation / Shadows */
+  --shadow-sm: 0 1px 3px rgba(43, 37, 32, 0.05);
+  --shadow-md: 0 4px 16px rgba(43, 37, 32, 0.08);
+  --shadow-lg: 0 12px 32px rgba(43, 37, 32, 0.12);
+
+  /* Shape / Corner Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --max-width: 1200px;
+  --header-height: 80px;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: var(--font-family-body);
+  font: var(--typescale-body-large);
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: var(--tracking-tight);
+}
+
+p {
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.6;
 }
 
 a {
@@ -32,19 +139,15 @@ a {
   text-decoration: none;
 }
 
-.imgDark {
-  display: none;
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-
-  .imgLight {
-    display: none;
-  }
-  .imgDark {
-    display: unset;
-  }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
