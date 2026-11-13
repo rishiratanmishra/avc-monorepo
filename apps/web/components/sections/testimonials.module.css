@@ -10,9 +10,11 @@
 }
 
 .title {
-  font: var(--typescale-headline-large);
+  font: var(--typescale-display-medium);
   font-family: var(--font-family-heading);
   color: var(--md-sys-color-on-surface);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.18;
   margin-top: var(--space-3);
   margin-bottom: var(--space-4);
 }
