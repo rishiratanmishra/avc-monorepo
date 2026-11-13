@@ -91,16 +91,19 @@
 }
 
 .title {
-  font: var(--typescale-display-small);
   font-family: var(--font-family-heading);
+  font-size: var(--font-size-display-md);
+  font-weight: 700;
   color: var(--md-sys-color-on-surface);
   letter-spacing: var(--tracking-tight);
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: var(--space-4);
 }
 
 .subtitle {
-  font: var(--typescale-body-large);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-lg);
+  font-weight: 500;
   color: var(--md-sys-color-on-surface-variant);
   line-height: 1.6;
   margin-bottom: var(--space-8);
