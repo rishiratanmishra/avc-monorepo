@@ -1,254 +1,304 @@
+/* ==========================================================================
+   FAQ SECTION — Minimalist 2-Column Split
+   Editorial sticky anchor, 24/7 support card, and clean accordion list.
+   ========================================================================== */
+
 .section {
-  padding: var(--space-20) 0;
-  background-color: var(--md-sys-color-surface-container-lowest);
-  overflow: hidden;
+  padding: 88px 0;
+  background-color: #ffffff;
+  border-top: 1px solid #f1f5f9;
 }
 
+/* 2-Column Grid Layout */
 .layoutGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-10);
-  align-items: center;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 64px;
+  align-items: flex-start;
 }
 
-/* Left Column: Team Visual */
-.visualCol {
-  position: relative;
-}
-
-.imageFrame {
-  position: relative;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  background-color: var(--md-sys-color-surface-container);
-}
-
-.teamImage {
-  width: 100%;
-  height: auto;
-  max-height: 480px;
-  object-fit: cover;
-  display: block;
-}
-
-.accentBadge {
-  position: absolute;
-  bottom: var(--space-6);
-  right: var(--space-6);
-  background-color: #ffffff;
-  border: 1px solid var(--md-sys-color-outline);
-  padding: var(--space-3) var(--space-5);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 16px rgba(43, 37, 32, 0.12);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.accentNum {
-  font: var(--typescale-headline-medium);
-  font-family: var(--font-family-heading);
-  color: var(--md-sys-color-primary);
-  line-height: 1;
-}
-
-.accentLabel {
-  font: var(--typescale-label-small);
-  color: var(--md-sys-color-on-surface);
-  line-height: 1.3;
-  max-width: 110px;
-  display: block;
-}
-
-/* Right Column: Content & Accordion */
-.contentCol {
+/* --------------------------------------------------------------------------
+   LEFT COLUMN: Header & Quick Support Card (Sticky on Desktop)
+   -------------------------------------------------------------------------- */
+.leftCol {
+  position: sticky;
+  top: 96px;
   display: flex;
   flex-direction: column;
+  gap: 28px;
 }
 
-.pill {
+.headerGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eyebrowPill {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  background-color: var(--md-sys-color-surface-container);
-  border: 1px solid var(--md-sys-color-outline);
-  padding: 6px var(--space-4);
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-sm);
-  font: var(--typescale-label-small);
-  letter-spacing: var(--tracking-wider);
-  color: var(--md-sys-color-primary);
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: #eaf3fb;
+  border: 1px solid #d4e7f7;
+  color: #1b75bb;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   width: fit-content;
-  margin-bottom: var(--space-3);
 }
 
-.pawIcon {
-  color: var(--md-sys-color-primary);
-  font-size: 13px;
+.pillIcon {
+  color: #1b75bb;
 }
 
 .title {
-  font-family: var(--font-family-heading);
-  font-size: var(--font-size-display-md);
-  font-weight: 700;
-  color: var(--md-sys-color-on-surface);
-  letter-spacing: var(--tracking-tight);
-  line-height: 1.15;
-  margin-bottom: var(--space-4);
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 800;
+  color: #0f2942;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0;
 }
 
 .subtitle {
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-body-lg);
-  font-weight: 500;
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: 14.5px;
   line-height: 1.6;
-  margin-bottom: var(--space-8);
+  color: #52637a;
+  margin: 0;
+  font-weight: 450;
 }
 
-/* Accordion Container */
+/* 24/7 Support Card */
+.supportCard {
+  background-color: #f0f7fc;
+  border: 1px solid #d4e7f7;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 16px rgba(27, 117, 187, 0.04);
+}
+
+.supportTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f2942;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.supportDesc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #475569;
+  margin: 0;
+}
+
+.supportMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0 4px;
+  border-top: 1px solid #e1effa;
+  border-bottom: 1px solid #e1effa;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #52637a;
+  font-weight: 500;
+}
+
+.metaIcon {
+  color: #1b75bb;
+  flex-shrink: 0;
+}
+
+.callSupportBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background-color: #1b75bb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(27, 117, 187, 0.2);
+  margin-top: 2px;
+}
+
+.callSupportBtn:hover {
+  background-color: #155d96;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(27, 117, 187, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT COLUMN: Clean Minimalist Accordion List
+   -------------------------------------------------------------------------- */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+}
+
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
 }
 
 .accordionItem {
-  background-color: var(--md-sys-color-surface);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--radius-md);
-  transition: all 0.25s ease-in-out;
-  overflow: hidden;
+  border-bottom: 1px solid #e8eef4;
+  padding: 20px 0;
+  transition: all 0.2s ease;
 }
 
-.itemOpen {
-  border-color: var(--md-sys-color-primary);
-  background-color: var(--md-sys-color-surface-container-lowest);
-  box-shadow: var(--shadow-sm);
+.accordionItem:first-child {
+  padding-top: 4px;
 }
 
-/* Interactive Trigger Button */
 .triggerBtn {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-5) var(--space-6);
-  background: transparent;
+  gap: 20px;
+  background: none;
   border: none;
   cursor: pointer;
   text-align: left;
-  user-select: none;
-  transition: background-color 0.2s ease;
-}
-
-.triggerBtn:hover {
-  background-color: rgba(27, 117, 187, 0.03);
+  padding: 0;
 }
 
 .questionText {
-  font: var(--typescale-title-medium);
-  font-family: var(--font-family-heading);
-  color: var(--md-sys-color-on-surface);
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f2942;
+  letter-spacing: -0.01em;
   line-height: 1.4;
   transition: color 0.2s ease;
 }
 
+.triggerBtn:hover .questionText {
+  color: #1b75bb;
+}
+
 .itemOpen .questionText {
-  color: var(--md-sys-color-primary);
+  color: #1b75bb;
 }
 
 .iconCircle {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-full);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  color: #64748b;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1px solid var(--md-sys-color-outline);
-  color: var(--md-sys-color-primary);
-  background-color: var(--md-sys-color-surface-container-lowest);
-  transition: all 0.25s ease;
+  transition: all 0.22s ease;
+}
+
+.triggerBtn:hover .iconCircle {
+  background-color: #e2e8f0;
+  color: #0f2942;
 }
 
 .itemOpen .iconCircle {
-  background-color: var(--md-sys-color-primary);
+  background-color: #1b75bb;
   color: #ffffff;
-  border-color: var(--md-sys-color-primary);
 }
 
-.iconSvg {
-  width: 14px;
-  height: 14px;
-  display: block;
-}
-
-.verticalBar {
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-  transform-origin: 7px 7px;
-}
-
-.itemOpen .verticalBar {
-  transform: rotate(90deg) scale(0);
-  opacity: 0;
-}
-
-/* CSS Grid 0fr -> 1fr Height Transition */
+/* Accordion Smooth Content Collapse/Expand */
 .contentWrapper {
-  display: grid;
-  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
 }
 
 .collapsed {
-  grid-template-rows: 0fr;
+  max-height: 0;
+  opacity: 0;
 }
 
 .expanded {
-  grid-template-rows: 1fr;
+  max-height: 300px;
+  opacity: 1;
 }
 
 .innerContent {
-  overflow: hidden;
+  padding-top: 14px;
+  padding-right: 28px;
 }
 
 .answerText {
-  padding: 0 var(--space-6) var(--space-5);
-  font: var(--typescale-body-medium);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: 14px;
   line-height: 1.65;
+  color: #475569;
   margin: 0;
+  font-weight: 450;
 }
 
-/* Responsive */
-@media (min-width: 960px) {
+/* --------------------------------------------------------------------------
+   Responsive Design
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .section {
+    padding: 64px 0;
+  }
+
   .layoutGrid {
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: var(--space-12);
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .leftCol {
+    position: static;
+  }
+
+  .title {
+    font-size: 26px;
   }
 }
 
 @media (max-width: 640px) {
-  .title {
-    font-size: 26px;
-    line-height: 1.25;
+  .section {
+    padding: 48px 0;
   }
 
-  .triggerBtn {
-    padding: var(--space-4);
+  .title {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .supportCard {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .questionText {
+    font-size: 15px;
   }
 
   .answerText {
-    padding: 0 var(--space-4) var(--space-4);
+    font-size: 13.5px;
   }
 
-  .accentBadge {
-    bottom: var(--space-3);
-    right: var(--space-3);
-    padding: var(--space-2) var(--space-3);
+  .innerContent {
+    padding-right: 0;
   }
 }
