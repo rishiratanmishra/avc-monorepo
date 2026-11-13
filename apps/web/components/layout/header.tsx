@@ -3,9 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "./container";
 import { Button } from "../ui/button";
-import { NAV_LINKS, HOSPITAL_INFO } from "../../constants";
-import { PhoneIcon } from "@heroicons/react/24/solid";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { NAV_LINKS } from "../../constants";
+import { UserIcon } from "@heroicons/react/24/outline";
 import styles from "./header.module.css";
 
 export const Header: React.FC = () => {
@@ -34,22 +33,13 @@ export const Header: React.FC = () => {
 
           <div className={styles.actions}>
             <Button
-              variant="emergency"
-              size="sm"
-              href={`tel:${HOSPITAL_INFO.emergencyPhone}`}
-              isExternal
-            >
-              <PhoneIcon style={{ width: 14, height: 14, marginRight: 6, display: "inline-block", verticalAlign: "middle" }} aria-hidden="true" />
-              <span>24/7 Emergency</span>
-            </Button>
-            <Button
               variant="outline"
               size="sm"
               href="http://localhost:3002"
               isExternal
             >
-              <span>Staff Portal</span>
-              <ArrowTopRightOnSquareIcon style={{ width: 13, height: 13, marginLeft: 5, display: "inline-block", verticalAlign: "middle" }} aria-hidden="true" />
+              <UserIcon style={{ width: 14, height: 14, marginRight: 6, display: "inline-block", verticalAlign: "middle" }} aria-hidden="true" />
+              <span>Login</span>
             </Button>
           </div>
         </div>

@@ -13,6 +13,7 @@ import {
   CheckCircleIcon,
   AcademicCapIcon,
 } from "@heroicons/react/24/solid";
+import { MapPinIcon, ShieldCheckIcon } from "@heroicons/react/20/solid";
 import { PawPrint } from "lucide-react";
 import styles from "./hero.module.css";
 
@@ -57,8 +58,17 @@ export const Hero: React.FC = () => {
         <div className={styles.heroGrid}>
           {/* Left Column: Two-Tone Typography & Rounded Pill CTAs */}
           <div className={styles.leftCol}>
+            {/* Top Verification & Location Pill */}
             <div className={styles.categoryPill}>
-              <span>24/7 Multi-Speciality Pet Hospital • Sector 90 &amp; 87, Gurugram</span>
+              <span className={styles.pillBadge}>
+                <ShieldCheckIcon className={styles.badgeSvg} aria-hidden="true" />
+                24/7 ICU &amp; Emergency
+              </span>
+              <span className={styles.pillDivider}>•</span>
+              <span className={styles.pillLocation}>
+                <MapPinIcon className={styles.locationPinSvg} aria-hidden="true" />
+                Sector 90 &amp; 87, Gurugram
+              </span>
             </div>
 
             <h1 className={styles.mainTitle}>
@@ -71,10 +81,12 @@ export const Hero: React.FC = () => {
               to meet the unique needs of every dog, cat, bird, and exotic companion.
             </p>
 
-            {/* Rounded Capsule CTAs matching reference */}
+            {/* Rounded Capsule CTAs */}
             <div className={styles.ctaRow}>
               <Link href="#services" className={styles.primaryPillBtn}>
-                <CalendarDaysIcon className={styles.btnIconSvg} aria-hidden="true" />
+                <span className={styles.primaryIconWrap}>
+                  <CalendarDaysIcon className={styles.btnIconSvg} aria-hidden="true" />
+                </span>
                 <span>Book Consultation</span>
               </Link>
 
@@ -82,8 +94,10 @@ export const Hero: React.FC = () => {
                 href={`tel:${HOSPITAL_INFO.emergencyPhone}`}
                 className={styles.secondaryPillBtn}
               >
-                <PhoneIcon className={styles.emergencyIconSvg} aria-hidden="true" />
-                <span>24/7 Emergency: {HOSPITAL_INFO.emergencyPhone}</span>
+                <span className={styles.emergencyIconWrap}>
+                  <PhoneIcon className={styles.emergencyIconSvg} aria-hidden="true" />
+                </span>
+                <span className={styles.emergencyLabel}>24/7 Emergency</span>
               </a>
             </div>
 
