@@ -1,8 +1,9 @@
 .footer {
   position: relative;
   margin-top: 80px;
-  background-color: #0b1523;
-  color: #94a3b8;
+  background: linear-gradient(180deg, #0d1e32 0%, #06101c 100%);
+  border-top: 3px solid var(--md-sys-color-primary);
+  color: #cbd5e1;
   overflow: hidden;
 }
 
@@ -10,18 +11,19 @@
 .preFooter {
   position: relative;
   z-index: 2;
-  padding-bottom: 32px;
+  padding-top: 48px;
+  padding-bottom: 24px;
 }
 
 .ctaCard {
-  background: linear-gradient(135deg, #12283e 0%, #1b3a5b 50%, #0d2238 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, #1b75bb 0%, #155e96 50%, #0d426d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 20px;
   padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 28px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 20px 45px rgba(27, 117, 187, 0.28), 0 8px 20px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -29,11 +31,11 @@
 .ctaCard::before {
   content: "";
   position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 240px;
-  height: 240px;
-  background: radial-gradient(circle, rgba(27, 117, 187, 0.25) 0%, transparent 70%);
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -42,6 +44,8 @@
   flex-direction: column;
   gap: 12px;
   max-width: 680px;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaPill {
@@ -51,32 +55,33 @@
   gap: 8px;
   padding: 6px 14px;
   border-radius: 9999px;
-  background-color: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  color: #4ade80;
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.02em;
+  backdrop-filter: blur(4px);
 }
 
 .livePulse {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #22c55e;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  background-color: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
   animation: pulseGreen 2s infinite;
 }
 
 @keyframes pulseGreen {
   0% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.8);
   }
   70% {
-    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
   }
 }
 
@@ -91,7 +96,7 @@
 .ctaDesc {
   font-size: 15px;
   line-height: 1.6;
-  color: #cbd5e1;
+  color: #e0f2fe;
 }
 
 .ctaActions {
@@ -99,48 +104,53 @@
   flex-wrap: wrap;
   gap: 16px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .ctaPrimaryBtn {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 22px;
+  gap: 12px;
+  padding: 12px 24px;
   border-radius: 12px;
-  background-color: #ba1a1a;
-  border: 1px solid #ef4444;
-  color: #ffffff;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  color: #b91c1c;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 4px 14px rgba(186, 26, 26, 0.35);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
 .ctaPrimaryBtn:hover {
-  background-color: #d32f2f;
+  background-color: #fee2e2;
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .ctaSecondaryBtn {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 22px;
+  gap: 12px;
+  padding: 12px 24px;
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   color: #ffffff;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .ctaSecondaryBtn:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.35);
+  background-color: #ffffff;
+  color: #0e4c7d;
+  border-color: #ffffff;
   transform: translateY(-2px);
 }
 
 .btnIcon {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .btnSub {
@@ -149,6 +159,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   opacity: 0.85;
+  font-weight: 500;
 }
 
 .btnMain {
@@ -160,15 +171,14 @@
 
 /* 2. Main Footer Navigation Grid */
 .mainFooter {
-  padding: 48px 0 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 44px 0 24px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  padding-bottom: 48px;
+  padding-bottom: 44px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -180,10 +190,11 @@
 
 .brandLogoWrapper {
   display: inline-block;
-  padding: 6px 12px;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
+  padding: 8px 14px;
+  background-color: #ffffff;
+  border-radius: 10px;
   width: fit-content;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .brandLogo {
@@ -205,14 +216,14 @@
   align-items: center;
   gap: 10px;
   padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(251, 191, 36, 0.35);
   border-radius: 10px;
   width: fit-content;
 }
 
 .stars {
-  color: #fbbf24;
+  color: #f59e0b;
   font-size: 14px;
   letter-spacing: 2px;
 }
@@ -243,7 +254,7 @@
 
 .socialLabel {
   font-size: 12px;
-  color: #64748b;
+  color: #7dd3fc;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
@@ -258,26 +269,27 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #cbd5e1;
   transition: all 0.2s ease;
 }
 
 .socialBtn:hover {
   background: var(--md-sys-color-primary);
-  border-color: var(--md-sys-color-primary);
+  border-color: #38bdf8;
   color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(27, 117, 187, 0.35);
 }
 
 /* Section Columns */
 .colTitle {
   font-family: var(--font-family-heading);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 0.02em;
@@ -289,9 +301,9 @@
 .colTitle::after {
   content: "";
   display: block;
-  width: 24px;
+  width: 28px;
   height: 2px;
-  background-color: var(--md-sys-color-primary);
+  background: linear-gradient(90deg, #38bdf8, #1b75bb);
   border-radius: 2px;
   margin-top: 6px;
 }
@@ -311,29 +323,30 @@
 }
 
 .link:hover {
-  color: #ffffff;
-  transform: translateX(3px);
+  color: #38bdf8;
+  transform: translateX(4px);
 }
 
 /* Column 4: Campus Cards */
 .campusesCol {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .campusCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
   padding: 16px;
   transition: all 0.2s ease;
 }
 
 .campusCard:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(27, 117, 187, 0.4);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(56, 189, 248, 0.45);
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .campusHeader {
@@ -344,7 +357,7 @@
 }
 
 .campusTag {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: #ffffff;
 }
@@ -352,14 +365,14 @@
 .statusLive {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 11px;
   font-weight: 600;
   color: #4ade80;
-  background: rgba(34, 197, 94, 0.12);
-  padding: 2px 8px;
+  background: rgba(34, 197, 94, 0.15);
+  padding: 3px 10px;
   border-radius: 9999px;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  border: 1px solid rgba(34, 197, 94, 0.35);
 }
 
 .statusDot {
@@ -373,10 +386,10 @@
   font-size: 11px;
   font-weight: 600;
   color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  padding: 2px 8px;
+  background: rgba(56, 189, 248, 0.15);
+  padding: 3px 10px;
   border-radius: 9999px;
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.35);
 }
 
 .campusAddress {
@@ -391,36 +404,38 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .campusPhone {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #38bdf8;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .campusPhone:hover {
+  color: #7dd3fc;
   text-decoration: underline;
 }
 
 .campusMapLink {
   font-size: 12px;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #e2e8f0;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .campusMapLink:hover {
-  color: #ffffff;
+  color: #38bdf8;
 }
 
 .campusHours {
-  font-size: 11px;
-  color: #64748b;
+  font-size: 12px;
+  color: #94a3b8;
 }
 
 /* 3. Bottom Legal & Accreditation Bar */
@@ -432,7 +447,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
-  color: #64748b;
+  color: #94a3b8;
 }
 
 .bottomLegal {
@@ -442,25 +457,29 @@
   text-align: center;
 }
 
+.bottomLegal p:first-child {
+  color: #cbd5e1;
+}
+
 .accreditation {
   font-size: 12px;
-  color: #475569;
+  color: #64748b;
 }
 
 .bottomLinks {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .bottomLink {
-  color: #64748b;
+  color: #94a3b8;
   font-size: 12px;
   transition: color 0.2s ease;
 }
 
 .bottomLink:hover {
-  color: #cbd5e1;
+  color: #38bdf8;
 }
 
 .bottomDivider {
@@ -495,6 +514,10 @@
 }
 
 @media (max-width: 480px) {
+  .preFooter {
+    padding-top: 32px;
+  }
+
   .ctaCard {
     padding: 24px 20px;
   }
