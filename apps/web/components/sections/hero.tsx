@@ -72,13 +72,14 @@ export const Hero: React.FC = () => {
             </div>
 
             <h1 className={styles.mainTitle}>
-              Tailored <span className={styles.accentPrimary}>Medical Care</span> for{" "}
-              <span className={styles.accentSecondary}>Every Pet</span> In Your Family.
+              Specialised <span className={styles.accentPrimary}>Medical Care</span> for{" "}
+              <span className={styles.accentSecondary}>Every Pet</span> in Your Family.
             </h1>
 
             <p className={styles.subtitle}>
-              We offer 24/7 emergency triage, sterile surgeries, in-house pathology, and personalized wellness plans
-              to meet the unique needs of every dog, cat, bird, and exotic companion.
+              Your trusted 24/7 pet hospital in Gurugram. From emergency ICU care and surgeries to
+              lab tests, vaccinations, and routine checkups, our expert doctors care for your dogs,
+              cats, birds, and exotic pets round the clock.
             </p>
 
             {/* Rounded Capsule CTAs */}
