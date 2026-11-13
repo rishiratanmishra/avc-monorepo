@@ -1,12 +1,11 @@
 .section {
-  padding: 80px 0;
-  background-color: var(--color-bg-body);
+  padding: var(--space-20) 0;
+  background-color: var(--md-sys-color-surface);
+  overflow: hidden;
 }
 
 .header {
-  text-align: center;
-  max-width: 650px;
-  margin: 0 auto 52px;
+  margin-bottom: var(--space-10);
 }
 
 .title {
@@ -15,81 +14,109 @@
   color: var(--md-sys-color-on-surface);
   letter-spacing: var(--tracking-tight);
   line-height: 1.18;
-  margin-top: var(--space-3);
-  margin-bottom: var(--space-4);
-}
-
-.subtitle {
-  font: var(--typescale-body-large);
-  color: var(--md-sys-color-on-surface-variant);
-  line-height: 1.6;
+  margin: 0;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: var(--space-8);
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-bg-card);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-primary-subtle);
+  transform: translateY(-6px);
 }
 
+/* Image wrapper with the authentic top-right scoop cutout */
 .imageWrap {
+  position: relative;
   width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background-color: #e8edf2;
+  height: 280px;
+  margin-bottom: var(--space-4);
+  background-color: transparent;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  border-radius: 20px;
+  display: block;
+  clip-path: polygon(
+    6.297% .632%, 5.409% 1.003%, 4.571% 1.466%, 3.79% 2.016%, 3.069% 2.647%, 2.414% 3.353%, 1.83% 4.127%, 1.323% 4.964%, .897% 5.857%, .558% 6.8%, .31% 7.787%, .241% 8.497%, .183% 9.929%, .135% 12.113%, .098% 15.082%, .07% 18.864%, .051% 23.493%, .041% 28.998%, .04% 35.41%, .047% 42.761%, .062% 51.082%, .155% 92.679%, 1.024% 94.576%, 1.328% 95.19%, 1.67% 95.778%, 2.048% 96.337%, 2.46% 96.866%, 2.904% 97.362%, 3.379% 97.825%, 3.883% 98.251%, 4.414% 98.641%, 4.971% 98.991%, 5.553% 99.301%, 6.98% 100%, 93.216% 100%, 94.984% 99.068%, 95.557% 98.741%, 96.105% 98.375%, 96.626% 97.969%, 97.119% 97.528%, 97.581% 97.051%, 98.013% 96.542%, 98.41% 96.001%, 98.774% 95.431%, 99.1% 94.833%, 99.389% 94.21%, 99.565% 93.759%, 99.707% 93.2%, 99.817% 92.344%, 99.9% 91.003%, 99.959% 88.989%, 99.999% 86.114%, 100.023% 82.188%, 100.035% 77.024%, 100.04% 70.434%, 100.04% 62.23%, 100.04% 31.78%, 99.296% 29.817%, 99.031% 29.16%, 98.729% 28.525%, 98.39% 27.914%, 98.016% 27.33%, 97.609% 26.772%, 97.168% 26.244%, 96.697% 25.747%, 96.195% 25.283%, 95.665% 24.853%, 95.108% 24.459%, 94.848% 24.316%, 94.504% 24.149%, 94.086% 23.963%, 93.604% 23.761%, 93.069% 23.548%, 92.49% 23.328%, 91.88% 23.106%, 91.248% 22.884%, 90.604% 22.669%, 89.959% 22.463%, 88.711% 22.056%, 87.636% 21.687%, 86.712% 21.346%, 85.922% 21.024%, 85.244% 20.711%, 84.659% 20.397%, 84.147% 20.072%, 83.689% 19.727%, 83.265% 19.351%, 82.855% 18.935%, 82.476% 18.507%, 82.118% 18.033%, 81.774% 17.5%, 81.439% 16.899%, 81.106% 16.215%, 80.771% 15.437%, 80.428% 14.553%, 80.07% 13.552%, 79.692% 12.421%, 79.288% 11.148%, 78.909% 9.986%, 78.55% 8.947%, 78.204% 8.02%, 77.865% 7.193%, 77.527% 6.452%, 77.184% 5.786%, 76.828% 5.183%, 76.455% 4.63%, 76.057% 4.116%, 75.627% 3.627%, 75.181% 3.199%, 74.65% 2.777%, 74.047% 2.367%, 73.385% 1.976%, 72.677% 1.61%, 71.933% 1.274%, 71.168% .976%, 70.393% .721%, 69.621% .516%, 68.865% .366%, 68.176% .299%, 66.901% .239%, 65.054% .184%, 62.651% .137%, 59.706% .096%, 56.235% .062%, 52.251% .035%, 47.771% .016%, 42.809% .004%, 37.379% 0%, 29.872% .011%, 23.739% .024%, 18.832% .044%, 15.003% .074%, 12.102% .116%, 9.979% .175%, 8.487% .253%, 7.475% .352%, 6.795% .478%, 6.297% .632%
+  );
+  filter: drop-shadow(0 6px 16px rgba(43, 37, 32, 0.08));
+  transition: transform 0.4s ease;
 }
 
 .card:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
-.body {
-  padding: 20px;
+/* Numbered circular badge in the top-right corner notch */
+.numberBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--md-sys-color-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--typescale-title-medium);
+  font-family: var(--font-family-body);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(27, 117, 187, 0.25);
+  z-index: 2;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover .numberBadge {
+  transform: scale(1.08);
 }
 
 .name {
-  font: var(--typescale-title-medium);
+  font: var(--typescale-headline-small);
   font-family: var(--font-family-heading);
   color: var(--md-sys-color-on-surface);
-  margin-bottom: var(--space-2);
+  margin: 0;
+  transition: color 0.2s ease;
 }
 
-.desc {
-  font: var(--typescale-body-medium);
-  color: var(--md-sys-color-on-surface-variant);
-  line-height: 1.5;
+.card:hover .name {
+  color: var(--md-sys-color-primary);
 }
 
+/* Responsive grid */
 @media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 960px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+  
+  .imageWrap {
+    height: 240px;
   }
 }
