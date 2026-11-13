@@ -3,9 +3,39 @@
   overflow: hidden;
   padding: 48px 0 64px;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(20, 125, 115, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 90% 60%, rgba(20, 125, 115, 0.06) 0%, transparent 45%),
-    linear-gradient(180deg, #ffffff 0%, var(--color-bg-body) 100%);
+    radial-gradient(circle at 75% 45%, rgba(254, 216, 205, 0.45) 0%, rgba(255, 245, 240, 0.35) 45%, transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #fbf8f3 100%);
+}
+
+/* Background Paw Watermarks */
+.pawWatermark1 {
+  position: absolute;
+  top: 12%;
+  left: 4%;
+  color: #ff7a59;
+  opacity: 0.16;
+  pointer-events: none;
+  transform: rotate(-15deg);
+}
+
+.pawWatermark2 {
+  position: absolute;
+  bottom: 16%;
+  left: 22%;
+  color: #ff7a59;
+  opacity: 0.14;
+  pointer-events: none;
+  transform: rotate(20deg);
+}
+
+.pawWatermark3 {
+  position: absolute;
+  top: 26%;
+  right: 6%;
+  color: #ff7a59;
+  opacity: 0.16;
+  pointer-events: none;
+  transform: rotate(10deg);
 }
 
 .heroGrid {
@@ -13,170 +43,146 @@
   grid-template-columns: 1fr;
   align-items: center;
   gap: 48px;
-  margin-bottom: 56px;
+  margin-bottom: 48px;
 }
 
-/* Left Content Column */
+/* Left Column: Typography & Actions */
 .leftCol {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  z-index: 2;
 }
 
-.livePill {
+.categoryPill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background-color: #ffffff;
-  border: 1px solid rgba(20, 125, 115, 0.2);
+  gap: 8px;
   padding: 6px 14px;
-  border-radius: var(--radius-full);
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid rgba(242, 85, 54, 0.2);
   width: fit-content;
-  box-shadow: 0 2px 8px rgba(20, 125, 115, 0.08);
+  box-shadow: 0 2px 8px rgba(242, 85, 54, 0.06);
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #d83d1e;
 }
 
-.pulseDot {
+.liveIndicator {
   width: 8px;
   height: 8px;
-  background-color: #10b981;
   border-radius: 50%;
-  position: relative;
-}
-
-.pulseDot::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background-color: rgba(16, 185, 129, 0.4);
-  animation: pulse 1.8s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
+  background-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
 }
 
 .mainTitle {
-  font: var(--typescale-display-large);
-  font-family: var(--font-family-heading);
+  font-family: var(--font-family-body);
+  font-size: clamp(38px, 4.5vw, 56px);
+  font-weight: 800;
   line-height: 1.15;
-  color: var(--md-sys-color-on-surface);
-  letter-spacing: var(--tracking-tight);
+  color: #1e2229;
+  letter-spacing: -0.02em;
 }
 
-.highlightText {
-  color: var(--md-sys-color-primary);
-  position: relative;
-  display: inline-block;
+.accentRed {
+  color: #e64a19;
 }
 
-.highlightText::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 4px;
-  width: 100%;
-  height: 8px;
-  background-color: var(--md-sys-color-primary-container);
-  z-index: -1;
-  border-radius: var(--radius-xs);
+.accentOrange {
+  color: #ff9100;
 }
 
 .subtitle {
-  font: var(--typescale-body-large);
-  font-family: var(--font-family-body);
-  line-height: 1.6;
-  color: var(--md-sys-color-on-surface-variant);
-  max-width: 580px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #64748b;
+  max-width: 480px;
 }
 
-.socialProofSnippet {
+/* Capsule CTA Buttons */
+.ctaRow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 8px 0;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 4px;
 }
 
-.avatarGroup {
-  display: flex;
-}
-
-.miniAvatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  margin-left: -10px;
-  object-fit: cover;
-  background-color: #e2e8f0;
-}
-
-.miniAvatar:first-child {
-  margin-left: 0;
-}
-
-.socialProofText {
-  display: flex;
-  flex-direction: column;
-}
-
-.stars {
-  color: #f59e0b;
-  font-size: 14px;
-  letter-spacing: 2px;
-}
-
-.socialProofLabel {
-  font-size: 12px;
-  color: var(--color-text-secondary);
-  font-weight: 600;
-}
-
-.ctaWrapper {
-  display: flex;
+.primaryPillBtn {
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding-top: 8px;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #f25536 0%, #d83d1e 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(242, 85, 54, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.trustList {
+.primaryPillBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(242, 85, 54, 0.45);
+}
+
+.btnIconCircle {
+  font-size: 18px;
+}
+
+.secondaryPillBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1.5px solid #1e2229;
+  color: #1e2229;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.secondaryPillBtn:hover {
+  background-color: #1e2229;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.emergencyIcon {
+  font-size: 18px;
+}
+
+/* Trust Badges */
+.trustBadges {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding-top: 12px;
-  border-top: 1px solid var(--color-border);
+  gap: 18px;
+  padding-top: 4px;
 }
 
 .trustItem {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-text-secondary);
+  color: #64748b;
 }
 
-.checkIcon {
-  color: var(--color-primary);
+.check {
+  color: #e64a19;
   font-weight: 800;
 }
 
-/* Right Visual Showcase */
+/* Right Column: Signature Concentric Halo Stage */
 .rightCol {
   position: relative;
   display: flex;
@@ -184,214 +190,262 @@
   align-items: center;
 }
 
-.visualCanvas {
+.concentricStage {
   position: relative;
   width: 100%;
   max-width: 480px;
   aspect-ratio: 1 / 1;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Concentric Rings Backdrop */
+.ringOuter {
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background-color: #fddcd4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.ringMiddle {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background-color: #fba996;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringInner {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background-color: #f25536;
+}
+
+/* Subject Image (Dr. Hardeep Beniwal with pet companion) */
+.subjectWrapper {
+  position: relative;
+  z-index: 2;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #ffffff;
+  box-shadow: 0 18px 40px rgba(43, 37, 32, 0.18);
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.canvasGlow {
+.subjectImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+}
+
+/* Floating Card 1: Vaccinations & Services (Right Side) */
+.floatingServiceCard {
   position: absolute;
-  inset: 10%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(20, 125, 115, 0.22) 0%, rgba(230, 244, 242, 0.4) 60%, transparent 80%);
-  filter: blur(28px);
-  z-index: 1;
-}
-
-.heroVisualImg {
-  position: relative;
-  z-index: 2;
-  width: 90%;
-  max-height: 420px;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 30px rgba(23, 43, 77, 0.16));
-  animation: gentleHover 6s ease-in-out infinite;
-}
-
-@keyframes gentleHover {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/* Floating Glassmorphic Badges */
-.floatingCardTop {
-  position: absolute;
-  top: 12px;
-  right: -10px;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  padding: 12px 18px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 12px 24px rgba(23, 43, 77, 0.09);
-  animation: floatTop 5s ease-in-out infinite;
-}
-
-.floatingCardBottom {
-  position: absolute;
-  bottom: 20px;
-  left: -15px;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
+  background-color: #ffffff;
+  border-radius: 16px;
   padding: 10px 16px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 12px 24px rgba(23, 43, 77, 0.09);
-  animation: floatBottom 6s ease-in-out infinite;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-@keyframes floatTop {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes floatBottom {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(6px);
-  }
-}
-
-.floatingIcon {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  background-color: var(--color-emergency-bg);
-  border-radius: var(--radius-md);
-  font-size: 18px;
-}
-
-.doctorAvatar {
+.serviceIconWrap {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--color-primary);
+  background-color: #f25536;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
 }
 
-.floatingTextTitle {
-  font-size: 13px;
+.serviceIcon {
+  font-size: 20px;
+}
+
+.serviceCardTitle {
+  font-size: 13.5px;
   font-weight: 700;
-  color: var(--color-text-primary);
-  line-height: 1.2;
+  color: #1e2229;
 }
 
-.floatingTextSub {
+.serviceCardSub {
   font-size: 11px;
-  color: var(--color-text-muted);
-  font-weight: 500;
+  color: #64748b;
 }
 
-/* Bottom Stats / Feature Strip */
+/* Floating Card 2: Doctor Credibility (Bottom Left) */
+.floatingDoctorCard {
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+  z-index: 3;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 8px 16px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.emergencyBadgeIconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fee2e2;
+  border: 1px solid rgba(186, 26, 26, 0.2);
+  display: grid;
+  place-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.emergencyCardIcon {
+  font-size: 18px;
+}
+
+.liveDotSmall {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.doctorName {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e2229;
+}
+
+.doctorRole {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Bottom Stats Strip */
 .statsStrip {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  padding-top: 16px;
 }
 
 .statCard {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 20px 22px;
+  background-color: #ffffff;
+  border: 1px solid #f1ece4;
+  border-radius: 16px;
+  padding: 20px 24px;
   display: flex;
   align-items: center;
   gap: 16px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 14px rgba(43, 37, 32, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .statCard:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--color-primary-subtle);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(43, 37, 32, 0.08);
 }
 
-.statIconWrap {
-  width: 48px;
-  height: 48px;
+.statIconBadge {
+  font-size: 26px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background-color: #fbf5ef;
   display: grid;
   place-items: center;
-  font-size: 22px;
-  border-radius: var(--radius-md);
-  background-color: var(--color-primary-light);
   flex-shrink: 0;
 }
 
 .statValue {
-  font: var(--typescale-headline-medium);
-  font-family: var(--font-family-heading);
-  color: var(--md-sys-color-primary);
-  line-height: 1.1;
-  margin-bottom: var(--space-1);
+  font-family: var(--font-family-body);
+  font-size: 26px;
+  font-weight: 800;
+  color: #1e2229;
+  line-height: 1.15;
 }
 
 .statLabel {
-  font: var(--typescale-label-medium);
-  color: var(--md-sys-color-on-surface-variant);
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
 }
 
 /* Responsive Media Queries */
-@media (min-width: 960px) {
-  .hero {
-    padding: 64px 0 80px;
-  }
-
-  .heroGrid {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 40px;
-  }
-
-  .mainTitle {
-    font-size: 52px;
-  }
-
+@media (min-width: 768px) {
   .statsStrip {
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
   }
 }
 
-@media (max-width: 640px) {
-  .mainTitle {
-    font-size: 32px;
+@media (min-width: 992px) {
+  .heroGrid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .ringOuter {
+    width: 320px;
+    height: 320px;
   }
 
-  .floatingCardTop,
-  .floatingCardBottom {
-    position: static;
-    margin: 8px 0;
+  .ringMiddle {
+    width: 270px;
+    height: 270px;
   }
 
-  .rightCol {
-    flex-direction: column;
+  .ringInner {
+    width: 220px;
+    height: 220px;
   }
 
-  .statsStrip {
-    grid-template-columns: 1fr;
+  .subjectWrapper {
+    width: 230px;
+    height: 230px;
+  }
+
+  .floatingServiceCard {
+    right: 0;
+    top: 20%;
+  }
+
+  .floatingDoctorCard {
+    left: 0;
+    bottom: -10px;
+  }
+
+  .primaryPillBtn,
+  .secondaryPillBtn {
+    width: 100%;
+    justify-content: center;
   }
 }

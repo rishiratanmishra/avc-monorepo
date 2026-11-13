@@ -1,145 +1,139 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "../layout/container";
-import { Button } from "../ui/button";
-import { HOSPITAL_INFO, HOSPITAL_STATS } from "../../constants";
+import { HOSPITAL_INFO } from "../../constants";
 import styles from "./hero.module.css";
 
-const STAT_ICONS = ["🐾", "🩺", "🔬", "🏆"];
+const CLINICAL_STATS = [
+  { value: "24/7", label: "Emergency & Critical Care ICU", icon: "🚨" },
+  { value: "4,200+", label: "Surgeries & Treatments Performed", icon: "🔬" },
+  { value: "20+", label: "Veterinary Doctors & Nursing Staff", icon: "🩺" },
+  { value: "12+ Yrs", label: "Veterinary Clinical Excellence", icon: "🏆" },
+];
 
 export const Hero: React.FC = () => {
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} id="home">
+      {/* Decorative Background Paw Watermarks */}
+      <div className={styles.pawWatermark1} aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+          <ellipse cx="6" cy="7" rx="2" ry="3" />
+          <ellipse cx="11" cy="5" rx="2" ry="3" />
+          <ellipse cx="16" cy="6" rx="2" ry="3" />
+          <ellipse cx="20" cy="9" rx="1.8" ry="2.6" />
+          <path d="M12 10.5c-3.2 0-5.5 2.1-5.5 5 0 2.2 1.8 3.5 3.8 3.5 1.2 0 2.2-.6 3.4-.6 1.1 0 2.1.6 3.3.6 2 0 3.8-1.3 3.8-3.5 0-2.9-2.3-5-5-5z" />
+        </svg>
+      </div>
+      <div className={styles.pawWatermark2} aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
+          <ellipse cx="6" cy="7" rx="2" ry="3" />
+          <ellipse cx="11" cy="5" rx="2" ry="3" />
+          <ellipse cx="16" cy="6" rx="2" ry="3" />
+          <ellipse cx="20" cy="9" rx="1.8" ry="2.6" />
+          <path d="M12 10.5c-3.2 0-5.5 2.1-5.5 5 0 2.2 1.8 3.5 3.8 3.5 1.2 0 2.2-.6 3.4-.6 1.1 0 2.1.6 3.3.6 2 0 3.8-1.3 3.8-3.5 0-2.9-2.3-5-5-5z" />
+        </svg>
+      </div>
+      <div className={styles.pawWatermark3} aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor">
+          <ellipse cx="6" cy="7" rx="2" ry="3" />
+          <ellipse cx="11" cy="5" rx="2" ry="3" />
+          <ellipse cx="16" cy="6" rx="2" ry="3" />
+          <ellipse cx="20" cy="9" rx="1.8" ry="2.6" />
+          <path d="M12 10.5c-3.2 0-5.5 2.1-5.5 5 0 2.2 1.8 3.5 3.8 3.5 1.2 0 2.2-.6 3.4-.6 1.1 0 2.1.6 3.3.6 2 0 3.8-1.3 3.8-3.5 0-2.9-2.3-5-5-5z" />
+        </svg>
+      </div>
+
       <Container>
         <div className={styles.heroGrid}>
-          {/* Left Column: Value Prop, Social Proof & Actions */}
+          {/* Left Column: Two-Tone Typography & Rounded Pill CTAs */}
           <div className={styles.leftCol}>
-            <div className={styles.livePill}>
-              <span className={styles.pulseDot} />
-              <span>24/7 Emergency & Trauma Care Active in Gurugram</span>
+            <div className={styles.categoryPill}>
+              <span className={styles.liveIndicator} />
+              <span>24/7 Multi-Speciality Pet Hospital • Sector 90 &amp; 87, Gurugram</span>
             </div>
 
             <h1 className={styles.mainTitle}>
-              Advanced Medical &amp; Emergency Care For Your{" "}
-              <span className={styles.highlightText}>Beloved Pets</span>
+              Tailored <span className={styles.accentRed}>Medical Care</span> for{" "}
+              <span className={styles.accentOrange}>Every Pet</span> In Your Family.
             </h1>
 
             <p className={styles.subtitle}>
-              &ldquo;{HOSPITAL_INFO.quote}&rdquo; — Full-spectrum veterinary hospital with
-              sterile modular OTs, IDEXX diagnostic labs, and compassionate care by
-              Dr. Hardeep Beniwal &amp; team in Sector 90 &amp; Sector 87.
+              We offer 24/7 emergency triage, sterile surgeries, in-house pathology, and personalized wellness plans
+              to meet the unique needs of every dog, cat, bird, and exotic companion.
             </p>
 
-            {/* Social Proof Snippet */}
-            <div className={styles.socialProofSnippet}>
-              <div className={styles.avatarGroup}>
-                <Image
-                  src="/images/testimonial-client-chitresh-mittal.png"
-                  alt="Chitresh Mittal"
-                  width={34}
-                  height={34}
-                  className={styles.miniAvatar}
-                />
-                <Image
-                  src="/images/testimonial-client-gopa-ghosal.png"
-                  alt="Gopa Ghoshal"
-                  width={34}
-                  height={34}
-                  className={styles.miniAvatar}
-                />
-                <Image
-                  src="/images/testimonial-client-sonu-balu.png"
-                  alt="Sonu Balu"
-                  width={34}
-                  height={34}
-                  className={styles.miniAvatar}
-                />
-              </div>
-              <div className={styles.socialProofText}>
-                <div className={styles.stars}>★★★★★</div>
-                <span className={styles.socialProofLabel}>
-                  4.9/5 from 2,500+ Verified Pet Parents
-                </span>
-              </div>
-            </div>
+            {/* Rounded Capsule CTAs matching reference */}
+            <div className={styles.ctaRow}>
+              <Link href="#services" className={styles.primaryPillBtn}>
+                <span className={styles.btnIconCircle}>📅</span>
+                <span>Book Consultation</span>
+              </Link>
 
-            {/* Dual Action CTAs */}
-            <div className={styles.ctaWrapper}>
-              <Button variant="primary" size="lg" href="#services">
-                Book Consultation →
-              </Button>
-              <Button
-                variant="emergency"
-                size="lg"
+              <a
                 href={`tel:${HOSPITAL_INFO.emergencyPhone}`}
-                isExternal
+                className={styles.secondaryPillBtn}
               >
-                🚨 Emergency: {HOSPITAL_INFO.emergencyPhone}
-              </Button>
+                <span className={styles.emergencyIcon}>🚨</span>
+                <span>24/7 Emergency: {HOSPITAL_INFO.emergencyPhone}</span>
+              </a>
             </div>
 
-            {/* Quick Reassurance Checkmarks */}
-            <div className={styles.trustList}>
-              <span className={styles.trustItem}>
-                <span className={styles.checkIcon}>✓</span> 24/7 Trauma Emergency
-              </span>
-              <span className={styles.trustItem}>
-                <span className={styles.checkIcon}>✓</span> In-House IDEXX Labs
-              </span>
-              <span className={styles.trustItem}>
-                <span className={styles.checkIcon}>✓</span> Sterile Modular OT
-              </span>
+            {/* Trust Reassurance Chips */}
+            <div className={styles.trustBadges}>
+              <div className={styles.trustItem}>
+                <span className={styles.check}>✓</span> Walk-in Emergency Care
+              </div>
+              <div className={styles.trustItem}>
+                <span className={styles.check}>✓</span> Sterile Modular OT
+              </div>
+              <div className={styles.trustItem}>
+                <span className={styles.check}>✓</span> In-House IDEXX Labs
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Visual Canvas & Floating Glass Cards */}
+          {/* Right Column: Signature Concentric Halo Rings + Pet Subject + Floating Micro-Cards */}
           <div className={styles.rightCol}>
-            <div className={styles.visualCanvas}>
-              <div className={styles.canvasGlow} />
-
-              <Image
-                src="/images/hero-dog-banner.png"
-                alt="Happy pet dog companion - AVC Multispeciality Pet Hospital"
-                width={560}
-                height={500}
-                priority
-                className={styles.heroVisualImg}
-              />
-
-              {/* Floating Glassmorphic Card Top */}
-              <div className={styles.floatingCardTop}>
-                <div className={styles.floatingIcon}>🚨</div>
-                <div>
-                  <div className={styles.floatingTextTitle}>24/7 Emergency &amp; ICU</div>
-                  <div className={styles.floatingTextSub}>Sector 90, Gurugram</div>
+            <div className={styles.concentricStage}>
+              {/* Concentric Circular Rings Backdrop */}
+              <div className={styles.ringOuter}>
+                <div className={styles.ringMiddle}>
+                  <div className={styles.ringInner} />
                 </div>
               </div>
 
-              {/* Floating Glassmorphic Card Bottom */}
-              <div className={styles.floatingCardBottom}>
+              {/* Subject Image (Dr. Hardeep Beniwal with pet companion) */}
+              <div className={styles.subjectWrapper}>
                 <Image
                   src="/images/doctor-dr-hardeep-with-cat.jpg"
-                  alt="Dr. Hardeep Beniwal"
-                  width={46}
-                  height={46}
-                  className={styles.doctorAvatar}
+                  alt="Senior Veterinary Surgeon Dr. Hardeep Beniwal with pet patient at AVC Pet Hospital"
+                  width={420}
+                  height={420}
+                  priority
+                  className={styles.subjectImg}
                 />
+              </div>
+
+              {/* Floating Card: Doctor Credibility (Right Center) */}
+              <div className={styles.floatingServiceCard}>
+                <div className={styles.serviceIconWrap}>
+                  <span className={styles.serviceIcon}>👨‍⚕️</span>
+                </div>
                 <div>
-                  <div className={styles.floatingTextTitle}>Dr. Hardeep Beniwal</div>
-                  <div className={styles.floatingTextSub}>Senior Veterinary Surgeon • 12+ Yrs</div>
+                  <h3 className={styles.serviceCardTitle}>Dr. Hardeep Beniwal</h3>
+                  <p className={styles.serviceCardSub}>Senior Veterinary Surgeon • 12+ Yrs</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Feature & Stats Strip */}
+        {/* Bottom Feature & Key Stats Strip */}
         <div className={styles.statsStrip}>
-          {HOSPITAL_STATS.map((stat, idx) => (
+          {CLINICAL_STATS.map((stat) => (
             <div key={stat.label} className={styles.statCard}>
-              <div className={styles.statIconWrap}>
-                {STAT_ICONS[idx % STAT_ICONS.length]}
-              </div>
+              <div className={styles.statIconBadge}>{stat.icon}</div>
               <div>
                 <div className={styles.statValue}>{stat.value}</div>
                 <div className={styles.statLabel}>{stat.label}</div>
