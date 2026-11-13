@@ -6,3 +6,4 @@ export * from "./species";
 export * from "./testimonials";
 export * from "./faq";
 export * from "./why-choose-us";
+export * from "./campuses";

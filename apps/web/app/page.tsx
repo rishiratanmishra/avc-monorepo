@@ -7,6 +7,7 @@ import {
   Services,
   PetCareProcess,
   WhyChooseUs,
+  Campuses,
   SpeciesTreated,
   Testimonials,
   FaqSection,
@@ -21,6 +22,7 @@ export default function Home() {
         <Services />
         <PetCareProcess />
         <WhyChooseUs />
+        <Campuses />
         <SpeciesTreated />
         <Testimonials />
         <FaqSection />

@@ -1,0 +1,387 @@
+/* ==========================================================================
+   CAMPUSES SECTION — Two Dedicated Campuses Comparison
+   Clean Apple/Linear side-by-side cards with clear SEO & functional hierarchy.
+   ========================================================================== */
+
+.section {
+  padding: 88px 0;
+  background-color: #fafbfc;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* --------------------------------------------------------------------------
+   Section Header
+   -------------------------------------------------------------------------- */
+.header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1b75bb;
+}
+
+.title {
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 800;
+  color: #0f2942;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #52637a;
+  margin: 0;
+  font-weight: 450;
+}
+
+/* --------------------------------------------------------------------------
+   2-Column Comparison Grid
+   -------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #e8eef4;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 41, 66, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 40px -10px rgba(15, 41, 66, 0.08);
+}
+
+.cardPrimary {
+  border-color: #d4e7f7;
+}
+
+/* --------------------------------------------------------------------------
+   Campus Image Window & Floating Badges
+   -------------------------------------------------------------------------- */
+.imageFrame {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background-color: #0f2942;
+  overflow: hidden;
+}
+
+.campusImg {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .campusImg {
+  transform: scale(1.03);
+}
+
+.imageScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 41, 66, 0.45) 0%,
+    transparent 40%,
+    transparent 70%,
+    rgba(15, 41, 66, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+.topBadgeRow {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 2;
+}
+
+.tagBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #0f2942;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background-color: rgba(15, 41, 66, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cardPrimary .statusBadge {
+  background-color: #1b75bb;
+  border-color: #1b75bb;
+}
+
+/* --------------------------------------------------------------------------
+   Card Body Content
+   -------------------------------------------------------------------------- */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  flex-grow: 1;
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.campusName {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f2942;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.campusSubtitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1b75bb;
+  letter-spacing: -0.01em;
+}
+
+.campusDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #52637a;
+  margin: 0 0 16px 0;
+}
+
+/* Highlights List */
+.highlightList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.checkIconWrap {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #eaf3fb;
+  color: #1b75bb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Location & Timings Details Box */
+.metaBox {
+  background-color: #f8fafc;
+  border: 1px solid #e8eef4;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #475569;
+}
+
+.metaIcon {
+  color: #1b75bb;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Action Buttons Row */
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 9999px;
+  background-color: #1b75bb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(27, 117, 187, 0.25);
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.primaryBtn:hover {
+  background-color: #155d96;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(27, 117, 187, 0.35);
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 9999px;
+  background-color: #0f2942;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(15, 41, 66, 0.2);
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.secondaryBtn:hover {
+  background-color: #1a3d61;
+  transform: translateY(-1px);
+}
+
+.directionsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f2942;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.directionsBtn:hover {
+  border-color: #0f2942;
+  background-color: #f8fafc;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .imageFrame {
+    height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .header {
+    margin-bottom: 36px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .cardBody {
+    padding: 20px;
+  }
+
+  .campusName {
+    font-size: 18px;
+  }
+
+  .actionRow {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryBtn,
+  .secondaryBtn,
+  .directionsBtn {
+    width: 100%;
+  }
+}
