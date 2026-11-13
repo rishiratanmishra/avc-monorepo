@@ -46,6 +46,20 @@
   position: relative;
 }
 
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+
+.starSvg {
+  width: 18px;
+  height: 18px;
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
 .stars {
   font-size: 16px;
   color: #f59e0b;

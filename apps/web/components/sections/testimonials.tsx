@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container } from "../layout/container";
 import { Badge } from "../ui/badge";
 import { TESTIMONIALS } from "../../constants";
+import { StarIcon } from "@heroicons/react/24/solid";
 import styles from "./testimonials.module.css";
 
 export const Testimonials: React.FC = () => {
@@ -21,7 +22,11 @@ export const Testimonials: React.FC = () => {
           {TESTIMONIALS.map((item) => (
             <div key={item.id} className={styles.card}>
               <div>
-                <div className={styles.stars}>★★★★★</div>
+                <div className={styles.starsRow} aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <StarIcon key={i} className={styles.starSvg} aria-hidden="true" />
+                  ))}
+                </div>
                 <p className={styles.review}>&ldquo;{item.review}&rdquo;</p>
               </div>
 

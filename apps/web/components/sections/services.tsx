@@ -4,6 +4,8 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { Container } from "../layout/container";
 import { CORE_SERVICES } from "../../constants";
+import { ChevronLeftIcon, ChevronRightIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { PawPrint } from "lucide-react";
 import styles from "./services.module.css";
 
 const TICKER_ITEMS = [
@@ -41,7 +43,7 @@ export const Services: React.FC = () => {
         <div className={styles.topRow}>
           <div className={styles.titleArea}>
             <div className={styles.pill}>
-              <span className={styles.pawIcon}>🐾</span>
+              <PawPrint size={14} className={styles.pawIcon} aria-hidden="true" />
               <span>OUR SERVICES</span>
             </div>
             <h2 className={styles.title}>Advanced Pet Care Options</h2>
@@ -54,7 +56,7 @@ export const Services: React.FC = () => {
               onClick={() => scroll("left")}
               aria-label="Previous service"
             >
-              &#8249;
+              <ChevronLeftIcon style={{ width: 18, height: 18 }} aria-hidden="true" />
             </button>
             <button
               type="button"
@@ -62,7 +64,7 @@ export const Services: React.FC = () => {
               onClick={() => scroll("right")}
               aria-label="Next service"
             >
-              &#8250;
+              <ChevronRightIcon style={{ width: 18, height: 18 }} aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -94,7 +96,7 @@ export const Services: React.FC = () => {
 
               {/* Circular Action Button nested in the corner scoop */}
               <div className={styles.actionBtn}>
-                <span className={styles.actionArrow}>&#8599;</span>
+                <ArrowUpRightIcon style={{ width: 16, height: 16, color: "#1e2229" }} aria-hidden="true" />
               </div>
             </div>
           ))}

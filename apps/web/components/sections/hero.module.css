@@ -3,7 +3,7 @@
   overflow: hidden;
   padding: 48px 0 64px;
   background: 
-    radial-gradient(circle at 75% 45%, rgba(254, 216, 205, 0.45) 0%, rgba(255, 245, 240, 0.35) 45%, transparent 70%),
+    radial-gradient(circle at 75% 45%, rgba(219, 234, 254, 0.5) 0%, rgba(240, 247, 255, 0.35) 45%, transparent 70%),
     linear-gradient(180deg, #ffffff 0%, #fbf8f3 100%);
 }
 
@@ -12,8 +12,8 @@
   position: absolute;
   top: 12%;
   left: 4%;
-  color: #ff7a59;
-  opacity: 0.16;
+  color: #1b75bb;
+  opacity: 0.08;
   pointer-events: none;
   transform: rotate(-15deg);
 }
@@ -22,8 +22,8 @@
   position: absolute;
   bottom: 16%;
   left: 22%;
-  color: #ff7a59;
-  opacity: 0.14;
+  color: #1b75bb;
+  opacity: 0.07;
   pointer-events: none;
   transform: rotate(20deg);
 }
@@ -32,8 +32,8 @@
   position: absolute;
   top: 26%;
   right: 6%;
-  color: #ff7a59;
-  opacity: 0.16;
+  color: #1b75bb;
+  opacity: 0.08;
   pointer-events: none;
   transform: rotate(10deg);
 }
@@ -61,12 +61,12 @@
   padding: 6px 14px;
   border-radius: 9999px;
   background-color: #ffffff;
-  border: 1px solid rgba(242, 85, 54, 0.2);
+  border: 1px solid rgba(27, 117, 187, 0.22);
   width: fit-content;
-  box-shadow: 0 2px 8px rgba(242, 85, 54, 0.06);
+  box-shadow: 0 2px 8px rgba(27, 117, 187, 0.08);
   font-size: 13px;
   font-weight: 600;
-  color: #d83d1e;
+  color: #155e96;
 }
 
 .liveIndicator {
@@ -86,12 +86,14 @@
   letter-spacing: -0.02em;
 }
 
+.accentPrimary,
 .accentRed {
-  color: #e64a19;
+  color: #1b75bb;
 }
 
+.accentSecondary,
 .accentOrange {
-  color: #ff9100;
+  color: #147d73;
 }
 
 .subtitle {
@@ -116,18 +118,26 @@
   gap: 10px;
   padding: 14px 28px;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #f25536 0%, #d83d1e 100%);
+  background: linear-gradient(135deg, #1b75bb 0%, #125285 100%);
   color: #ffffff;
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(242, 85, 54, 0.35);
+  box-shadow: 0 10px 24px rgba(27, 117, 187, 0.32);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .primaryPillBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(242, 85, 54, 0.45);
+  background: linear-gradient(135deg, #155e96 0%, #0e4470 100%);
+  box-shadow: 0 14px 30px rgba(27, 117, 187, 0.42);
+}
+
+.btnIconSvg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #ffffff;
 }
 
 .btnIconCircle {
@@ -156,6 +166,17 @@
   transform: translateY(-2px);
 }
 
+.emergencyIconSvg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #ba1a1a;
+}
+
+.secondaryPillBtn:hover .emergencyIconSvg {
+  color: #ffffff;
+}
+
 .emergencyIcon {
   font-size: 18px;
 }
@@ -177,8 +198,15 @@
   color: #64748b;
 }
 
+.checkSvg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #1b75bb;
+}
+
 .check {
-  color: #e64a19;
+  color: #1b75bb;
   font-weight: 800;
 }
 
@@ -194,63 +222,123 @@
   position: relative;
   width: 100%;
   max-width: 480px;
-  aspect-ratio: 1 / 1;
+  height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Concentric Rings Backdrop */
+/* Concentric Rings Backdrop in Brand Colors */
 .ringOuter {
-  width: 480px;
-  height: 480px;
+  width: 440px;
+  height: 440px;
   border-radius: 50%;
-  background-color: #fddcd4;
+  background-color: #dbeafe;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 
 .ringMiddle {
-  width: 420px;
-  height: 420px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
-  background-color: #fba996;
+  background-color: #93c5fd;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .ringInner {
-  width: 360px;
-  height: 360px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
-  background-color: #f25536;
+  background: linear-gradient(135deg, #1b75bb 0%, #155e96 100%);
 }
 
-/* Subject Image (Dr. Hardeep Beniwal with pet companion) */
+/* Subject Cutout: Head breaks circle at top, bottom anchored by nameplate */
 .subjectWrapper {
   position: relative;
   z-index: 2;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 6px solid #ffffff;
-  box-shadow: 0 18px 40px rgba(43, 37, 32, 0.18);
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  pointer-events: none;
 }
 
 .subjectImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 15%;
+  max-width: 100%;
+  height: 460px;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateY(-75px) scale(1.08);
+  filter: drop-shadow(0 16px 28px rgba(43, 37, 32, 0.2));
   display: block;
+}
+
+/* Doctor Nameplate Card Anchored directly over lower body boundary */
+.doctorNameplateCard {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  padding: 8px 20px 8px 12px;
+  box-shadow: 0 14px 35px rgba(27, 117, 187, 0.16);
+  border: 1px solid rgba(27, 117, 187, 0.12);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctorNameplateCard:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 16px 36px rgba(27, 117, 187, 0.22);
+}
+
+.doctorBadgeIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1b75bb 0%, #125285 100%);
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(27, 117, 187, 0.3);
+}
+
+.doctorBadgeSvg {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+}
+
+.doctorName {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e2229;
+  line-height: 1.2;
+}
+
+.doctorRole {
+  font-size: 11px;
+  color: #147d73;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 /* Floating Card 1: Vaccinations & Services (Right Side) */
@@ -274,7 +362,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #f25536;
+  background: linear-gradient(135deg, #1b75bb 0%, #125285 100%);
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -379,9 +467,16 @@
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  background-color: #fbf5ef;
+  background-color: #eaf3fa;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
+}
+
+.statSvgIcon {
+  width: 24px;
+  height: 24px;
+  color: #1b75bb;
   flex-shrink: 0;
 }
 
@@ -413,24 +508,34 @@
 }
 
 @media (max-width: 576px) {
+  .concentricStage {
+    height: 360px;
+    max-width: 340px;
+  }
+
   .ringOuter {
     width: 320px;
     height: 320px;
   }
 
   .ringMiddle {
-    width: 270px;
-    height: 270px;
+    width: 250px;
+    height: 250px;
   }
 
   .ringInner {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
   }
 
   .subjectWrapper {
-    width: 230px;
-    height: 230px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .subjectImg {
+    height: 340px;
+    transform: translateY(-4px) scale(1.05);
   }
 
   .floatingServiceCard {
@@ -438,9 +543,10 @@
     top: 20%;
   }
 
-  .floatingDoctorCard {
-    left: 0;
-    bottom: -10px;
+  .doctorNameplateCard {
+    bottom: -6px;
+    padding: 6px 16px 6px 10px;
+    max-width: 90%;
   }
 
   .primaryPillBtn,

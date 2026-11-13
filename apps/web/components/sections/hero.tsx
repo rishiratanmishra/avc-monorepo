@@ -3,13 +3,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../layout/container";
 import { HOSPITAL_INFO } from "../../constants";
+import {
+  CalendarDaysIcon,
+  PhoneIcon,
+  ClockIcon,
+  SparklesIcon,
+  UserGroupIcon,
+  TrophyIcon,
+  CheckCircleIcon,
+  AcademicCapIcon,
+} from "@heroicons/react/24/solid";
+import { PawPrint } from "lucide-react";
 import styles from "./hero.module.css";
 
 const CLINICAL_STATS = [
-  { value: "24/7", label: "Emergency & Critical Care ICU", icon: "🚨" },
-  { value: "4,200+", label: "Surgeries & Treatments Performed", icon: "🔬" },
-  { value: "20+", label: "Veterinary Doctors & Nursing Staff", icon: "🩺" },
-  { value: "12+ Yrs", label: "Veterinary Clinical Excellence", icon: "🏆" },
+  {
+    value: "24/7",
+    label: "Emergency & Critical Care ICU",
+    icon: <ClockIcon className={styles.statSvgIcon} aria-hidden="true" />,
+  },
+  {
+    value: "4,200+",
+    label: "Surgeries & Treatments Performed",
+    icon: <SparklesIcon className={styles.statSvgIcon} aria-hidden="true" />,
+  },
+  {
+    value: "20+",
+    label: "Veterinary Doctors & Nursing Staff",
+    icon: <UserGroupIcon className={styles.statSvgIcon} aria-hidden="true" />,
+  },
+  {
+    value: "12+ Yrs",
+    label: "Veterinary Clinical Excellence",
+    icon: <TrophyIcon className={styles.statSvgIcon} aria-hidden="true" />,
+  },
 ];
 
 export const Hero: React.FC = () => {
@@ -17,31 +44,13 @@ export const Hero: React.FC = () => {
     <section className={styles.hero} id="home">
       {/* Decorative Background Paw Watermarks */}
       <div className={styles.pawWatermark1} aria-hidden="true">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-          <ellipse cx="6" cy="7" rx="2" ry="3" />
-          <ellipse cx="11" cy="5" rx="2" ry="3" />
-          <ellipse cx="16" cy="6" rx="2" ry="3" />
-          <ellipse cx="20" cy="9" rx="1.8" ry="2.6" />
-          <path d="M12 10.5c-3.2 0-5.5 2.1-5.5 5 0 2.2 1.8 3.5 3.8 3.5 1.2 0 2.2-.6 3.4-.6 1.1 0 2.1.6 3.3.6 2 0 3.8-1.3 3.8-3.5 0-2.9-2.3-5-5-5z" />
-        </svg>
+        <PawPrint size={46} strokeWidth={1.5} />
       </div>
       <div className={styles.pawWatermark2} aria-hidden="true">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
-          <ellipse cx="6" cy="7" rx="2" ry="3" />
-          <ellipse cx="11" cy="5" rx="2" ry="3" />
-          <ellipse cx="16" cy="6" rx="2" ry="3" />
-          <ellipse cx="20" cy="9" rx="1.8" ry="2.6" />
-          <path d="M12 10.5c-3.2 0-5.5 2.1-5.5 5 0 2.2 1.8 3.5 3.8 3.5 1.2 0 2.2-.6 3.4-.6 1.1 0 2.1.6 3.3.6 2 0 3.8-1.3 3.8-3.5 0-2.9-2.3-5-5-5z" />
-        </svg>
+        <PawPrint size={36} strokeWidth={1.5} />
       </div>
       <div className={styles.pawWatermark3} aria-hidden="true">
-        <svg width="42" height="42" viewBox="0 0 24 24" fill="currentColor">
-          <ellipse cx="6" cy="7" rx="2" ry="3" />
-          <ellipse cx="11" cy="5" rx="2" ry="3" />
-          <ellipse cx="16" cy="6" rx="2" ry="3" />
-          <ellipse cx="20" cy="9" rx="1.8" ry="2.6" />
-          <path d="M12 10.5c-3.2 0-5.5 2.1-5.5 5 0 2.2 1.8 3.5 3.8 3.5 1.2 0 2.2-.6 3.4-.6 1.1 0 2.1.6 3.3.6 2 0 3.8-1.3 3.8-3.5 0-2.9-2.3-5-5-5z" />
-        </svg>
+        <PawPrint size={42} strokeWidth={1.5} />
       </div>
 
       <Container>
@@ -49,13 +58,12 @@ export const Hero: React.FC = () => {
           {/* Left Column: Two-Tone Typography & Rounded Pill CTAs */}
           <div className={styles.leftCol}>
             <div className={styles.categoryPill}>
-              <span className={styles.liveIndicator} />
               <span>24/7 Multi-Speciality Pet Hospital • Sector 90 &amp; 87, Gurugram</span>
             </div>
 
             <h1 className={styles.mainTitle}>
-              Tailored <span className={styles.accentRed}>Medical Care</span> for{" "}
-              <span className={styles.accentOrange}>Every Pet</span> In Your Family.
+              Tailored <span className={styles.accentPrimary}>Medical Care</span> for{" "}
+              <span className={styles.accentSecondary}>Every Pet</span> In Your Family.
             </h1>
 
             <p className={styles.subtitle}>
@@ -66,7 +74,7 @@ export const Hero: React.FC = () => {
             {/* Rounded Capsule CTAs matching reference */}
             <div className={styles.ctaRow}>
               <Link href="#services" className={styles.primaryPillBtn}>
-                <span className={styles.btnIconCircle}>📅</span>
+                <CalendarDaysIcon className={styles.btnIconSvg} aria-hidden="true" />
                 <span>Book Consultation</span>
               </Link>
 
@@ -74,7 +82,7 @@ export const Hero: React.FC = () => {
                 href={`tel:${HOSPITAL_INFO.emergencyPhone}`}
                 className={styles.secondaryPillBtn}
               >
-                <span className={styles.emergencyIcon}>🚨</span>
+                <PhoneIcon className={styles.emergencyIconSvg} aria-hidden="true" />
                 <span>24/7 Emergency: {HOSPITAL_INFO.emergencyPhone}</span>
               </a>
             </div>
@@ -82,13 +90,16 @@ export const Hero: React.FC = () => {
             {/* Trust Reassurance Chips */}
             <div className={styles.trustBadges}>
               <div className={styles.trustItem}>
-                <span className={styles.check}>✓</span> Walk-in Emergency Care
+                <CheckCircleIcon className={styles.checkSvg} aria-hidden="true" />
+                <span>Walk-in Emergency Care</span>
               </div>
               <div className={styles.trustItem}>
-                <span className={styles.check}>✓</span> Sterile Modular OT
+                <CheckCircleIcon className={styles.checkSvg} aria-hidden="true" />
+                <span>Sterile Modular OT</span>
               </div>
               <div className={styles.trustItem}>
-                <span className={styles.check}>✓</span> In-House IDEXX Labs
+                <CheckCircleIcon className={styles.checkSvg} aria-hidden="true" />
+                <span>In-House IDEXX Labs</span>
               </div>
             </div>
           </div>
@@ -103,26 +114,26 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Subject Image (Dr. Hardeep Beniwal with pet companion) */}
+              {/* Subject Cutout: Dr. Hardeep Beniwal waist-up portrait emerging from halo */}
               <div className={styles.subjectWrapper}>
                 <Image
-                  src="/images/doctor-dr-hardeep-with-cat.jpg"
-                  alt="Senior Veterinary Surgeon Dr. Hardeep Beniwal with pet patient at AVC Pet Hospital"
-                  width={420}
+                  src="/images/doctor-hardeep-hero.png"
+                  alt="Senior Veterinary Surgeon Dr. Hardeep Beniwal with cat patient at AVC Pet Hospital"
+                  width={440}
                   height={420}
                   priority
                   className={styles.subjectImg}
                 />
               </div>
 
-              {/* Floating Card: Doctor Credibility (Right Center) */}
-              <div className={styles.floatingServiceCard}>
-                <div className={styles.serviceIconWrap}>
-                  <span className={styles.serviceIcon}>👨‍⚕️</span>
+              {/* Anchored Nameplate Card directly masking the lower body boundary */}
+              <div className={styles.doctorNameplateCard}>
+                <div className={styles.doctorBadgeIcon}>
+                  <AcademicCapIcon className={styles.doctorBadgeSvg} aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className={styles.serviceCardTitle}>Dr. Hardeep Beniwal</h3>
-                  <p className={styles.serviceCardSub}>Senior Veterinary Surgeon • 12+ Yrs</p>
+                  <h3 className={styles.doctorName}>Dr. Hardeep Beniwal</h3>
+                  <p className={styles.doctorRole}>Senior Veterinary Surgeon • 12+ Yrs</p>
                 </div>
               </div>
             </div>

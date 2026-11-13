@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Container } from "../layout/container";
 import { FAQS } from "../../constants";
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
+import { PawPrint } from "lucide-react";
 import styles from "./faq.module.css";
 
 export const FaqSection: React.FC = () => {
@@ -39,7 +41,7 @@ export const FaqSection: React.FC = () => {
           {/* Right Column: Section Header & Accordion List */}
           <div className={styles.contentCol}>
             <div className={styles.pill}>
-              <span className={styles.pawIcon}>🐾</span>
+              <PawPrint size={14} className={styles.pawIcon} aria-hidden="true" />
               <span>WHY CHOOSE AVC</span>
             </div>
 
@@ -73,28 +75,11 @@ export const FaqSection: React.FC = () => {
                         {faq.question}
                       </span>
                       <span className={styles.iconCircle} aria-hidden="true">
-                        <svg
-                          className={styles.iconSvg}
-                          width="14"
-                          height="14"
-                          viewBox="0 0 14 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M2.5 7H11.5"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                          <path
-                            d="M7 2.5V11.5"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            className={styles.verticalBar}
-                          />
-                        </svg>
+                        {isOpen ? (
+                          <MinusIcon style={{ width: 14, height: 14 }} />
+                        ) : (
+                          <PlusIcon style={{ width: 14, height: 14 }} />
+                        )}
                       </span>
                     </button>
 

@@ -3,7 +3,6 @@ import { Header } from "../components/layout/header";
 import { Footer } from "../components/layout/footer";
 import { MobileActionBar } from "../components/layout/mobile-action-bar";
 import {
-  EmergencyBanner,
   Hero,
   Services,
   PetCareProcess,
@@ -15,7 +14,6 @@ import {
 export default function Home() {
   return (
     <>
-      <EmergencyBanner />
       <Header />
       <main>
         <Hero />

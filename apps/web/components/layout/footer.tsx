@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "./container";
 import { HOSPITAL_INFO, FOOTER_LINKS } from "../../constants";
+import { PhoneIcon, CalendarDaysIcon, StarIcon } from "@heroicons/react/24/solid";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import styles from "./footer.module.css";
 
 export const Footer: React.FC = () => {
@@ -28,7 +30,9 @@ export const Footer: React.FC = () => {
                 href={`tel:${HOSPITAL_INFO.emergencyPhone}`}
                 className={styles.emergencyBtn}
               >
-                <span className={styles.btnIcon}>📞</span>
+                <span className={styles.btnIcon}>
+                  <PhoneIcon style={{ width: 22, height: 22 }} aria-hidden="true" />
+                </span>
                 <span>
                   <strong className={styles.btnLabel}>Emergency Helpline</strong>
                   <span className={styles.btnValue}>{HOSPITAL_INFO.emergencyPhone}</span>
@@ -39,6 +43,9 @@ export const Footer: React.FC = () => {
                 href="#services"
                 className={styles.consultBtn}
               >
+                <span className={styles.btnIcon}>
+                  <CalendarDaysIcon style={{ width: 22, height: 22 }} aria-hidden="true" />
+                </span>
                 <span>
                   <strong className={styles.btnLabel}>Routine Care &amp; Boarding</strong>
                   <span className={styles.btnValue}>Book OPD Consultation</span>
@@ -72,7 +79,11 @@ export const Footer: React.FC = () => {
               </p>
 
               <div className={styles.ratingBox}>
-                <span className={styles.ratingStars}>★★★★★</span>
+                <span className={styles.ratingStars} aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <StarIcon key={i} style={{ width: 14, height: 14, color: "#f59e0b", display: "inline-block" }} aria-hidden="true" />
+                  ))}
+                </span>
                 <span className={styles.ratingNumber}>4.9/5</span>
                 <span className={styles.ratingSource}>on Google Reviews</span>
               </div>
@@ -133,7 +144,8 @@ export const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     className={styles.link}
                   >
-                    Hospital Staff Portal ↗
+                    <span>Hospital Staff Portal</span>
+                    <ArrowTopRightOnSquareIcon style={{ width: 13, height: 13, marginLeft: 4, display: "inline-block", verticalAlign: "middle" }} aria-hidden="true" />
                   </a>
                 </li>
               </ul>
@@ -162,7 +174,8 @@ export const Footer: React.FC = () => {
                     rel="noopener noreferrer"
                     className={styles.mapLink}
                   >
-                    Directions ↗
+                    <span>Directions</span>
+                    <ArrowTopRightOnSquareIcon style={{ width: 12, height: 12, marginLeft: 3, display: "inline-block", verticalAlign: "middle" }} aria-hidden="true" />
                   </a>
                 </div>
               </div>
