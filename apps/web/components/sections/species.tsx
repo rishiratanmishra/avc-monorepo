@@ -25,7 +25,10 @@ export const SpeciesTreated: React.FC = () => {
                   />
                   <div className={styles.numberBadge}>{num}</div>
                 </div>
-                <h3 className={styles.name}>{item.name}</h3>
+                <div className={styles.content}>
+                  <h3 className={styles.name}>{item.name}</h3>
+                  <p className={styles.desc}>{item.description}</p>
+                </div>
               </div>
             );
           })}

@@ -60,7 +60,7 @@
   transform: scale(1.03);
 }
 
-/* Numbered circular badge in the top-right corner notch */
+/* Numbered circular badge in the top-right corner notch - UNFILLED BY DEFAULT */
 .numberBadge {
   position: absolute;
   top: 0;
@@ -68,21 +68,32 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-full);
-  background-color: var(--md-sys-color-primary);
-  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font: var(--typescale-title-medium);
   font-family: var(--font-family-body);
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(27, 117, 187, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   z-index: 2;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
+/* FILLED ONLY ON HOVER */
 .card:hover .numberBadge {
+  background-color: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+  color: #ffffff;
   transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(27, 117, 187, 0.3);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
 }
 
 .name {
@@ -95,6 +106,13 @@
 
 .card:hover .name {
   color: var(--md-sys-color-primary);
+}
+
+.desc {
+  font: var(--typescale-body-medium);
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.6;
+  margin-top: var(--space-2);
 }
 
 /* Responsive grid */

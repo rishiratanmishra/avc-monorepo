@@ -141,37 +141,43 @@ export const SPECIES_TREATED: SpeciesItem[] = [
   {
     id: "dogs",
     name: "Dogs",
-    description: "We provide specialized care and compassion for dogs of all breeds, from Chihuahuas to Great Danes, at our hospital.",
+    description:
+      "We provide specialized care and compassion for dogs of all breeds, from Chihuahuas to Great Danes, at our hospital.",
     image: "/images/species-dogs-canine.jpg",
   },
   {
     id: "cats",
     name: "Cats",
-    description: "Dedicated cat OPD suites, stress-free handling, vaccination schedules, and internal medicine.",
+    description:
+      "From routine check-ups to specialized treatments, our hospital provides compassionate care for cats of all breeds and ages.",
     image: "/images/service-feline-cat-care.jpg",
   },
   {
     id: "birds",
     name: "Birds",
-    description: "Avian medicine, beak trimming, feather care, and specialized diagnostics for pet birds.",
+    description:
+      "We provide compassionate care for birds of various species including parrots, budgies, cockatiels, canaries, and finches.",
     image: "/images/species-birds-avian.jpg",
   },
   {
     id: "rabbits",
     name: "Rabbits",
-    description: "Dental care, GI stasis management, dietary counseling, and gentle wellness checkups.",
+    description:
+      "At our hospital, rabbits receive expert care tailored to their unique needs. From regular health check-ups to dental care and personalized treatments.",
     image: "/images/species-rabbits.jpg",
   },
   {
     id: "guinea-pigs",
-    name: "Guinea Pigs",
-    description: "Specialized small mammal care, skin treatments, nutritional balance, and respiratory care.",
+    name: "Guinea Pigs & Hamster",
+    description:
+      "We take good care of guinea pigs and Hamsters. We give them regular check-ups, take care of their teeth, and treat any health problems they may have.",
     image: "/images/species-guinea-pigs-hamsters.jpg",
   },
   {
     id: "exotics",
-    name: "Exotics & Turtles",
-    description: "Shell treatments, temperature-regulated care, reptile medicine, and specialized dietary guidance.",
+    name: "Exotic Animals",
+    description:
+      "We specialize in compassionate care for exotic animals, including amphibians, small mammals like hedgehogs and ferrets, and more.",
     image: "/images/species-exotic-turtles-reptiles.jpg",
   },
 ];
