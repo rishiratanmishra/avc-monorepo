@@ -35,30 +35,23 @@ export const Footer: React.FC = () => {
         <Container>
           <div className={styles.preFooterCard}>
             <div className={styles.preFooterContent}>
-              <span className={styles.preFooterTag}>AVC Pet Hospital</span>
               <h2 className={styles.preFooterTitle}>
-                Emergency and routine veterinary care in Gurugram
+                Need emergency care?
               </h2>
               <p className={styles.preFooterDesc}>
-                Emergency care is available at our Sector 90 hospital, 24 hours a day. No appointment is needed for emergencies.
+                Call or walk in at our Sector 90 hospital. Emergency care is available 24/7; no appointment is needed.
               </p>
             </div>
 
             <div className={styles.preFooterActions}>
               <a href={`tel:${HOSPITAL_INFO.emergencyPhone}`} className={styles.emergencyCtaBtn}>
                 <PhoneCall size={16} aria-hidden="true" />
-                <div className={styles.btnTextGroup}>
-                  <span className={styles.btnSmallText}>24/7 Emergency Helpline</span>
-                  <strong className={styles.btnMainText}>{HOSPITAL_INFO.emergencyPhone}</strong>
-                </div>
+                <span>Call {HOSPITAL_INFO.emergencyPhone}</span>
               </a>
 
               <a href="#services" className={styles.servicesCtaBtn}>
                 <ArrowUpRight size={16} aria-hidden="true" />
-                <div className={styles.btnTextGroup}>
-                  <span className={styles.btnSmallText}>Routine OPD &amp; Resort</span>
-                  <strong className={styles.btnMainText}>View services</strong>
-                </div>
+                <span>View services</span>
               </a>
             </div>
           </div>
@@ -69,7 +62,7 @@ export const Footer: React.FC = () => {
       <div className={styles.main}>
         <Container>
           <div className={styles.grid}>
-            {/* Column 1: Hospital Identity & Philosophy */}
+            {/* Column 1: Hospital identity and reviews */}
             <div className={styles.brandCol}>
               <Link href="/" className={styles.logoContainer}>
                 <Image
@@ -81,11 +74,6 @@ export const Footer: React.FC = () => {
                 />
               </Link>
 
-              <p className={styles.philosophyText}>
-                &ldquo;The bond between humans and animals is a silent language of trust and love.&rdquo;
-              </p>
-              <span className={styles.founderCredit}>— Dr. Hardeep Beniwal &amp; Medical Team</span>
-
               <div className={styles.googleTrustBadge}>
                 {GOOGLE_G_ICON}
                 <span className={styles.googleScore}>4.8 / 5.0</span>
@@ -94,46 +82,46 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            {/* Column 2: Clinical Departments */}
+            {/* Column 2: Medical services */}
             <div className={styles.linksCol}>
               <h3 className={styles.colTitle}>Medical Services</h3>
               <ul className={styles.linkList}>
                 <li>
                   <Link href="#services" className={styles.footerLink}>
-                    24/7 Trauma ICU &amp; Emergency
+                    24/7 Emergency Care
                   </Link>
                 </li>
                 <li>
                   <Link href="#services" className={styles.footerLink}>
-                    In-House IDEXX Diagnostics Lab
+                    Diagnostics Lab
                   </Link>
                 </li>
                 <li>
                   <Link href="#services" className={styles.footerLink}>
-                    Sterile Modular Operating Theaters
+                    Surgery &amp; Orthopedics
                   </Link>
                 </li>
                 <li>
                   <Link href="#services" className={styles.footerLink}>
-                    Quiet Cat-Friendly OPD
+                    Cat-Friendly OPD
                   </Link>
                 </li>
                 <li>
                   <Link href="#services" className={styles.footerLink}>
-                    Digital X-Ray &amp; Color Doppler
+                    Digital X-Ray &amp; Doppler
                   </Link>
                 </li>
                 <li>
                   <Link href="#services" className={styles.footerLink}>
-                    Therapeutic Medicated Grooming
+                    Dermatology &amp; Grooming
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Column 3: Quick Navigation */}
+            {/* Column 3: Quick links */}
             <div className={styles.linksCol}>
-              <h3 className={styles.colTitle}>Hospital &amp; Care</h3>
+              <h3 className={styles.colTitle}>Quick Links</h3>
               <ul className={styles.linkList}>
                 <li>
                   <Link href="#why-choose-us" className={styles.footerLink}>
@@ -142,17 +130,17 @@ export const Footer: React.FC = () => {
                 </li>
                 <li>
                   <Link href="#process" className={styles.footerLink}>
-                    Pet Care Journey
+                    Pet Care Process
                   </Link>
                 </li>
                 <li>
                   <Link href="#testimonials" className={styles.footerLink}>
-                    Verified Patient Stories
+                    Testimonials
                   </Link>
                 </li>
                 <li>
                   <Link href="#faq" className={styles.footerLink}>
-                    Pet Parent FAQs
+                    FAQs
                   </Link>
                 </li>
                 <li>
