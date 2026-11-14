@@ -14,7 +14,6 @@ import {
 import {
   Campuses,
   Testimonials,
-  EmergencyBanner,
 } from "../../components/pages/home";
 
 export const metadata: Metadata = {
@@ -36,7 +35,6 @@ export default function AboutPage() {
         <Milestones />
         <Campuses />
         <Testimonials />
-        <EmergencyBanner />
       </main>
       <Footer />
       <MobileActionBar />
