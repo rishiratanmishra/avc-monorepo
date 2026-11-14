@@ -11,15 +11,15 @@ export const Milestones: React.FC = () => {
         <div className={styles.header}>
           <div className={styles.tagWrap}>
             <History className={styles.tagIcon} size={16} />
-            <span>Growth & Heritage</span>
+            <span>Timeline</span>
           </div>
 
           <h2 id="milestones-title" className={styles.title}>
-            Our Journey of <span className={styles.titleHighlight}>Excellence & Care</span>
+            How AVC <span className={styles.titleHighlight}>got here</span>
           </h2>
 
           <p className={styles.description}>
-            From humble clinical beginnings to Gurugram’s foremost 24/7 multispeciality veterinary hospital and luxury pet resort.
+            From clinical practice across Delhi-NCR to two locations in Gurugram.
           </p>
         </div>
 
