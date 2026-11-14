@@ -2,12 +2,11 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { Container } from "../layout/container";
-import { CORE_SERVICES, HOSPITAL_INFO } from "../../constants";
+import { Container } from "../../layout/container";
+import { CORE_SERVICES, HOSPITAL_INFO } from "../../../constants";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  ArrowUpRightIcon,
 } from "@heroicons/react/24/outline";
 import {
   Stethoscope,
@@ -20,21 +19,6 @@ import {
   Cpu,
 } from "lucide-react";
 import styles from "./services.module.css";
-
-const TICKER_ITEMS = [
-  "Boarding",
-  "OPD",
-  "ICU",
-  "X-Ray",
-  "IDEXX Laboratories",
-  "Surgery",
-  "Medical Boarding",
-  "Daycare Boarding",
-  "Grooming",
-  "Emergency Care",
-  "Vaccination",
-  "Pharmacy",
-];
 
 const CLINICAL_DEPARTMENTS = [
   {
@@ -274,15 +258,7 @@ export const Services: React.FC = () => {
               </div>
 
               <div className={styles.cardContent}>
-                <span className={styles.cardCategory}>CLINICAL DEPARTMENT</span>
                 <h3 className={styles.cardTitle}>{service.title}</h3>
-              </div>
-
-              <div className={styles.actionBtn}>
-                <ArrowUpRightIcon
-                  style={{ width: 16, height: 16, color: "#1e2229" }}
-                  aria-hidden="true"
-                />
               </div>
             </div>
           ))}
@@ -380,18 +356,6 @@ export const Services: React.FC = () => {
           </div>
         </div>
       </Container>
-
-      {/* Running Marquee Ticker */}
-      <div className={styles.tickerWrap}>
-        <div className={styles.tickerContent}>
-          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
-            <span key={idx} className={styles.tickerItem}>
-              {item}
-              <span className={styles.tickerStar}>✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };

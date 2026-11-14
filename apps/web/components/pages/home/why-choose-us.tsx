@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Container } from "../layout/container";
+import { Container } from "../../layout/container";
 import { ArrowRight, PhoneCall } from "lucide-react";
-import { HOSPITAL_INFO } from "../../constants";
+import { HOSPITAL_INFO } from "../../../constants";
 import styles from "./why-choose-us.module.css";
 
 const CLINICAL_PROOFS = [

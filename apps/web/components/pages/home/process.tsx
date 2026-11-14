@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Container } from "../layout/container";
-import { HOSPITAL_INFO } from "../../constants";
+import { Container } from "../../layout/container";
+import { HOSPITAL_INFO } from "../../../constants";
 import {
   CalendarDaysIcon,
   AcademicCapIcon,

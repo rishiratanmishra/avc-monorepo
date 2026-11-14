@@ -1,0 +1,335 @@
+.hero {
+  padding: 48px 0 56px;
+  background-color: #ffffff;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.categoryPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 13px;
+}
+
+.pillBadge {
+  color: var(--md-sys-color-primary);
+  font-weight: 600;
+}
+
+.pillDivider {
+  color: var(--md-sys-color-outline);
+}
+
+.pillLocation {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.locationPinSvg {
+  width: 14px;
+  height: 14px;
+  color: var(--md-sys-color-secondary);
+}
+
+.mainTitle {
+  max-width: 620px;
+  font-family: var(--font-family-heading);
+  font-size: clamp(40px, 4.5vw, 56px);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  max-width: 480px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primaryPillBtn,
+.secondaryPillBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.primaryPillBtn {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.primaryPillBtn:hover {
+  background-color: var(--md-sys-color-primary-hover);
+}
+
+.secondaryPillBtn {
+  border-color: var(--md-sys-color-outline);
+  background-color: #ffffff;
+  color: var(--md-sys-color-on-surface);
+}
+
+.secondaryPillBtn:hover {
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.primaryIconWrap,
+.emergencyIconWrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btnIconSvg,
+.emergencyIconSvg {
+  width: 16px;
+  height: 16px;
+}
+
+.emergencyIconSvg,
+.emergencyLabel {
+  color: var(--md-sys-color-error);
+}
+
+.trustBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.trustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 13px;
+}
+
+.checkSvg {
+  width: 15px;
+  height: 15px;
+  color: var(--md-sys-color-secondary);
+}
+
+.rightCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.concentricStage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringOuter {
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background-color: #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.ringMiddle {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background-color: #93c5fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringInner {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1b75bb 0%, #155e96 100%);
+}
+
+.subjectWrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.subjectImg {
+  max-width: 100%;
+  height: 460px;
+  width: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateY(-75px) scale(1.08);
+  filter: drop-shadow(0 16px 28px rgba(43, 37, 32, 0.2));
+  display: block;
+}
+
+.doctorNameplateCard {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  padding: 8px 20px 8px 12px;
+  box-shadow: 0 14px 35px rgba(27, 117, 187, 0.16);
+  border: 1px solid rgba(27, 117, 187, 0.12);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctorNameplateCard:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 16px 36px rgba(27, 117, 187, 0.22);
+}
+
+.doctorBadgeIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1b75bb 0%, #125285 100%);
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(27, 117, 187, 0.3);
+}
+
+.doctorBadgeSvg {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+}
+
+.doctorName {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e2229;
+  line-height: 1.2;
+}
+
+.doctorRole {
+  font-size: 11px;
+  color: #147d73;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.statsStrip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--md-sys-color-outline);
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statValue {
+  color: var(--md-sys-color-on-surface);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.statLabel {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .statsStrip {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (min-width: 992px) {
+  .heroGrid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding-top: 32px;
+  }
+
+  .categoryPill {
+    flex-wrap: wrap;
+    gap: 6px 9px;
+  }
+
+  .concentricStage {
+    height: 340px;
+    max-width: 340px;
+  }
+
+  .ringOuter {
+    width: min(100%, 310px);
+  }
+
+  .primaryPillBtn,
+  .secondaryPillBtn {
+    width: 100%;
+  }
+}

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Container } from "../layout/container";
+import { Container } from "../../layout/container";
 import { Plus, Minus, PhoneCall, HelpCircle, MapPin, Clock } from "lucide-react";
-import { HOSPITAL_INFO } from "../../constants";
+import { HOSPITAL_INFO } from "../../../constants";
 import styles from "./faq.module.css";
 
 const FAQ_ITEMS = [

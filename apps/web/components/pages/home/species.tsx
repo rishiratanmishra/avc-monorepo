@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Container } from "../layout/container";
-import { SPECIES_TREATED } from "../../constants";
+import { Container } from "../../layout/container";
+import { SPECIES_TREATED } from "../../../constants";
 import styles from "./species.module.css";
 
 export const SpeciesTreated: React.FC = () => {

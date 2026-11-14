@@ -1,6 +1,6 @@
 import React from "react";
-import { Container } from "../layout/container";
-import { HOSPITAL_INFO } from "../../constants";
+import { Container } from "../../layout/container";
+import { HOSPITAL_INFO } from "../../../constants";
 import { ExclamationTriangleIcon, PhoneIcon } from "@heroicons/react/24/solid";
 import styles from "./emergency-banner.module.css";
 

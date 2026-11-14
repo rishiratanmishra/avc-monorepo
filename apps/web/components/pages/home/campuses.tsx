@@ -2,8 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { Container } from "../layout/container";
-import { HOSPITAL_INFO } from "../../constants";
+import { Container } from "../../layout/container";
+import { HOSPITAL_INFO } from "../../../constants";
 import { PhoneCall, MapPin, Clock, ArrowUpRight, ShieldCheck, Sparkles, Check } from "lucide-react";
 import styles from "./campuses.module.css";
 
@@ -27,7 +27,7 @@ const CAMPUSES = [
     address: "Near DLF Regal Garden, Badha-Hayatpur Road, Sector 90, Gurugram – 122505",
     hours: "Open 24/7 / 365 Days (Walk-ins Welcome)",
     phone: HOSPITAL_INFO.emergencyPhone,
-    phoneAction: `tel:${HOSPITAL_INFO.emergencyPhone}`,
+    phoneAction: `tel:${HOSPITAL_INFO.emergencyPhone.replace(/\s+/g, "")}`,
     ctaLabel: `Call Hospital: ${HOSPITAL_INFO.emergencyPhone}`,
     mapsUrl: "https://maps.google.com/?q=AVC+Multispeciality+Pet+Hospital+Sector+90+Gurugram",
   },
@@ -50,7 +50,7 @@ const CAMPUSES = [
     address: "Opp. Ansal Heights, Bharat Ram Global School Road, Sector 87, Gurugram",
     hours: "9:00 AM – 8:00 PM (Daily)",
     phone: HOSPITAL_INFO.secondaryPhone,
-    phoneAction: `tel:${HOSPITAL_INFO.secondaryPhone}`,
+    phoneAction: `tel:${HOSPITAL_INFO.secondaryPhone.replace(/\s+/g, "")}`,
     ctaLabel: `Call Resort: ${HOSPITAL_INFO.secondaryPhone}`,
     mapsUrl: "https://maps.google.com/?q=AVC+Pet+World+Sector+87+Gurugram",
   },

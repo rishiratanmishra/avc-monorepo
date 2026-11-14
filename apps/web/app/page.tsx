@@ -4,14 +4,14 @@ import { Footer } from "../components/layout/footer";
 import { MobileActionBar } from "../components/layout/mobile-action-bar";
 import {
   Hero,
-  Services,
   PetCareProcess,
   WhyChooseUs,
   Campuses,
   SpeciesTreated,
   Testimonials,
   FaqSection,
-} from "../components/sections";
+} from "../components/pages/home";
+import { Services } from "../components/pages/service";
 
 export default function Home() {
   return (

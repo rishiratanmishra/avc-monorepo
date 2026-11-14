@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Container } from "../layout/container";
+import { Container } from "../../layout/container";
 import { Star, CheckCircle2, ExternalLink } from "lucide-react";
 import styles from "./testimonials.module.css";
 

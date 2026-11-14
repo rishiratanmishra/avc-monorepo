@@ -64,3 +64,42 @@ export type HospitalInfo = {
   routineHours: string;
   emergencyHours: string;
 };
+
+export type ValuePillar = {
+  id: string;
+  icon: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  badge?: string;
+};
+
+export type DoctorProfile = {
+  id: string;
+  name: string;
+  role: string;
+  qualifications: string;
+  experience: string;
+  specialty: string;
+  bio: string;
+  image: string;
+  stats?: { label: string; value: string };
+};
+
+export type FacilityDetail = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  highlights: string[];
+  image: string;
+  badge?: string;
+  campus: "Sector 90 Hospital" | "Sector 87 Pet World Resort";
+};
+
+export type MilestoneTimeline = {
+  year: string;
+  title: string;
+  description: string;
+  badge?: string;
+};
