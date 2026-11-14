@@ -15,7 +15,7 @@ export const Milestones: React.FC = () => {
           </div>
 
           <h2 id="milestones-title" className={styles.title}>
-            How AVC <span className={styles.titleHighlight}>got here</span>
+            Our Journey
           </h2>
 
           <p className={styles.description}>

@@ -50,11 +50,11 @@ export const VeterinaryTeam: React.FC = () => {
                 <p className={styles.doctorBio}>{doctor.bio}</p>
               </div>
 
-              <div className={styles.cardAction}>
+              {/* <div className={styles.cardAction}>
                 <Link href="/#contact" className={styles.bookDocBtn}>
                   Contact AVC
                 </Link>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
