@@ -103,3 +103,46 @@ export type MilestoneTimeline = {
   description: string;
   badge?: string;
 };
+
+export type ServiceCategory =
+  | "all"
+  | "emergency"
+  | "surgery"
+  | "diagnostics"
+  | "wellness"
+  | "feline"
+  | "resort";
+
+export type DetailedServiceItem = {
+  id: string;
+  category: ServiceCategory;
+  title: string;
+  subtitle: string;
+  description: string;
+  whatWeTreat: string[];
+  equipmentAndTech: string[];
+  image: string;
+  badge?: string;
+  campus: "Sector 90 Hospital" | "Sector 87 Pet World Resort" | "Both Campuses";
+  phone: string;
+  ctaLabel: string;
+};
+
+export type TriageItem = {
+  id: string;
+  title: string;
+  level: "emergency" | "routine";
+  symptoms: string[];
+  recommendedAction: string;
+  timeframe: string;
+  actionText: string;
+  actionHref: string;
+};
+
+export type CareWorkflowStep = {
+  step: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  highlight: string;
+};

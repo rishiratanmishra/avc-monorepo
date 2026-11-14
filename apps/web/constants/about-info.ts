@@ -6,56 +6,42 @@ import type {
 } from "../types";
 
 export const ABOUT_HERO_DATA = {
-  badge: "Pioneering Veterinary Excellence Since 2022",
-  title: "Compassionate Healing, Advanced Veterinary Precision",
   subtitle:
-    "Founded on the unwavering belief that every companion animal deserves top-tier surgical, emergency, and wellness care. AVC Multispeciality Pet Care Hospital combines state-of-the-art diagnostic technology with deep clinical empathy in Gurugram, Haryana.",
-  motto: "“The bond between humans and animals is a silent language of trust and love.”",
-  emergencyHelp: "24/7 Trauma & Emergency ICU: +91 99900 70026",
-  stats: [
-    { value: "12+", label: "Years Combined Clinical Excellence" },
-    { value: "4,200+", label: "Successful Surgeries & Procedures" },
-    { value: "2,500+", label: "Devoted Pet Parents" },
-    { value: "24/7", label: "Critical Care ICU & Emergency" },
-  ],
+    "AVC provides routine veterinary care, diagnostics, surgery, and 24/7 emergency support at Sector 90. Boarding and pet-care services are available at Sector 87.",
 };
 
 export const VALUE_PILLARS: ValuePillar[] = [
   {
     id: "compassion",
     icon: "🐾",
-    title: "Fear-Free & Feline-Friendly Care",
-    subtitle: "Low-Stress Environment",
+    title: "Cat-friendly care",
+    subtitle: "Low-stress visits",
     description:
-      "We design separate, quiet consultation suites and treatment zones so sensitive dogs and cats experience zero anxiety and maximum comfort.",
-    badge: "Specialized Cat Care OPD",
+      "Cats have a separate, quiet consultation space. Our team also aims to make visits comfortable for dogs and cats.",
   },
   {
     id: "surgical",
     icon: "🔬",
-    title: "Advanced Surgical & Diagnostic Rigor",
-    subtitle: "High-Tech Clinical Accuracy",
+    title: "Diagnostics and surgery",
+    subtitle: "In-house services",
     description:
-      "Fully equipped with sterile modular operation theatres, multiparameter monitors, IDEXX in-house pathology lab, digital X-Ray, ultrasound, and endoscopy.",
-    badge: "IDEXX & Modular OT",
+      "The Sector 90 hospital has an in-house diagnostic lab, imaging, and an operating theatre for planned and emergency procedures.",
   },
   {
     id: "emergency",
     icon: "🚨",
-    title: "24/7 Continuous Emergency Vigilance",
-    subtitle: "Immediate Critical Response",
+    title: "Emergency care",
+    subtitle: "Open 24/7",
     description:
-      "Accidents and sudden illnesses don't keep office hours. Our emergency response team, trauma doctors, and ICU remain fully staffed around the clock.",
-    badge: "Round the Clock ICU",
+      "The Sector 90 hospital provides emergency and intensive care around the clock.",
   },
   {
     id: "ecosystem",
     icon: "🌿",
-    title: "Holistic 360° Animal Wellness",
-    subtitle: "Hospital to Luxury Resort",
+    title: "Two locations",
+    subtitle: "Hospital and boarding",
     description:
-      "From emergency trauma and complex surgeries to preventive vaccinations, therapeutic grooming, and luxury boarding at AVC Pet World Sector 87.",
-    badge: "2 Centers in Gurugram",
+      "AVC provides veterinary care at Sector 90 and boarding services at Sector 87.",
   },
 ];
 
@@ -63,19 +49,16 @@ export const FOUNDER_DATA = {
   name: "Dr. Hardeep Beniwal",
   degrees: "B.V.Sc & A.H., M.I.S.V.S.",
   role: "Founder & Chief Veterinary Surgeon",
-  experience: "12+ Years of Clinical & Surgical Mastery",
-  quote:
-    "Our goal was never just to build a clinic; we set out to create a sanctuary where medical mastery meets tender empathy. Every pet that walks through our doors is treated with the same meticulous care and love as our own family members.",
   storyParagraphs: [
-    "Dr. Hardeep Beniwal established AVC Multispeciality Pet Care Hospital with a distinct mission: bringing multi-speciality veterinary standards—comparable to modern human healthcare—to Gurugram's companion animal community.",
-    "Over more than a decade of specialized clinical practice and complex soft-tissue and orthopedic surgeries, Dr. Beniwal recognized that pet parents needed an integrated center where advanced diagnostics, sterile surgical suites, and dedicated intensive care operate under one roof 24/7.",
-    "Under his leadership, AVC has expanded into two signature destinations in Gurugram: the Sector 90 Multi-Speciality Hospital and the Sector 87 AVC Pet World Luxury Resort, setting new regional benchmarks in pet wellness and emergency surgery.",
+    "Dr. Hardeep Beniwal founded AVC in 2022 to provide multispeciality veterinary care in Gurugram.",
+    "His clinical work includes soft-tissue and orthopedic surgery. The Sector 90 hospital brings diagnostics, surgery, and 24/7 emergency care together.",
+    "AVC also operates Pet World in Sector 87, which offers boarding and pet-care services.",
   ],
   specialties: [
-    "Complex Soft-Tissue Surgery",
-    "Orthopedic & Trauma Surgery",
-    "Critical Care & Emergency Triage",
-    "Internal Medicine & Minimally Invasive Care",
+    "Soft-tissue and orthopedic surgery",
+    "Trauma and critical care",
+    "Internal medicine",
+    "Diagnostic imaging",
   ],
   image: "/images/doctor-hardeep-hero.png",
 };
@@ -83,10 +66,10 @@ export const FOUNDER_DATA = {
 export const FACILITIES_SHOWCASE: FacilityDetail[] = [
   {
     id: "modular-ot",
-    title: "Sterile Modular Operation Theater (OT)",
-    subtitle: "Precision Surgical Suite",
+    title: "Operating theatre",
+    subtitle: "Surgery",
     description:
-      "State-of-the-art sterile surgical theater equipped with multiparameter cardiovascular monitors, electrocautery, and specialized surgical lighting for routine and complex life-saving procedures.",
+      "Surgical procedures are supported by anesthesia monitoring, electrocautery, and dedicated recovery beds.",
     highlights: [
       "Multiparameter anesthesia monitoring",
       "Sterile positive-pressure airflow",
@@ -94,47 +77,44 @@ export const FACILITIES_SHOWCASE: FacilityDetail[] = [
       "Dedicated postoperative recovery beds",
     ],
     image: "/images/service-advanced-surgery-ot.jpg",
-    badge: "Modular Surgical Suite",
     campus: "Sector 90 Hospital",
   },
   {
     id: "idexx-lab",
-    title: "In-House Advanced Diagnostic Pathology",
-    subtitle: "Rapid 15-Minute Test Results",
+    title: "Diagnostic lab and imaging",
+    subtitle: "Diagnostics",
     description:
-      "Fully integrated laboratory powered by automated biochemistry analyzers, hematology counters, and digital microscopy to diagnose critical conditions with pinpoint accuracy.",
+      "In-house lab testing, X-ray, ultrasound, and echocardiography support diagnosis and treatment planning.",
     highlights: [
       "Automated hematology & blood gas analysis",
-      "Biochemistry profiling within 15 minutes",
-      "High-resolution digital radiography (X-Ray)",
-      "High-frequency ultrasound & echocardiography",
+      "Biochemistry and hematology testing",
+      "Digital X-ray",
+      "Ultrasound and echocardiography",
     ],
     image: "/images/service-diagnostic-lab-pathology.jpg",
-    badge: "IDEXX & Digital Imaging",
     campus: "Sector 90 Hospital",
   },
   {
     id: "cat-care",
-    title: "Specialized Cat Care OPD & Feline Suites",
-    subtitle: "Stress-Free Feline Medicine",
+    title: "Cat Care OPD",
+    subtitle: "Feline care",
     description:
-      "Cats have unique psychological and physiological needs. Our quiet Cat Care OPD isolates feline patients from barking dogs, loud noises, and stressful stimuli.",
+      "A dedicated cat-care space helps keep feline patients separate from dogs and other noise.",
     highlights: [
       "Feline-dedicated examination suite",
-      "Calming pheromone diffusing system",
-      "Gentle, fear-free handling protocols",
-      "Specific feline pediatric & senior medicine",
+      "Pheromone diffuser",
+      "Gentle handling",
+      "Care for kittens and senior cats",
     ],
     image: "/images/service-feline-cat-care.jpg",
-    badge: "Feline Friendly",
     campus: "Sector 90 Hospital",
   },
   {
     id: "critical-care-icu",
-    title: "24/7 Critical Care & Intensive Care Unit (ICU)",
-    subtitle: "Continuous Patient Monitoring",
+    title: "Critical Care ICU",
+    subtitle: "24/7 emergency care",
     description:
-      "Equipped with oxygen therapy cages, continuous infusion pumps, emergency crash carts, and dedicated veterinary staff monitoring critical patients 24 hours a day.",
+      "The Sector 90 hospital provides oxygen therapy, infusion support, and continuous monitoring for critical patients.",
     highlights: [
       "Temperature-controlled oxygenation kennels",
       "Round-the-clock intensive vet nursing",
@@ -142,15 +122,14 @@ export const FACILITIES_SHOWCASE: FacilityDetail[] = [
       "Emergency trauma stabilization unit",
     ],
     image: "/images/service-24-7-emergency-care.jpg",
-    badge: "24/7 Live Monitoring",
     campus: "Sector 90 Hospital",
   },
   {
     id: "pet-world-resort",
-    title: "AVC Pet World Luxury Boarding & Resort",
-    subtitle: "Sector 87 Luxury Haven",
+    title: "AVC Pet World",
+    subtitle: "Boarding",
     description:
-      "A peaceful oasis opposite Ansal Heights featuring air-conditioned suites, expansive agility play zones, a pet swimming pool, and continuous veterinary supervision.",
+      "Boarding and pet-care services are available at Sector 87, with play areas and a swimming pool.",
     highlights: [
       "Spacious climate-controlled private suites",
       "Agility play lawns & splash swimming pool",
@@ -158,7 +137,6 @@ export const FACILITIES_SHOWCASE: FacilityDetail[] = [
       "24/7 CCTV surveillance & daily photo updates",
     ],
     image: "/images/facility-pet-resort-boarding.jpg",
-    badge: "Luxury Boarding & Daycare",
     campus: "Sector 87 Pet World Resort",
   },
 ];
@@ -171,9 +149,8 @@ export const VETERINARY_TEAM: DoctorProfile[] = [
     qualifications: "B.V.Sc & A.H., M.I.S.V.S.",
     experience: "12+ Years Experience",
     specialty: "Advanced Orthopedic & Soft-Tissue Surgery",
-    bio: "Pioneered trauma triage and surgical standards in Gurugram, having conducted thousands of life-saving operations with gentle empathy.",
+    bio: "Veterinary surgeon with experience in orthopedic and soft-tissue surgery.",
     image: "/images/doctor-hardeep-cutout.png",
-    stats: { label: "Surgeries Performed", value: "3,800+" },
   },
   {
     id: "dr-internal-medicine",
@@ -182,9 +159,8 @@ export const VETERINARY_TEAM: DoctorProfile[] = [
     qualifications: "B.V.Sc & A.H., M.V.Sc (Medicine)",
     experience: "8+ Years Experience",
     specialty: "Canine & Feline Nephrology & Endocrinology",
-    bio: "Specializes in chronic disease management, feline geriatrics, renal therapeutics, and precision diagnostics.",
+    bio: "Works in internal medicine, renal care, endocrine disorders, and feline medicine.",
     image: "/images/doctor-dr-hardeep-with-cat.jpg",
-    stats: { label: "Cases Managed", value: "2,200+" },
   },
   {
     id: "dr-emergency-icu",
@@ -193,46 +169,40 @@ export const VETERINARY_TEAM: DoctorProfile[] = [
     qualifications: "B.V.Sc & A.H., Emergency Medicine Fellow",
     experience: "6+ Years Experience",
     specialty: "Trauma Management & Critical Care ICU",
-    bio: "Leads our 24/7 emergency unit, specializing in acute poisonings, polytrauma resuscitation, and cardiopulmonary support.",
+    bio: "Provides emergency and critical care, including trauma management and resuscitation.",
     image: "/images/doctor-dr-hardeep-opd-consult.jpg",
-    stats: { label: "Emergency Interventions", value: "1,500+" },
   },
 ];
 
 export const MILESTONES_TIMELINE: MilestoneTimeline[] = [
   {
     year: "2012 - 2021",
-    title: "Foundation of Clinical Mastery",
+    title: "Clinical work in Delhi-NCR",
     description:
-      "Over a decade of surgical, diagnostic, and emergency leadership in premier veterinary practices across Delhi-NCR.",
-    badge: "Clinical Foundations",
+      "Dr. Beniwal worked in veterinary practices across the region, focusing on surgery, diagnostics, and emergency care.",
   },
   {
     year: "2022",
-    title: "Launch of AVC Multispeciality Hospital",
+    title: "AVC opens in Sector 90",
     description:
-      "Established the flagship Sector 90 hospital with Gurugram's most modern modular OT, IDEXX lab, and 24/7 emergency unit.",
-    badge: "Hospital Launch",
+      "The hospital opened with an operating theatre, in-house diagnostics, and 24/7 emergency care.",
   },
   {
     year: "2023",
-    title: "Dedicated Cat Care OPD & ICU Expansion",
+    title: "Cat Care OPD and ICU expansion",
     description:
-      "Introduced a specialized stress-free feline outpatient suite and doubled ICU critical care capacity.",
-    badge: "Feline Wing & ICU",
+      "AVC added a dedicated cat-care space and expanded ICU capacity.",
   },
   {
     year: "2024",
-    title: "Inauguration of AVC Pet World Resort",
+    title: "AVC Pet World opens in Sector 87",
     description:
-      "Opened our expansive Sector 87 luxury boarding, agility play garden, and swimming pool complex opposite Ansal Heights.",
-    badge: "Resort Extension",
+      "The Sector 87 location offers boarding, play areas, and a swimming pool.",
   },
   {
     year: "Today",
-    title: "Trusted by 2,500+ Pet Families",
+    title: "Veterinary care across two locations",
     description:
-      "Over 4,200 surgeries completed with industry-leading success rates and 24/7 continuous veterinary care.",
-    badge: "Excellence in Care",
+      "AVC provides emergency, surgical, diagnostic, and routine veterinary care in Gurugram.",
   },
 ];
