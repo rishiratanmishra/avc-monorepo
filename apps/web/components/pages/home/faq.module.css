@@ -1,31 +1,19 @@
-/* ==========================================================================
-   FAQ SECTION — Minimalist 2-Column Split
-   Editorial sticky anchor, 24/7 support card, and clean accordion list.
-   ========================================================================== */
-
 .section {
   padding: 88px 0;
   background-color: #ffffff;
-  border-top: 1px solid #f1f5f9;
 }
 
-/* 2-Column Grid Layout */
 .layoutGrid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
-  gap: 64px;
+  gap: 56px;
   align-items: flex-start;
 }
 
-/* --------------------------------------------------------------------------
-   LEFT COLUMN: Header & Quick Support Card (Sticky on Desktop)
-   -------------------------------------------------------------------------- */
 .leftCol {
-  position: sticky;
-  top: 96px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 
 .headerGroup {
@@ -34,91 +22,43 @@
   gap: 12px;
 }
 
-.eyebrowPill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  background-color: #eaf3fb;
-  border: 1px solid #d4e7f7;
-  color: #1b75bb;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  width: fit-content;
-}
-
-.pillIcon {
-  color: #1b75bb;
-}
-
 .title {
   font-size: clamp(24px, 2.5vw, 34px);
-  font-weight: 800;
-  color: #0f2942;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
   letter-spacing: -0.02em;
   line-height: 1.25;
   margin: 0;
 }
 
 .subtitle {
-  font-size: 14.5px;
+  font-size: 15px;
   line-height: 1.6;
-  color: #52637a;
+  color: var(--md-sys-color-on-surface-variant);
   margin: 0;
-  font-weight: 450;
 }
 
-/* 24/7 Support Card */
 .supportCard {
-  background-color: #f0f7fc;
-  border: 1px solid #d4e7f7;
-  border-radius: 20px;
-  padding: 24px;
+  border-top: 1px solid var(--md-sys-color-outline);
+  border-bottom: 1px solid var(--md-sys-color-outline);
+  padding: 18px 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 4px 16px rgba(27, 117, 187, 0.04);
+  gap: 10px;
 }
 
 .supportTitle {
   font-size: 17px;
-  font-weight: 800;
-  color: #0f2942;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
   margin: 0;
-  letter-spacing: -0.01em;
 }
 
 .supportDesc {
-  font-size: 13px;
-  line-height: 1.55;
-  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--md-sys-color-on-surface-variant);
   margin: 0;
-}
-
-.supportMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px 0 4px;
-  border-top: 1px solid #e1effa;
-  border-bottom: 1px solid #e1effa;
-}
-
-.metaRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: #52637a;
-  font-weight: 500;
-}
-
-.metaIcon {
-  color: #1b75bb;
-  flex-shrink: 0;
 }
 
 .callSupportBtn {
@@ -126,27 +66,21 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 18px;
-  border-radius: 9999px;
-  background-color: #1b75bb;
+  width: fit-content;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background-color: var(--md-sys-color-primary);
   color: #ffffff;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(27, 117, 187, 0.2);
-  margin-top: 2px;
+  transition: background-color 0.2s ease;
 }
 
 .callSupportBtn:hover {
-  background-color: #155d96;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(27, 117, 187, 0.3);
+  background-color: var(--md-sys-color-primary-hover);
 }
 
-/* --------------------------------------------------------------------------
-   RIGHT COLUMN: Clean Minimalist Accordion List
-   -------------------------------------------------------------------------- */
 .rightCol {
   display: flex;
   flex-direction: column;
@@ -158,9 +92,8 @@
 }
 
 .accordionItem {
-  border-bottom: 1px solid #e8eef4;
+  border-bottom: 1px solid var(--md-sys-color-outline);
   padding: 20px 0;
-  transition: all 0.2s ease;
 }
 
 .accordionItem:first-child {
@@ -182,49 +115,39 @@
 
 .questionText {
   font-size: 16px;
-  font-weight: 700;
-  color: #0f2942;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
   letter-spacing: -0.01em;
   line-height: 1.4;
   transition: color 0.2s ease;
 }
 
 .triggerBtn:hover .questionText {
-  color: #1b75bb;
+  color: var(--md-sys-color-primary);
 }
 
 .itemOpen .questionText {
-  color: #1b75bb;
+  color: var(--md-sys-color-primary);
 }
 
 .iconCircle {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background-color: #f1f5f9;
-  color: #64748b;
+  width: 24px;
+  height: 24px;
+  color: var(--md-sys-color-on-surface-variant);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all 0.22s ease;
-}
-
-.triggerBtn:hover .iconCircle {
-  background-color: #e2e8f0;
-  color: #0f2942;
+  transition: color 0.2s ease;
 }
 
 .itemOpen .iconCircle {
-  background-color: #1b75bb;
-  color: #ffffff;
+  color: var(--md-sys-color-primary);
 }
 
-/* Accordion Smooth Content Collapse/Expand */
 .contentWrapper {
   overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.25s ease;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
 }
 
 .collapsed {
@@ -245,14 +168,10 @@
 .answerText {
   font-size: 14px;
   line-height: 1.65;
-  color: #475569;
+  color: var(--md-sys-color-on-surface-variant);
   margin: 0;
-  font-weight: 450;
 }
 
-/* --------------------------------------------------------------------------
-   Responsive Design
-   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .section {
     padding: 64px 0;
@@ -261,10 +180,6 @@
   .layoutGrid {
     grid-template-columns: 1fr;
     gap: 44px;
-  }
-
-  .leftCol {
-    position: static;
   }
 
   .title {
@@ -286,8 +201,7 @@
   }
 
   .supportCard {
-    padding: 20px;
-    border-radius: 16px;
+    padding: 18px 0;
   }
 
   .questionText {
