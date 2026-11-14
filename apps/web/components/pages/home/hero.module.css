@@ -162,7 +162,7 @@
   width: 440px;
   height: 440px;
   border-radius: 50%;
-  background-color: #dbeafe;
+  background-color: var(--md-sys-color-primary-container);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,7 +177,7 @@
   width: 350px;
   height: 350px;
   border-radius: 50%;
-  background-color: #93c5fd;
+  background-color: #cde4f7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,7 +187,7 @@
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1b75bb 0%, #155e96 100%);
+  background-color: var(--md-sys-color-primary);
 }
 
 .subjectWrapper {
@@ -208,7 +208,7 @@
   object-fit: contain;
   object-position: center bottom;
   transform: translateY(-75px) scale(1.08);
-  filter: drop-shadow(0 16px 28px rgba(43, 37, 32, 0.2));
+  filter: drop-shadow(0 16px 28px rgba(43, 37, 32, 0.16));
   display: block;
 }
 
@@ -219,51 +219,50 @@
   transform: translateX(-50%);
   z-index: 4;
   background-color: #ffffff;
-  border-radius: 9999px;
-  padding: 8px 20px 8px 12px;
-  box-shadow: 0 14px 35px rgba(27, 117, 187, 0.16);
-  border: 1px solid rgba(27, 117, 187, 0.12);
+  border-radius: var(--radius-full);
+  padding: 8px 18px 8px 10px;
+  border: 1px solid var(--md-sys-color-outline);
+  box-shadow: 0 4px 14px rgba(27, 117, 187, 0.12);
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   white-space: nowrap;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .doctorNameplateCard:hover {
   transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 16px 36px rgba(27, 117, 187, 0.22);
+  box-shadow: 0 6px 18px rgba(27, 117, 187, 0.18);
 }
 
 .doctorBadgeIcon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1b75bb 0%, #125285 100%);
+  background-color: var(--md-sys-color-primary);
   display: grid;
   place-items: center;
-  font-size: 19px;
+  font-size: 18px;
   color: #ffffff;
   flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(27, 117, 187, 0.3);
 }
 
 .doctorBadgeSvg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   color: #ffffff;
 }
 
 .doctorName {
   font-size: 13.5px;
   font-weight: 700;
-  color: #1e2229;
+  color: var(--md-sys-color-on-surface);
   line-height: 1.2;
 }
 
 .doctorRole {
   font-size: 11px;
-  color: #147d73;
+  color: var(--md-sys-color-primary);
   font-weight: 600;
   line-height: 1.2;
 }

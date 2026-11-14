@@ -1,164 +1,218 @@
 .section {
-  padding: 5.5rem 0;
-  background-color: #ffffff;
+  padding: 72px 0;
+  background-color: var(--md-sys-color-surface);
+  border-top: 1px solid var(--md-sys-color-outline);
 }
 
 .header {
+  max-width: 720px;
+  margin: 0 auto 44px;
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto 3.5rem;
 }
 
-.tagWrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.9rem;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 9999px;
-  color: #166534;
-  font-size: 0.8125rem;
-  font-weight: 700;
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--md-sys-color-primary);
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-}
-
-.tagIcon {
-  color: #16a34a;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #0f172a;
+  margin: 0 0 12px;
+  color: var(--md-sys-color-on-surface);
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 700;
   line-height: 1.25;
-  letter-spacing: -0.025em;
-  margin-bottom: 1.2rem;
 }
 
-@media (min-width: 768px) {
-  .title {
-    font-size: 2.6rem;
-  }
+.titleHighlight {
+  color: var(--md-sys-color-primary);
 }
 
 .description {
-  font-size: 1.0625rem;
-  color: #64748b;
-  line-height: 1.65;
   margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.processGrid {
+/* Timeline Wrapper */
+.timelineWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.timelineGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.75rem;
+  gap: 20px;
+  position: relative;
 }
 
 @media (min-width: 640px) {
-  .processGrid {
+  .timelineGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .processGrid {
+  .timelineGrid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
 }
 
+.stepCol {
+  position: relative;
+  display: flex;
+}
+
+/* Step Card */
 .stepCard {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 1.5rem;
-  padding: 2rem 1.75rem;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  padding: 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   position: relative;
-  overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .stepCard:hover {
-  background: #ffffff;
-  border-color: #cbd5e1;
-  transform: translateY(-4px);
-  box-shadow: 0 16px 35px -10px rgba(15, 23, 42, 0.08);
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 8px 24px rgba(27, 117, 187, 0.08);
+  transform: translateY(-2px);
 }
 
-.stepHeader {
+/* Card Header: Number + Icon + Flow Arrow */
+.stepCardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 18px;
 }
 
-.stepNumber {
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: #0f766e;
-  line-height: 1;
-}
-
-.stepHighlight {
-  display: inline-flex;
+.stepBadgeGroup {
+  display: flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #0f766e;
-  background: #ccfbf1;
-  padding: 0.25rem 0.55rem;
-  border-radius: 0.35rem;
+  gap: 10px;
 }
 
-.checkIcon {
-  color: #0d9488;
+.stepNumberBadge {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+  background-color: var(--md-sys-color-primary);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  letter-spacing: -0.02em;
 }
 
-.stepBody {
+.iconCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-primary);
+  display: grid;
+  place-items: center;
+}
+
+.flowArrow {
+  color: var(--md-sys-color-outline);
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .flowArrow {
+    display: flex;
+    align-items: center;
+    color: var(--md-sys-color-on-surface-variant);
+    opacity: 0.5;
+  }
+}
+
+/* Card Body */
+.stepCardBody {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
-.stepSubtitle {
-  display: block;
-  font-size: 0.75rem;
+.stepPhaseTag {
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #64748b;
-  margin-bottom: 0.35rem;
+  letter-spacing: 0.06em;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 4px;
 }
 
 .stepTitle {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #0f172a;
-  line-height: 1.35;
-  margin: 0 0 0.85rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.3;
+  margin: 0 0 4px;
+}
+
+.stepSubtitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 10px;
+  display: block;
 }
 
 .stepDesc {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: #475569;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--md-sys-color-on-surface-variant);
   margin: 0;
 }
 
-.progressLine {
-  margin-top: 1.75rem;
-  height: 3px;
-  width: 32px;
-  background: #cbd5e1;
-  border-radius: 2px;
-  transition: all 0.25s ease;
+/* Card Footer: Highlight Benefit Pill */
+.stepCardFooter {
+  padding-top: 14px;
+  border-top: 1px solid var(--md-sys-color-outline);
 }
 
-.stepCard:hover .progressLine {
-  width: 60px;
-  background: #0d9488;
+.highlightPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline);
+  padding: 4px 9px;
+  border-radius: var(--radius-full);
+  width: 100%;
+}
+
+.checkIcon {
+  color: var(--md-sys-color-primary);
+  flex-shrink: 0;
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .stepCard {
+    padding: 18px;
+  }
 }

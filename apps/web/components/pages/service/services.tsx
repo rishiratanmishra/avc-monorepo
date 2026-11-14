@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "../../layout/container";
 import { CORE_SERVICES, HOSPITAL_INFO } from "../../../constants";
 import {
@@ -17,6 +18,7 @@ import {
   PhoneCall,
   Check,
   Cpu,
+  ArrowUpRight,
 } from "lucide-react";
 import styles from "./services.module.css";
 
@@ -243,7 +245,12 @@ export const Services: React.FC = () => {
         {/* Carousel Track with Image Cards */}
         <div className={styles.carousel} ref={carouselRef}>
           {CORE_SERVICES.map((service) => (
-            <div key={service.id} className={styles.card}>
+            <Link
+              href="/services"
+              key={service.id}
+              className={styles.card}
+              title={`Explore ${service.title}`}
+            >
               <div className={styles.cardVisual}>
                 {service.image && (
                   <Image
@@ -258,9 +265,17 @@ export const Services: React.FC = () => {
               </div>
 
               <div className={styles.cardContent}>
+                <span className={styles.cardCategory}>Clinical Department</span>
                 <h3 className={styles.cardTitle}>{service.title}</h3>
               </div>
-            </div>
+
+              <div className={styles.actionBtn} aria-hidden="true">
+                <ArrowUpRight
+                  size={16}
+                  className={styles.actionArrow}
+                />
+              </div>
+            </Link>
           ))}
         </div>
 
@@ -275,7 +290,7 @@ export const Services: React.FC = () => {
                 What Medical Conditions Does AVC Treat?
               </h3>
               <p className={styles.directorySubtitle}>
-                Choose a department to see conditions treated, procedures, and available equipment.
+                Select a department below to view specific diseases treated and in-house clinical infrastructure.
               </p>
             </div>
           </div>
@@ -294,7 +309,7 @@ export const Services: React.FC = () => {
                   onClick={() => setActiveDept(idx)}
                   className={`${styles.deptTabBtn} ${isActive ? styles.deptTabBtnActive : ""}`}
                 >
-                  <Icon size={16} aria-hidden="true" className={styles.deptTabIcon} />
+                  <Icon size={15} aria-hidden="true" className={styles.deptTabIcon} />
                   <span>{dept.name}</span>
                 </button>
               );
@@ -310,45 +325,43 @@ export const Services: React.FC = () => {
               </div>
               <p className={styles.deptDesc}>{currentDept.description}</p>
 
-              <h4 className={styles.conditionsHeading}>Common Conditions &amp; Illnesses Treated:</h4>
+              <h4 className={styles.conditionsHeading}>Common Conditions Treated:</h4>
               <div className={styles.conditionsGrid}>
                 {currentDept.conditions.map((item) => (
-                  <div key={item.name} className={styles.conditionItem}>
-                    <div className={styles.conditionCheck} aria-hidden="true">
-                      <Check size={13} strokeWidth={2.5} />
-                    </div>
-                    <div className={styles.conditionText}>
-                      <strong className={styles.conditionName}>{item.name}</strong>
-                      <p className={styles.conditionDetail}>{item.detail}</p>
-                    </div>
+                  <div key={item.name} className={styles.conditionChip}>
+                    <span className={styles.chipBullet} aria-hidden="true" />
+                    <span className={styles.conditionName}>{item.name}</span>
                   </div>
                 ))}
               </div>
+
+              <Link href="/services" className={styles.exploreServiceLink}>
+                <span>View full diagnostic &amp; surgical protocols on Services Page &rarr;</span>
+              </Link>
             </div>
 
             {/* Right Side: Hospital Equipment & Direct CTA */}
             <div className={styles.equipmentCol}>
               <div className={styles.equipmentBox}>
                 <div className={styles.equipmentBoxHeader}>
-                  <Cpu size={16} className={styles.equipIcon} aria-hidden="true" />
+                  <Cpu size={15} className={styles.equipIcon} aria-hidden="true" />
                   <h4 className={styles.equipmentTitle}>In-House Clinical Infrastructure:</h4>
                 </div>
-                <ul className={styles.equipmentList}>
+                <div className={styles.equipmentTags}>
                   {currentDept.equipment.map((eq) => (
-                    <li key={eq} className={styles.equipmentItem}>
-                      <span className={styles.bulletDot} aria-hidden="true" />
-                      <span>{eq}</span>
-                    </li>
+                    <span key={eq} className={styles.equipmentTag}>
+                      {eq}
+                    </span>
                   ))}
-                </ul>
+                </div>
               </div>
 
               <div className={styles.deptActionBox}>
                 <span className={styles.deptHospitalNote}>
-                  Sector 90 Hospital • Experienced Veterinary Doctors on Duty
+                  Sector 90 Multi-Speciality Hospital · Doctors on Duty 24/7
                 </span>
                 <a href={currentDept.ctaLink} className={styles.deptCtaBtn}>
-                  <PhoneCall size={15} aria-hidden="true" />
+                  <PhoneCall size={14} aria-hidden="true" />
                   <span>{currentDept.ctaText}</span>
                 </a>
               </div>

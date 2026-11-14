@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Container } from "../../layout/container";
 import { TRIAGE_GUIDE } from "../../../constants/services-info";
-import { AlertTriangle, Clock, ArrowRight, PhoneCall, ShieldAlert, CheckCircle } from "lucide-react";
+import { AlertTriangle, Clock, ArrowRight, PhoneCall } from "lucide-react";
 import styles from "./triage-guide.module.css";
 
 export const TriageGuide: React.FC = () => {
@@ -10,13 +10,10 @@ export const TriageGuide: React.FC = () => {
     <section className={styles.section} id="triage-guide" aria-labelledby="triage-title">
       <Container>
         <div className={styles.header}>
-          <div className={styles.tagWrap}>
-            <ShieldAlert className={styles.tagIcon} size={16} />
-            <span>Symptom Triage Guide</span>
-          </div>
+          <span className={styles.eyebrow}>Symptom Triage Guide</span>
 
           <h2 id="triage-title" className={styles.title}>
-            When Should You Bring Your Pet In?
+            When should you bring your pet in?
           </h2>
 
           <p className={styles.description}>
@@ -35,9 +32,9 @@ export const TriageGuide: React.FC = () => {
                 <div className={styles.cardHeader}>
                   <div className={styles.iconBadge}>
                     {isEmergency ? (
-                      <AlertTriangle size={24} className={styles.emergencyIcon} />
+                      <AlertTriangle size={20} className={styles.emergencyIcon} aria-hidden="true" />
                     ) : (
-                      <Clock size={24} className={styles.routineIcon} />
+                      <Clock size={20} className={styles.routineIcon} aria-hidden="true" />
                     )}
                   </div>
                   <div>
@@ -53,12 +50,12 @@ export const TriageGuide: React.FC = () => {
                   <ul className={styles.symptomList}>
                     {col.symptoms.map((symptom, idx) => (
                       <li key={idx} className={styles.symptomItem}>
-                        <div
+                        <span
                           className={isEmergency ? styles.alertDot : styles.checkDot}
                           aria-hidden="true"
                         >
                           {isEmergency ? "!" : "✓"}
-                        </div>
+                        </span>
                         <span>{symptom}</span>
                       </li>
                     ))}
@@ -66,20 +63,20 @@ export const TriageGuide: React.FC = () => {
                 </div>
 
                 <div className={styles.recommendationBox}>
-                  <strong>Action Required:</strong>
-                  <p>{col.recommendedAction}</p>
+                  <strong className={styles.recommendationTitle}>Action Required:</strong>
+                  <p className={styles.recommendationText}>{col.recommendedAction}</p>
                 </div>
 
                 <div className={styles.cardFooter}>
                   {isEmergency ? (
                     <a href={col.actionHref} className={styles.emergencyActionBtn}>
-                      <PhoneCall size={16} />
+                      <PhoneCall size={15} aria-hidden="true" />
                       <span>{col.actionText}</span>
                     </a>
                   ) : (
                     <Link href={col.actionHref} className={styles.routineActionBtn}>
                       <span>{col.actionText}</span>
-                      <ArrowRight size={16} />
+                      <ArrowRight size={15} aria-hidden="true" />
                     </Link>
                   )}
                 </div>

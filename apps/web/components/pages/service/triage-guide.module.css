@@ -1,68 +1,51 @@
 .section {
-  padding: 5.5rem 0;
-  background-color: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 72px 0;
+  background-color: #ffffff;
+  border-top: 1px solid var(--md-sys-color-outline);
+  border-bottom: 1px solid var(--md-sys-color-outline);
 }
 
 .header {
+  max-width: 720px;
+  margin: 0 auto 36px;
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto 3.5rem;
 }
 
-.tagWrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.9rem;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  border-radius: 9999px;
-  color: #991b1b;
-  font-size: 0.8125rem;
-  font-weight: 700;
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--md-sys-color-primary);
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-}
-
-.tagIcon {
-  color: #dc2626;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #0f172a;
+  margin: 0 0 12px;
+  color: var(--md-sys-color-on-surface);
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 700;
   line-height: 1.25;
-  letter-spacing: -0.025em;
-  margin-bottom: 1.2rem;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 2.6rem;
-  }
 }
 
 .description {
-  font-size: 1.0625rem;
-  color: #64748b;
-  line-height: 1.65;
   margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* 2-Column Triage Grid */
 .triageGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  max-width: 1040px;
+  gap: 24px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 768px) {
   .triageGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -71,34 +54,31 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border-radius: 1.5rem;
-  padding: 2.25rem;
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
-  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 28px;
+  border: 1px solid var(--md-sys-color-outline);
 }
 
 .emergencyCard {
-  border-color: #fca5a5;
-  background: linear-gradient(180deg, #fff5f5 0%, #ffffff 25%);
+  border-top: 3px solid #dc2626;
 }
 
 .routineCard {
-  border-color: #bbf7d0;
-  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 25%);
+  border-top: 3px solid var(--md-sys-color-primary);
 }
 
 .cardHeader {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 1.75rem;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
 .iconBadge {
-  width: 52px;
-  height: 52px;
-  border-radius: 1rem;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,57 +86,55 @@
 }
 
 .emergencyCard .iconBadge {
-  background: #fee2e2;
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.routineCard .iconBadge {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
 }
 
 .emergencyIcon {
   color: #dc2626;
 }
 
-.routineCard .iconBadge {
-  background: #dcfce7;
-}
-
 .routineIcon {
-  color: #15803d;
+  color: var(--md-sys-color-primary);
 }
 
 .timeframe {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.25rem;
-}
-
-.emergencyCard .timeframe {
-  color: #dc2626;
-}
-
-.routineCard .timeframe {
-  color: #15803d;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 2px;
 }
 
 .cardTitle {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #0f172a;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
   margin: 0;
 }
 
+/* Symptoms Box */
 .symptomsBox {
-  margin-bottom: 1.5rem;
+  background-color: var(--md-sys-color-surface);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 18px;
   flex-grow: 1;
 }
 
 .symptomsHeading {
-  font-size: 0.8125rem;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #0f172a;
-  margin: 0 0 1rem;
+  color: var(--md-sys-color-on-surface);
+  margin: 0 0 10px;
 }
 
 .symptomList {
@@ -165,125 +143,117 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 8px;
 }
 
 .symptomItem {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  color: #334155;
+  gap: 8px;
+  font-size: 13.5px;
   line-height: 1.5;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.alertDot,
+.checkDot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .alertDot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fee2e2;
+  background-color: #fee2e2;
   color: #dc2626;
-  font-size: 0.75rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
 }
 
 .checkDot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #dcfce7;
-  color: #15803d;
-  font-size: 0.75rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
 }
 
+/* Recommendation Box */
 .recommendationBox {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 1rem;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.75rem;
-  font-size: 0.8125rem;
-  line-height: 1.6;
+  margin-bottom: 22px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
 }
 
-.emergencyCard .recommendationBox {
-  background: #fef2f2;
-  border-color: #fee2e2;
-  color: #7f1d1d;
-}
-
-.routineCard .recommendationBox {
-  background: #f0fdf4;
-  border-color: #dcfce7;
-  color: #14532d;
-}
-
-.recommendationBox strong {
+.recommendationTitle {
   display: block;
-  margin-bottom: 0.25rem;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 2px;
 }
 
-.recommendationBox p {
+.recommendationText {
+  font-size: 13px;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.5;
   margin: 0;
 }
 
+/* Card Footer Actions */
 .cardFooter {
   margin-top: auto;
 }
 
-.emergencyActionBtn {
-  display: flex;
+.emergencyActionBtn,
+.routineActionBtn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 8px;
   width: 100%;
-  padding: 0.95rem 1.5rem;
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  color: #ffffff;
-  border-radius: 0.75rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.emergencyActionBtn {
+  background-color: #dc2626;
+  border: 1px solid #dc2626;
+  color: #ffffff;
 }
 
 .emergencyActionBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.45);
+  background-color: #b91c1c;
+  border-color: #b91c1c;
   color: #ffffff;
 }
 
 .routineActionBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  padding: 0.95rem 1.5rem;
-  background: #0f766e;
-  color: #ffffff;
-  border-radius: 0.75rem;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.3);
-  transition: all 0.2s ease;
+  background-color: var(--md-sys-color-primary);
+  border: 1px solid var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
 }
 
 .routineActionBtn:hover {
-  background: #0d9488;
-  transform: translateY(-2px);
-  color: #ffffff;
+  background-color: var(--md-sys-color-primary-hover);
+  border-color: var(--md-sys-color-primary-hover);
+  color: var(--md-sys-color-on-primary);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .card {
+    padding: 20px;
+  }
 }

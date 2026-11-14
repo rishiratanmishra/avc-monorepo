@@ -10,7 +10,7 @@ import {
   CareProcess,
   ServicesFaq,
 } from "../../components/pages/service";
-import { Campuses, EmergencyBanner } from "../../components/pages/home";
+import { Campuses, Testimonials } from "../../components/pages/home";
 
 export const metadata: Metadata = {
   title: "Veterinary Services | AVC Multispeciality Pet Hospital Gurugram",
@@ -27,9 +27,9 @@ export default function ServicesPage() {
         <ServicesCatalog />
         <TriageGuide />
         <CareProcess />
-        <ServicesFaq />
         <Campuses />
-        <EmergencyBanner />
+        <Testimonials />
+        <ServicesFaq />
       </main>
       <Footer />
       <MobileActionBar />

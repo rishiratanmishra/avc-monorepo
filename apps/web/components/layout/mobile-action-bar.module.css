@@ -71,42 +71,5 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    animation: gentlePulse 2s infinite ease-in-out;
-  }
-
-  .icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .btnText {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    line-height: 1.15;
-  }
-
-  .btnSub {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    opacity: 0.88;
-  }
-
-  .btnMain {
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
-  @keyframes gentlePulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.15);
-    }
   }
 }
