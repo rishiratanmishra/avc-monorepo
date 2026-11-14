@@ -187,18 +187,16 @@
 }
 
 .directoryEyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: #1b75bb;
 }
 
 .directoryTitle {
   font-size: clamp(22px, 2.2vw, 28px);
-  font-weight: 800;
+  font-weight: 700;
   color: #0f2942;
-  letter-spacing: -0.015em;
   line-height: 1.25;
   margin: 0;
 }
@@ -231,16 +229,16 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
-  border-radius: 9999px;
+  padding: 9px 14px;
+  border-radius: 6px;
   background-color: #f1f5f9;
   border: 1px solid #e2e8f0;
   color: #64748b;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   flex-shrink: 0;
 }
 
@@ -250,26 +248,25 @@
 }
 
 .deptTabBtnActive {
-  background-color: #1b75bb;
-  border-color: #1b75bb;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(27, 117, 187, 0.28);
+  background-color: #eaf3fb;
+  border-color: #b7d5ed;
+  color: #155d96;
+  font-weight: 600;
 }
 
 .deptTabBtnActive .deptTabIcon {
-  color: #ffffff;
+  color: #155d96;
 }
 
 /* Department Details Card */
 .deptCard {
   background-color: #ffffff;
   border: 1px solid #e8eef4;
-  border-radius: 24px;
-  padding: 36px;
+  border-radius: 12px;
+  padding: 30px;
   display: grid;
   grid-template-columns: 1.35fr 0.95fr;
-  gap: 40px;
-  box-shadow: 0 4px 20px rgba(15, 41, 66, 0.04);
+  gap: 32px;
 }
 
 /* Left: Conditions Treated */
@@ -285,10 +282,8 @@
 }
 
 .deptTagline {
-  font-size: 11.5px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
   color: #1b75bb;
 }
 
@@ -362,7 +357,7 @@
 .equipmentBox {
   background-color: #f8fafc;
   border: 1px solid #e8eef4;
-  border-radius: 18px;
+  border-radius: 8px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -425,25 +420,32 @@
 }
 
 .deptCtaBtn {
+  align-self: flex-start;
   display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 11px 20px;
-  border-radius: 9999px;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
   background-color: #1b75bb;
   color: #ffffff;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 14px rgba(27, 117, 187, 0.25);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .deptCtaBtn:hover {
   background-color: #155d96;
+  box-shadow: 0 2px 6px rgba(27, 117, 187, 0.2);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(27, 117, 187, 0.35);
+}
+
+.deptCtaBtn:focus-visible {
+  outline: 2px solid #155d96;
+  outline-offset: 2px;
 }
 
 /* Responsive */
@@ -477,6 +479,5 @@
 
   .deptCard {
     padding: 20px;
-    border-radius: 20px;
   }
 }

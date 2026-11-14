@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "./container";
 import { HOSPITAL_INFO } from "../../constants";
-import { PhoneCall, Calendar, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import { PhoneCall, Clock, ArrowUpRight } from "lucide-react";
 import styles from "./footer.module.css";
 
 const GOOGLE_G_ICON = (
@@ -30,17 +30,17 @@ const GOOGLE_G_ICON = (
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer} id="contact">
-      {/* 1. Pre-Footer Reassurance Banner */}
+      {/* Emergency and routine care */}
       <div className={styles.preFooter}>
         <Container>
           <div className={styles.preFooterCard}>
             <div className={styles.preFooterContent}>
-              <span className={styles.preFooterTag}>AVC Multi-Speciality Care</span>
+              <span className={styles.preFooterTag}>AVC Pet Hospital</span>
               <h2 className={styles.preFooterTitle}>
-                Ready to give your pet the best medical care in Gurugram?
+                Emergency and routine veterinary care in Gurugram
               </h2>
               <p className={styles.preFooterDesc}>
-                Our Sector 90 Trauma ICU is fully staffed by surgeons and critical care nurses day and night. No prior appointment is required for emergencies.
+                Emergency care is available at our Sector 90 hospital, 24 hours a day. No appointment is needed for emergencies.
               </p>
             </div>
 
@@ -53,11 +53,11 @@ export const Footer: React.FC = () => {
                 </div>
               </a>
 
-              <a href="#services" className={styles.consultCtaBtn}>
-                <Calendar size={16} aria-hidden="true" />
+              <a href="#services" className={styles.servicesCtaBtn}>
+                <ArrowUpRight size={16} aria-hidden="true" />
                 <div className={styles.btnTextGroup}>
                   <span className={styles.btnSmallText}>Routine OPD &amp; Resort</span>
-                  <strong className={styles.btnMainText}>Book Consultation</strong>
+                  <strong className={styles.btnMainText}>View services</strong>
                 </div>
               </a>
             </div>

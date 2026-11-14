@@ -270,12 +270,12 @@ export const Services: React.FC = () => {
         <div className={styles.clinicalDirectory}>
           <div className={styles.directoryHeader}>
             <div className={styles.directoryTitleGroup}>
-              <span className={styles.directoryEyebrow}>CONDITIONS &amp; SPECIALTIES TREATED</span>
+              <span className={styles.directoryEyebrow}>Conditions &amp; specialties treated</span>
               <h3 className={styles.directoryTitle}>
                 What Medical Conditions Does AVC Treat?
               </h3>
               <p className={styles.directorySubtitle}>
-                Select a department below to view specific diseases, surgical procedures, and in-house diagnostic infrastructure.
+                Choose a department to see conditions treated, procedures, and available equipment.
               </p>
             </div>
           </div>
