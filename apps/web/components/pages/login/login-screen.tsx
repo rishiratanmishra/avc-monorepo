@@ -1,21 +1,10 @@
 "use client";
 
 import { ApiError } from "@repo/api-client";
+import { ArrowLeft, ArrowRight, Lock, Mail } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState, type FormEvent } from "react";
-import {
-  ArrowRight,
-  Eye,
-  EyeOff,
-  Lock,
-  Mail,
-  ShieldCheck,
-  User,
-} from "lucide-react";
-import { Container } from "../../layout/container";
-import { Footer } from "../../layout/footer";
-import { Header } from "../../layout/header";
-import { MobileActionBar } from "../../layout/mobile-action-bar";
+import Link from "next/link";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useAuth } from "../../../contexts/auth-context";
 import styles from "../../../app/login/login.module.css";
 
@@ -52,6 +41,7 @@ function messageFor(error: unknown): string {
 export function LoginScreen({ reason }: { reason?: string }) {
   const { status, context, login, register, requestPasswordReset } = useAuth();
   const [mode, setMode] = useState<Mode>("signin");
+  const previousMode = useRef<Mode>(mode);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -60,7 +50,7 @@ export function LoginScreen({ reason }: { reason?: string }) {
   const [showPassword, setShowPassword] = useState(false);
   const [pending, setPending] = useState(false);
   const [formError, setFormError] = useState<string | null>(
-    reason ? reasonMessages[reason] ?? null : null,
+    reason ? (reasonMessages[reason] ?? null) : null,
   );
   const [notice, setNotice] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -72,8 +62,18 @@ export function LoginScreen({ reason }: { reason?: string }) {
     window.location.assign(context?.activeDestination?.path ?? "/workspace");
   }, [status, context]);
 
+  useEffect(() => {
+    if (previousMode.current === mode) {
+      return;
+    }
+    previousMode.current = mode;
+    const firstFieldId = mode === "signin" ? "email" : "firstName";
+    document.getElementById(firstFieldId)?.focus();
+  }, [mode]);
+
   function switchMode(nextMode: Mode) {
     setMode(nextMode);
+    setShowPassword(false);
     setFormError(null);
     setNotice(null);
     setFieldErrors({});
@@ -169,55 +169,79 @@ export function LoginScreen({ reason }: { reason?: string }) {
   }
 
   return (
-    <>
-      <Header />
-      <main className={styles.main}>
-        <Container>
-          <div className={styles.authWrapper}>
-            <div className={styles.authHeader}>
-              <span className={styles.eyebrow}>Secure account access</span>
-              <h1 className={styles.title}>
-                {mode === "signin" ? "Sign in to AVC" : "Create your AVC account"}
-              </h1>
-              <p className={styles.subtitle}>
-                One account for pet parents, hospital teams, and platform administration.
-              </p>
-            </div>
+    <main className={styles.page} data-auth-page="">
+      <div className={styles.layout}>
+        <aside className={styles.brandPanel} aria-labelledby="brand-title">
+          <Image
+            src="/images/doctor-dr-hardeep-opd-consult.jpg"
+            alt="AVC veterinarian examining a dog in a modern consultation room"
+            fill
+            sizes="(min-width: 992px) 50vw, 100vw"
+            priority
+            className={styles.brandImage}
+          />
+          <div className={styles.brandOverlay} aria-hidden="true" />
 
-            <div className={styles.card}>
-              <div className={styles.tabs} role="tablist" aria-label="Account access">
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={mode === "signin"}
-                  className={`${styles.tabBtn} ${mode === "signin" ? styles.tabBtnActive : ""}`}
-                  onClick={() => switchMode("signin")}
-                >
-                  Sign In
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={mode === "register"}
-                  className={`${styles.tabBtn} ${mode === "register" ? styles.tabBtnActive : ""}`}
-                  onClick={() => switchMode("register")}
-                >
-                  Create Account
-                </button>
-              </div>
+          <Link href="/" className={styles.brandLogoLink} aria-label="AVC Pet Hospital home">
+            <Image
+              src="/images/logo-avc-hospital.png"
+              alt=""
+              width={180}
+              height={44}
+              priority
+              className={styles.brandLogo}
+            />
+          </Link>
+
+          <div className={styles.brandMessage}>
+            <h1 id="brand-title" className={styles.brandTitle}>
+              Compassionate
+              <br />
+              Veterinary Care
+            </h1>
+            <p className={styles.brandSubtitle}>For your pets, at every stage of life.</p>
+          </div>
+        </aside>
+
+        <section className={styles.formPanel} aria-labelledby="form-title">
+          <div className={styles.formTop}>
+            <Link href="/" className={styles.backLink}>
+              <ArrowLeft size={14} aria-hidden="true" />
+              <span>Back to site</span>
+            </Link>
+          </div>
+
+          <div className={styles.formContent}>
+            <div className={styles.formInner}>
+              <h2 id="form-title" className={styles.formTitle}>
+                {mode === "signin" ? "Welcome Back" : "Create your account"}
+              </h2>
+              <p className={styles.formSubtitle}>
+                {mode === "signin"
+                  ? "Sign in to your AVC account"
+                  : "Manage your pet’s care, all in one place."}
+              </p>
 
               {formError ? (
-                <div className={styles.errorAlert} role="alert">
+                <div id="auth-form-error" className={styles.errorAlert} role="alert">
                   {formError}
                 </div>
               ) : null}
               {notice ? (
-                <div className={styles.noticeAlert} role="status">
+                <div id="auth-form-notice" className={styles.noticeAlert} role="status">
                   {notice}
                 </div>
               ) : null}
 
-              <form className={styles.form} onSubmit={handleSubmit} noValidate>
+              <form
+                className={styles.form}
+                onSubmit={handleSubmit}
+                noValidate
+                aria-busy={pending}
+                aria-describedby={
+                  formError ? "auth-form-error" : notice ? "auth-form-notice" : undefined
+                }
+              >
                 {mode === "register" ? (
                   <div className={styles.row}>
                     <div className={styles.field}>
@@ -226,7 +250,7 @@ export function LoginScreen({ reason }: { reason?: string }) {
                       </label>
                       <input
                         id="firstName"
-                        className={styles.inputNoIcon}
+                        className={styles.input}
                         value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
                         autoComplete="given-name"
@@ -234,7 +258,7 @@ export function LoginScreen({ reason }: { reason?: string }) {
                         aria-describedby={fieldErrors.firstName ? "firstName-error" : undefined}
                       />
                       {fieldErrors.firstName ? (
-                        <span id="firstName-error" className={styles.fieldError}>
+                        <span id="firstName-error" className={styles.fieldError} role="alert">
                           {fieldErrors.firstName}
                         </span>
                       ) : null}
@@ -245,7 +269,7 @@ export function LoginScreen({ reason }: { reason?: string }) {
                       </label>
                       <input
                         id="lastName"
-                        className={styles.inputNoIcon}
+                        className={styles.input}
                         value={lastName}
                         onChange={(event) => setLastName(event.target.value)}
                         autoComplete="family-name"
@@ -253,7 +277,7 @@ export function LoginScreen({ reason }: { reason?: string }) {
                         aria-describedby={fieldErrors.lastName ? "lastName-error" : undefined}
                       />
                       {fieldErrors.lastName ? (
-                        <span id="lastName-error" className={styles.fieldError}>
+                        <span id="lastName-error" className={styles.fieldError} role="alert">
                           {fieldErrors.lastName}
                         </span>
                       ) : null}
@@ -266,11 +290,12 @@ export function LoginScreen({ reason }: { reason?: string }) {
                     Email address <span className={styles.req}>*</span>
                   </label>
                   <div className={styles.inputWrap}>
-                    <Mail className={styles.inputIcon} size={16} aria-hidden="true" />
+                    <Mail size={16} className={styles.inputIcon} aria-hidden="true" />
                     <input
                       id="email"
                       type="email"
                       className={styles.input}
+                      placeholder="Enter your email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       autoComplete="email"
@@ -279,34 +304,23 @@ export function LoginScreen({ reason }: { reason?: string }) {
                     />
                   </div>
                   {fieldErrors.email ? (
-                    <span id="email-error" className={styles.fieldError}>
+                    <span id="email-error" className={styles.fieldError} role="alert">
                       {fieldErrors.email}
                     </span>
                   ) : null}
                 </div>
 
                 <div className={styles.field}>
-                  <div className={styles.labelRow}>
-                    <label className={styles.label} htmlFor="password">
-                      Password <span className={styles.req}>*</span>
-                    </label>
-                    {mode === "signin" ? (
-                      <button
-                        type="button"
-                        className={styles.forgotBtn}
-                        onClick={handlePasswordReset}
-                        disabled={pending}
-                      >
-                        Forgot password?
-                      </button>
-                    ) : null}
-                  </div>
+                  <label className={styles.label} htmlFor="password">
+                    Password <span className={styles.req}>*</span>
+                  </label>
                   <div className={styles.inputWrap}>
-                    <Lock className={styles.inputIcon} size={16} aria-hidden="true" />
+                    <Lock size={16} className={styles.inputIcon} aria-hidden="true" />
                     <input
                       id="password"
                       type={showPassword ? "text" : "password"}
-                      className={styles.input}
+                      className={`${styles.input} ${styles.inputWithAction}`}
+                      placeholder="Enter your password"
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                       autoComplete={mode === "signin" ? "current-password" : "new-password"}
@@ -316,17 +330,30 @@ export function LoginScreen({ reason }: { reason?: string }) {
                     />
                     <button
                       type="button"
-                      className={styles.eyeBtn}
+                      className={`${styles.textButton} ${styles.visibilityButton}`}
                       onClick={() => setShowPassword((current) => !current)}
                       aria-label={showPassword ? "Hide password" : "Show password"}
+                      aria-pressed={showPassword}
                     >
-                      {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+                      {showPassword ? "Hide" : "Show"}
                     </button>
                   </div>
                   {fieldErrors.password ? (
-                    <span id="password-error" className={styles.fieldError}>
+                    <span id="password-error" className={styles.fieldError} role="alert">
                       {fieldErrors.password}
                     </span>
+                  ) : null}
+                  {mode === "signin" ? (
+                    <div className={styles.forgotRow}>
+                      <button
+                        type="button"
+                        className={styles.textButton}
+                        onClick={handlePasswordReset}
+                        disabled={pending}
+                      >
+                        Forgot password?
+                      </button>
+                    </div>
                   ) : null}
                 </div>
 
@@ -336,11 +363,12 @@ export function LoginScreen({ reason }: { reason?: string }) {
                       Confirm password <span className={styles.req}>*</span>
                     </label>
                     <div className={styles.inputWrap}>
-                      <ShieldCheck className={styles.inputIcon} size={16} aria-hidden="true" />
+                      <Lock size={16} className={styles.inputIcon} aria-hidden="true" />
                       <input
                         id="confirmPassword"
                         type={showPassword ? "text" : "password"}
                         className={styles.input}
+                        placeholder="Re-enter your password"
                         value={confirmPassword}
                         onChange={(event) => setConfirmPassword(event.target.value)}
                         autoComplete="new-password"
@@ -351,38 +379,37 @@ export function LoginScreen({ reason }: { reason?: string }) {
                       />
                     </div>
                     {fieldErrors.confirmPassword ? (
-                      <span id="confirmPassword-error" className={styles.fieldError}>
+                      <span id="confirmPassword-error" className={styles.fieldError} role="alert">
                         {fieldErrors.confirmPassword}
                       </span>
                     ) : null}
                   </div>
                 ) : null}
 
-                <button type="submit" className={styles.submitBtn} disabled={pending}>
-                  {pending ? "Please wait…" : mode === "signin" ? "Sign In" : "Create Account"}
-                  {!pending ? <ArrowRight size={17} aria-hidden="true" /> : null}
-                </button>
+                <div className={styles.actions}>
+                  <button type="submit" className={styles.submitButton} disabled={pending}>
+                    <span>
+                      {pending ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
+                    </span>
+                    {!pending ? <ArrowRight size={16} aria-hidden="true" /> : null}
+                  </button>
+                </div>
               </form>
 
-              <div className={styles.trustNote}>
-                <Image
-                  src="/images/logo-avc-hospital.png"
-                  alt=""
-                  width={28}
-                  height={28}
-                  aria-hidden="true"
-                />
-                <span>
-                  <User size={12} aria-hidden="true" /> access is issued by the hospital. Workspace
-                  options are chosen from your account after sign-in.
-                </span>
-              </div>
+              <p className={styles.accountPrompt}>
+                {mode === "signin" ? "Don't have an account?" : "Already have an account?"}{" "}
+                <button
+                  type="button"
+                  className={styles.textButton}
+                  onClick={() => switchMode(mode === "signin" ? "register" : "signin")}
+                >
+                  {mode === "signin" ? "Create an account" : "Sign in"}
+                </button>
+              </p>
             </div>
           </div>
-        </Container>
-      </main>
-      <Footer />
-      <MobileActionBar />
-    </>
+        </section>
+      </div>
+    </main>
   );
 }

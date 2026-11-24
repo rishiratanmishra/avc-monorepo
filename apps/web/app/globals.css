@@ -5,7 +5,8 @@
 
   /* Typography Font Families */
   --font-family-heading: var(--font-heading), Georgia, serif;
-  --font-family-body: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-body:
+    var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Material 3 Font Sizes */
   --font-size-display-lg: 56px;
@@ -103,7 +104,7 @@
   --color-bg-card: var(--md-sys-color-surface-container-lowest);
   --color-border: var(--md-sys-color-outline);
   --font-sans: var(--font-family-body);
-  --font-heading: var(--font-family-heading);
+  --font-heading: "Laila", "Laila Fallback", Georgia, serif;
 
   /* Elevation / Shadows */
   --shadow-sm: 0 1px 3px rgba(43, 37, 32, 0.05);
@@ -120,6 +121,8 @@
 
   /* Layout */
   --max-width: 1200px;
+  --auth-banner-height: 28vh;
+  --auth-form-width: 37.5rem;
   --header-height: 80px;
 }
 
@@ -140,7 +143,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-family-heading);
   color: var(--md-sys-color-on-surface);
   letter-spacing: var(--tracking-tight);
@@ -182,5 +190,9 @@ img {
 @media (max-width: 768px) {
   body {
     padding-bottom: 76px;
+  }
+
+  body:has([data-auth-page]) {
+    padding-bottom: 0;
   }
 }

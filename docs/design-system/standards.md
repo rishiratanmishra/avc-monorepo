@@ -8,14 +8,14 @@ A token set exists in `apps/web/app/globals.css`. It is the current visual sourc
 
 Use tokens for all visual decisions:
 
-| Category   | Use                                                        |
-| ---------- | ---------------------------------------------------------- |
-| Color      | `--md-sys-color-*` and documented aliases in `globals.css` |
-| Typography | `--typescale-*`, `--font-family-*`, `--tracking-*`         |
-| Spacing    | `--space-*`, not arbitrary pixel values                    |
-| Radius     | `--radius-*`                                               |
-| Elevation  | `--shadow-*`                                               |
-| Layout     | `--max-width`, `--header-height`                           |
+| Category   | Use                                                                           |
+| ---------- | ----------------------------------------------------------------------------- |
+| Color      | `--md-sys-color-*` and documented aliases in `globals.css`                    |
+| Typography | `--typescale-*`, `--font-family-*`, `--tracking-*`                            |
+| Spacing    | `--space-*`, not arbitrary pixel values                                       |
+| Radius     | `--radius-*`                                                                  |
+| Elevation  | `--shadow-*`                                                                  |
+| Layout     | `--max-width`, `--auth-banner-height`, `--auth-form-width`, `--header-height` |
 
 Rules:
 
