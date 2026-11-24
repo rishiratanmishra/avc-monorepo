@@ -1,0 +1,120 @@
+.section {
+  padding: 72px 0;
+  background-color: var(--md-sys-color-surface);
+  border-top: 1px solid var(--md-sys-color-outline);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--md-sys-color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  margin: 0 0 12px;
+  color: var(--md-sys-color-on-surface);
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.titleHighlight {
+  color: var(--md-sys-color-primary);
+}
+
+.description {
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.faqList {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faqItem {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.faqItemOpen {
+  border-color: var(--md-sys-color-primary);
+}
+
+.questionBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--md-sys-color-on-surface);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  font-family: inherit;
+}
+
+.questionText {
+  flex-grow: 1;
+}
+
+.chevronIcon {
+  color: var(--md-sys-color-on-surface-variant);
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevronRotated {
+  transform: rotate(180deg);
+  color: var(--md-sys-color-primary);
+}
+
+.answerBox {
+  padding: 0 22px 18px;
+  border-top: 1px solid var(--md-sys-color-surface-container);
+}
+
+.answerText {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding: 48px 0;
+  }
+
+  .questionBtn {
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+
+  .answerBox {
+    padding: 0 18px 16px;
+  }
+}

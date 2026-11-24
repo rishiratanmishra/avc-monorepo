@@ -1,0 +1,374 @@
+.main {
+  padding: 48px 0 80px;
+  background-color: var(--md-sys-color-surface-container-low);
+  min-height: calc(100vh - 144px);
+}
+
+.topBar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 768px) {
+  .topBar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.roleBadge {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--md-sys-color-primary);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.sub {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.newWalkinBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  background-color: var(--md-sys-color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newWalkinBtn:hover {
+  background-color: var(--md-sys-color-primary-hover);
+}
+
+/* Metrics */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 992px) {
+  .metricsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.metricCard {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.mLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mValue {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
+}
+
+.mValueSuccess {
+  font-size: 20px;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.mValueAlert {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ba1a1a;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.panelCard {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.areaTag {
+  font-size: 11px;
+  font-weight: 600;
+  background-color: var(--md-sys-color-surface-container-low);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--md-sys-color-primary);
+}
+
+.queueList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.queueItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-sm);
+}
+
+.tokenTag {
+  background-color: var(--md-sys-color-primary);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.patientMeta {
+  flex-grow: 1;
+}
+
+.petName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  display: block;
+}
+
+.ownerInfo {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.inRoomPill {
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #dbeafe;
+  color: #1e40af;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.calledPill {
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.waitingPill {
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Rooms Grid */
+.roomsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .roomsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.roomCard {
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.roomHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.roomNo {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--md-sys-color-primary);
+}
+
+.statusAvail {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #166534;
+  background-color: #dcfce7;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.statusBusy {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1e40af;
+  background-color: #dbeafe;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.doctorName {
+  margin: 0 0 2px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.doctorSpecialty {
+  font-size: 11.5px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Side Column */
+.sideCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.emergencyCard {
+  background-color: #fff8f8;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.emergencyHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.emIcon {
+  color: #ba1a1a;
+}
+
+.emTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.emText {
+  margin: 0 0 14px;
+  font-size: 12.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.5;
+}
+
+.emAlertBtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #ba1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sideCard {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.sideCardTitle {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.sideCardText {
+  margin: 0 0 14px;
+  font-size: 12.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.5;
+}
+
+.callHotline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-sm);
+  color: var(--md-sys-color-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+}

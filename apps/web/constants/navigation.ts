@@ -4,8 +4,7 @@ export const NAV_LINKS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Emergency", href: "/#emergency" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const FOOTER_LINKS = {
@@ -20,6 +19,6 @@ export const FOOTER_LINKS = {
     { label: "Our Veterinarians", href: "/about#team" },
     { label: "Hospital Facilities", href: "/about#facilities" },
     { label: "Admin Portal", href: "http://localhost:3002", isExternal: true },
-    { label: "Contact Us", href: "/#contact" },
+    { label: "Contact Us", href: "/contact" },
   ],
 };

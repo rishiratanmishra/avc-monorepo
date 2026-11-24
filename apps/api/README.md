@@ -6,6 +6,11 @@ and the Drizzle/MySQL package. Authentication uses Argon2id password hashes,
 single-use hashed verification/reset tokens, database-backed sessions, secure
 cookies, role-based authorization, and audit records for admin role changes.
 
+Canonical engineering rules live in the repository root `AGENTS.md` and
+`docs/README.md`. Follow `docs/backend/api-standards.md`,
+`docs/backend/auth-rbac.md`, and `docs/security/standards.md` before extending
+this API.
+
 ## Requirements
 
 - Node.js 24 or later

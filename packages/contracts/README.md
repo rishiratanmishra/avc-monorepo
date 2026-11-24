@@ -15,6 +15,9 @@ Keep request/response contracts here so the web app and API validate against
 the same definitions. Database table definitions belong in `@repo/database`;
 avoid putting secrets or patient medical data in shared contracts.
 
+Canonical rules: `docs/backend/api-standards.md`,
+`docs/architecture/standards.md`, and `packages/contracts/AGENTS.md`.
+
 ```ts
 import { CreateLocationSchema, type Location } from "@repo/contracts";
 ```

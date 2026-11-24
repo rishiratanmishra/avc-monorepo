@@ -1,0 +1,10 @@
+node_modules
+AGENTS.md
+**/AGENTS.md
+**/.next
+**/dist
+**/build
+**/out
+**/coverage
+.turbo
+yarn.lock

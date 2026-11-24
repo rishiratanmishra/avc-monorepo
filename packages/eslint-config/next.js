@@ -1,8 +1,9 @@
 import { globalIgnores } from "eslint/config";
 import pluginReactHooks from "eslint-plugin-react-hooks";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import globals from "globals";
 import pluginNext from "@next/eslint-plugin-next";
-import { config as baseConfig } from "./base.js";
+import { config as baseConfig, sourceFiles } from "./base.js";
 
 /**
  * A custom ESLint configuration for libraries that use Next.js.
@@ -19,6 +20,7 @@ export const nextJsConfig = [
     "next-env.d.ts",
   ]),
   {
+    files: sourceFiles,
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -27,6 +29,7 @@ export const nextJsConfig = [
     },
   },
   {
+    files: sourceFiles,
     plugins: {
       "@next/next": pluginNext,
     },
@@ -35,5 +38,12 @@ export const nextJsConfig = [
       ...pluginNext.configs["core-web-vitals"].rules,
     },
   },
-  pluginReactHooks.configs.flat.recommended,
+  {
+    ...pluginReactHooks.configs.flat.recommended,
+    files: sourceFiles,
+  },
+  {
+    ...jsxA11y.flatConfigs.recommended,
+    files: ["**/*.{jsx,tsx}"],
+  },
 ];

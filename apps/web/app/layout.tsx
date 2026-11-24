@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Laila, Plus_Jakarta_Sans } from "next/font/google";
+import { AuthProvider } from "../contexts/auth-context";
 import "./globals.css";
 
 const laila = Laila({
@@ -40,7 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${laila.variable} ${plusJakartaSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

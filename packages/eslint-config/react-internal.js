@@ -1,6 +1,7 @@
 import pluginReactHooks from "eslint-plugin-react-hooks";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import globals from "globals";
-import { config as baseConfig } from "./base.js";
+import { config as baseConfig, sourceFiles } from "./base.js";
 
 /**
  * A custom ESLint configuration for libraries that use React.
@@ -9,6 +10,7 @@ import { config as baseConfig } from "./base.js";
 export const config = [
   ...baseConfig,
   {
+    files: sourceFiles,
     languageOptions: {
       globals: {
         ...globals.serviceworker,
@@ -16,5 +18,12 @@ export const config = [
       },
     },
   },
-  pluginReactHooks.configs.flat.recommended,
+  {
+    ...pluginReactHooks.configs.flat.recommended,
+    files: sourceFiles,
+  },
+  {
+    ...jsxA11y.flatConfigs.recommended,
+    files: ["**/*.{jsx,tsx}"],
+  },
 ];

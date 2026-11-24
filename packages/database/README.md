@@ -4,6 +4,9 @@ Shared MySQL access and Drizzle table definitions. The package owns the MySQL
 connection pool, the Drizzle schema, and migration configuration; apps should
 use `getDatabase()` instead of creating their own pools.
 
+Canonical rules: `docs/database/standards.md`,
+`docs/business-logic/veterinary-domain.md`, and `packages/database/AGENTS.md`.
+
 ## Configure MySQL
 
 Copy `.env.example` to `.env` in this package and set `DATABASE_URL` to a MySQL

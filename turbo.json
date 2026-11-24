@@ -1,10 +1,23 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
+  "agentGuidance": true,
   "ui": "tui",
+  "globalEnv": ["NODE_ENV"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": [
+        "DATABASE_URL",
+        "PORT",
+        "CORS_ORIGINS",
+        "APP_ORIGIN",
+        "NEXT_PUBLIC_SITE_URL",
+        "RESEND_API_KEY",
+        "EMAIL_FROM",
+        "EMAIL_TOKEN_ENCRYPTION_KEY",
+        "SESSION_TTL_DAYS"
+      ],
       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**", "dist/**"]
     },
     "lint": {
@@ -13,8 +26,22 @@
     "check-types": {
       "dependsOn": ["^check-types", "^build"]
     },
+    "test": {
+      "dependsOn": ["^test"]
+    },
     "dev": {
       "dependsOn": ["^build"],
+      "env": [
+        "DATABASE_URL",
+        "PORT",
+        "CORS_ORIGINS",
+        "APP_ORIGIN",
+        "NEXT_PUBLIC_SITE_URL",
+        "RESEND_API_KEY",
+        "EMAIL_FROM",
+        "EMAIL_TOKEN_ENCRYPTION_KEY",
+        "SESSION_TTL_DAYS"
+      ],
       "cache": false,
       "persistent": true
     }

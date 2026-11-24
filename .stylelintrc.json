@@ -1,0 +1,21 @@
+{
+  "rules": {
+    "color-no-hex": [true, { "severity": "warning" }],
+    "color-no-invalid-hex": true,
+    "custom-property-no-missing-var-function": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-shorthand-property-overrides": [true, { "severity": "warning" }],
+    "function-no-unknown": true,
+    "keyframes-name-pattern": ["^[a-z][a-z0-9-]*$", { "severity": "warning" }],
+    "no-duplicate-selectors": [true, { "severity": "warning" }],
+    "no-empty-source": true,
+    "property-no-unknown": true,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global", "local"] }
+    ],
+    "selector-pseudo-element-no-unknown": true,
+    "string-no-newline": true,
+    "unit-no-unknown": true
+  }
+}

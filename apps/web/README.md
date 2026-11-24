@@ -1,9 +1,14 @@
 # AVC Pet Hospital website app
 
-This is the `web` workspace, a Next.js app intended to become the public website
-for AVC Multispeciality Pet Care Hospital in Gurugram. The current page is still
-the default Turborepo starter; the hospital website has not yet been implemented
-here.
+The `web` workspace is a Next.js App Router presentation app for AVC
+Multispeciality Pet Care Hospital. Public marketing sections are implemented;
+login, registration, contact, and portal pages currently use prototype data and
+are not connected to the API.
+
+The Express API is authoritative for validation, authorization, persistence,
+and business rules. Do not add client-only auth or fake persistence outside the
+documented prototype exceptions in `docs/backend/auth-rbac.md`. Canonical rules
+live in the repository root `AGENTS.md` and `docs/README.md`.
 
 Use [avcpethospital.com](https://avcpethospital.com) as the live content
 reference. Confirm service details and other time-sensitive information with
@@ -23,23 +28,28 @@ Run commands from the monorepo root:
 yarn workspace web dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The root `yarn dev`
-command also starts this app alongside the `docs` and `api` workspaces.
+Open [http://localhost:3000](http://localhost:3000). Copy `.env.example` to
+`.env.local` if you need to override `NEXT_PUBLIC_SITE_URL` for sitemap output.
 
 ## Useful commands
 
 ```bash
 yarn workspace web build
-yarn workspace web start
 yarn workspace web lint
 yarn workspace web check-types
+yarn lint:css
 ```
 
-## Source files
+## Source layout
 
-- `app/page.tsx` contains the home page.
-- `app/page.module.css` contains home page styles.
-- `app/globals.css` contains global styles.
-- `app/layout.tsx` contains the root layout and page metadata.
+```text
+app/                     Routes, metadata, layout, globals.css
+components/layout/       Header, footer, mobile action bar
+components/pages/        Page sections grouped by product area
+components/ui/           App-local UI primitives
+constants/               Static content and configuration
+contexts/                Client UI state; never authoritative identity
+```
 
-The app uses the shared `@repo/ui` and `@repo/eslint-config` workspaces.
+Follow `docs/frontend/standards.md` and `docs/design-system/standards.md`.
+Load the `avc-ui-design-system` or `avc-frontend` skill before making changes.

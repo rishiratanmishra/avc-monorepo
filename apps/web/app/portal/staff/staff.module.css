@@ -1,0 +1,376 @@
+.main {
+  padding: 48px 0 80px;
+  background-color: var(--md-sys-color-surface-container-low);
+  min-height: calc(100vh - 144px);
+}
+
+.topBar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 768px) {
+  .topBar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.roleBadge {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #d97706;
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.sub {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.updateParentsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  background-color: #16a34a;
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.updateParentsBtn:hover {
+  background-color: #15803d;
+}
+
+/* Metrics */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 992px) {
+  .metricsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.metricCard {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.mLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface-variant);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mValue {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
+}
+
+.mValueSuccess {
+  font-size: 18px;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.mValueAlert {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.panelCard {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.campusTag {
+  font-size: 11px;
+  font-weight: 600;
+  background-color: var(--md-sys-color-surface-container-low);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: #d97706;
+}
+
+/* Suites Grid */
+.suitesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 640px) {
+  .suitesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.suiteCard {
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.suiteHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.suiteNo {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--md-sys-color-primary);
+}
+
+.occupiedPill {
+  font-size: 10.5px;
+  font-weight: 700;
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.emptyPill {
+  font-size: 10.5px;
+  font-weight: 700;
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+
+.suitePet {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.suiteBreed {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.suiteDiet,
+.suiteNotes {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.4;
+}
+
+/* Checklist */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-sm);
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--md-sys-color-outline);
+  background-color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.checkboxChecked {
+  background-color: #16a34a;
+  border-color: #16a34a;
+}
+
+.checkText {
+  flex-grow: 1;
+}
+
+.checkPetName {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  display: block;
+}
+
+.checkSub {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.doneTag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #166534;
+  background-color: #dcfce7;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.pendingTag {
+  font-size: 11px;
+  font-weight: 600;
+  color: #d97706;
+  background-color: #fef3c7;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Side Column */
+.sideCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sideCard {
+  background-color: #ffffff;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.sideCardHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.bathIcon { color: #0284c7; }
+.sunIcon { color: #f59e0b; }
+
+.sideTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.spaList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spaItem {
+  padding: 10px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spaTime {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+.spaPet {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+.spaType {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.sideText {
+  font-size: 12.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.poolStatus {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0284c7;
+}
