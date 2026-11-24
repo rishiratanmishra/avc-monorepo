@@ -18,7 +18,7 @@ export const FOOTER_LINKS = {
     { label: "About AVC", href: "/about" },
     { label: "Our Veterinarians", href: "/about#team" },
     { label: "Hospital Facilities", href: "/about#facilities" },
-    { label: "Admin Portal", href: "http://localhost:3002", isExternal: true },
+    { label: "Staff & Admin", href: "/manage/practice" },
     { label: "Contact Us", href: "/contact" },
   ],
 };

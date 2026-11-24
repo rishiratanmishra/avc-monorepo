@@ -71,9 +71,25 @@ Rules:
 - Inventory movement must be transactionally consistent with consumption.
 - Expired stock must not be administered.
 
+## Identity, tenancy, and membership invariants
+
+- A `hospital` is the tenant root for staff, clients, patients, schedules, clinical records, billing, and inventory. A campus/location belongs to one hospital and is not a separate authorization tenant.
+- A user is a single identity. A person may hold several global roles, several hospital memberships, several roles within one membership, and a separate client relationship with one or more hospitals.
+- Global roles grant only platform or client authority. A global role never grants hospital data access.
+- Hospital staff authority exists only while a `hospital_membership` is `active` and the session's active hospital matches that membership. Suspended or revoked memberships grant no authority.
+- A `hospital_owner` is accountable for one hospital. Every hospital must retain at least one active owner; the final owner cannot be revoked or demoted by another hospital administrator.
+- Hospital roles are not a clinical-license assertion. Only a veterinarian may prescribe or sign clinical records. Technicians and assistants perform only delegated, role-permitted clinical tasks.
+- A pet parent is linked to a hospital through an explicit `hospital_client` relationship. Pet, appointment, and medical-record access must resolve through that relationship and explicit ownership, not through account creation alone.
+- A user with both staff and client relationships has separate contexts. Selecting a hospital workspace activates only staff authority; client authority remains resource-scoped.
+- Invitations grant no authority until the invited account accepts a single-use token whose email, hospital, and role are checked server-side.
+- Every privileged or sensitive decision records actor, target, action, outcome, scope, and request identifier. Denials are auditable.
+- Cross-hospital access is forbidden unless the actor holds an active membership for that hospital and the request uses the server-selected active workspace.
+
 ## Anti-patterns
 
 - Self-assigned clinical roles.
+- Treating a global role as hospital membership.
+- Accepting a client-supplied hospital ID as authorization.
 - Appointment creation without conflict checks.
 - Success UI without persistence.
 - Hard-coded patient names in production components.

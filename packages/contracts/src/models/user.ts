@@ -9,10 +9,15 @@ export const USER_STATUSES = [
 
 export const USER_ROLE_CODES = [
   "pet_owner",
-  "veterinarian",
-  "receptionist",
-  "staff",
   "admin",
+  "hospital_owner",
+  "hospital_admin",
+  "veterinarian",
+  "veterinary_technician",
+  "veterinary_assistant",
+  "receptionist",
+  "billing",
+  "staff",
 ] as const;
 
 export const UserStatusSchema = z.enum(USER_STATUSES);

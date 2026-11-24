@@ -10,6 +10,8 @@
       "env": [
         "DATABASE_URL",
         "PORT",
+        "API_UPSTREAM",
+        "ADMIN_UPSTREAM",
         "CORS_ORIGINS",
         "APP_ORIGIN",
         "NEXT_PUBLIC_SITE_URL",
@@ -34,6 +36,8 @@
       "env": [
         "DATABASE_URL",
         "PORT",
+        "API_UPSTREAM",
+        "ADMIN_UPSTREAM",
         "CORS_ORIGINS",
         "APP_ORIGIN",
         "NEXT_PUBLIC_SITE_URL",

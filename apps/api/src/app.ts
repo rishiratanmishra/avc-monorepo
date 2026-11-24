@@ -6,6 +6,9 @@ import { errorHandler } from "./middleware/error-handler.js";
 import { notFoundHandler } from "./middleware/not-found.js";
 import { requireTrustedOrigin } from "./middleware/trusted-origin.js";
 import { attachRequestId } from "./middleware/request-id.js";
+import { accessRouter } from "./modules/access/access.routes.js";
+import { hospitalRouter } from "./modules/access/hospital.routes.js";
+import { platformRouter } from "./modules/access/platform.routes.js";
 import { adminRouter } from "./modules/auth/admin.routes.js";
 import { authRouter } from "./modules/auth/auth.routes.js";
 import { healthRouter } from "./modules/health/health.routes.js";
@@ -26,5 +29,8 @@ app.get("/", (_request, response) => {
 app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/admin", adminRouter);
+app.use("/api/access", accessRouter);
+app.use("/api/platform", platformRouter);
+app.use("/api/hospitals", hospitalRouter);
 app.use(notFoundHandler);
 app.use(errorHandler);

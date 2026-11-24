@@ -1,234 +1,152 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { ApiError, createApiClient } from "@repo/api-client";
+import type {
+  AccessContext,
+  ApplicationDestination,
+  AuthenticatedUser,
+  CreateAccountInput,
+} from "@repo/contracts";
 import { useRouter } from "next/navigation";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 
-export type UserRoleCode =
-  | "pet_owner"
-  | "veterinarian"
-  | "receptionist"
-  | "staff"
-  | "admin";
+type AuthStatus = "loading" | "authenticated" | "unauthenticated";
 
-export interface AuthUser {
-  id: string;
-  name: string;
-  email: string;
-  role: UserRoleCode;
-  phone?: string;
-  avatarUrl?: string;
-  petName?: string;
-  petSpecies?: string;
-  campus?: string;
-}
-
-export const DEMO_USERS: Record<UserRoleCode, AuthUser> = {
-  pet_owner: {
-    id: "user-pet-owner-1",
-    name: "Aarav Sharma",
-    email: "aarav.sharma@example.com",
-    role: "pet_owner",
-    phone: "+91 98765 43210",
-    petName: "Bruno",
-    petSpecies: "Golden Retriever (Dog)",
-    campus: "Sector 90 Hospital",
-  },
-  veterinarian: {
-    id: "user-vet-1",
-    name: "Dr. Hardeep Beniwal",
-    email: "dr.hardeep@avcpethospital.com",
-    role: "veterinarian",
-    phone: "+91 99900 70026",
-    campus: "Sector 90 Hospital (Surgery & ICU)",
-  },
-  receptionist: {
-    id: "user-reception-1",
-    name: "Neha Verma",
-    email: "reception@avcpethospital.com",
-    role: "receptionist",
-    phone: "+91 99900 70026",
-    campus: "Sector 90 Front Desk",
-  },
-  staff: {
-    id: "user-staff-1",
-    name: "Vikram Singh",
-    email: "staff@avcpethospital.com",
-    role: "staff",
-    phone: "+91 74500 28000",
-    campus: "Sector 87 Pet World Resort",
-  },
-  admin: {
-    id: "user-admin-1",
-    name: "Hospital Administrator",
-    email: "admin@avcpethospital.com",
-    role: "admin",
-    phone: "+91 99900 70026",
-    campus: "All Campuses (Admin HQ)",
-  },
-};
-
-export const getPanelPath = (role: UserRoleCode): string => {
-  switch (role) {
-    case "pet_owner":
-      return "/portal/pet-owner";
-    case "veterinarian":
-      return "/portal/doctor";
-    case "receptionist":
-      return "/portal/reception";
-    case "staff":
-      return "/portal/staff";
-    case "admin":
-      return "/portal/admin";
-    default:
-      return "/portal/pet-owner";
-  }
-};
-
-export const getRoleLabel = (role: UserRoleCode): string => {
-  switch (role) {
-    case "pet_owner":
-      return "Pet Parent";
-    case "veterinarian":
-      return "Veterinary Doctor";
-    case "receptionist":
-      return "Receptionist";
-    case "staff":
-      return "Resort Staff";
-    case "admin":
-      return "Administrator";
-    default:
-      return "User";
-  }
-};
-
-interface AuthContextType {
-  user: AuthUser | null;
+interface AuthContextValue {
+  status: AuthStatus;
+  context: AccessContext | null;
   isAuthenticated: boolean;
-  login: (email: string, password?: string, preferredRole?: UserRoleCode) => Promise<boolean>;
-  signup: (userData: Omit<AuthUser, "id">, password?: string) => Promise<boolean>;
-  logout: () => void;
-  switchRole: (role: UserRoleCode) => void;
+  refresh: () => Promise<AccessContext | null>;
+  login: (email: string, password: string) => Promise<AuthenticatedUser>;
+  register: (input: CreateAccountInput) => Promise<string>;
+  logout: () => Promise<void>;
+  selectWorkspace: (destination: ApplicationDestination) => Promise<AccessContext>;
+  requestPasswordReset: (email: string) => Promise<string>;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextValue | null>(null);
+const api = createApiClient({ baseUrl: "" });
 
-const AUTH_STORAGE_KEY = "avc_auth_session_user";
-
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+export function AuthProvider({
   children,
-}) => {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [mounted, setMounted] = useState(false);
+  initialContext,
+}: {
+  children: ReactNode;
+  initialContext: AccessContext | null;
+}) {
   const router = useRouter();
+  const [context, setContext] = useState<AccessContext | null>(initialContext);
+  const [status, setStatus] = useState<AuthStatus>(
+    initialContext ? "authenticated" : "unauthenticated",
+  );
 
-  useEffect(() => {
+  const refresh = useCallback(async () => {
     try {
-      const stored = localStorage.getItem(AUTH_STORAGE_KEY);
-      if (stored) {
-        setUser(JSON.parse(stored));
+      const nextContext = await api.getAccessContext();
+      setContext(nextContext);
+      setStatus("authenticated");
+      return nextContext;
+    } catch (error) {
+      setContext(null);
+      setStatus("unauthenticated");
+      if (error instanceof ApiError && error.status === 0) {
+        return null;
       }
-    } catch {
-      // Ignore localStorage read errors
+      return null;
     }
-    setMounted(true);
   }, []);
 
-  const saveUserSession = (userObj: AuthUser | null) => {
-    setUser(userObj);
-    try {
-      if (userObj) {
-        localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(userObj));
-      } else {
-        localStorage.removeItem(AUTH_STORAGE_KEY);
+  const routeFromContext = useCallback(
+    async (nextContext: AccessContext) => {
+      let current = nextContext;
+
+      const [onlyDestination] = current.destinations;
+      if (!current.activeDestination && current.destinations.length === 1 && onlyDestination) {
+        current = await api.selectWorkspace({
+          scope: onlyDestination.scope,
+          hospitalId: onlyDestination.hospitalId,
+        });
+        setContext(current);
       }
-    } catch {
-      // Ignore localStorage write errors
-    }
-  };
 
-  const login = async (
-    email: string,
-    _password?: string,
-    preferredRole?: UserRoleCode
-  ): Promise<boolean> => {
-    // Check if email matches one of our demo users
-    const normalizedEmail = email.trim().toLowerCase();
-    let matchedUser: AuthUser | undefined;
-
-    for (const key of Object.keys(DEMO_USERS) as UserRoleCode[]) {
-      if (DEMO_USERS[key].email.toLowerCase() === normalizedEmail) {
-        matchedUser = DEMO_USERS[key];
-        break;
-      }
-    }
-
-    if (!matchedUser) {
-      // If role specified or fallback to pet_owner
-      const role = preferredRole || "pet_owner";
-      matchedUser = {
-        id: `user-${Date.now()}`,
-        name: email.split("@")[0] || "Valued User",
-        email: normalizedEmail,
-        role,
-        campus:
-          role === "staff"
-            ? "Sector 87 Pet World"
-            : "Sector 90 Hospital",
-      };
-    }
-
-    saveUserSession(matchedUser);
-    router.push(getPanelPath(matchedUser.role));
-    return true;
-  };
-
-  const signup = async (
-    userData: Omit<AuthUser, "id">,
-    _password?: string
-  ): Promise<boolean> => {
-    const newUser: AuthUser = {
-      ...userData,
-      id: `user-${Date.now()}`,
-    };
-
-    saveUserSession(newUser);
-    router.push(getPanelPath(newUser.role));
-    return true;
-  };
-
-  const logout = () => {
-    saveUserSession(null);
-    router.push("/");
-  };
-
-  const switchRole = (role: UserRoleCode) => {
-    const demoUser = DEMO_USERS[role];
-    if (demoUser) {
-      saveUserSession(demoUser);
-      router.push(getPanelPath(demoUser.role));
-    }
-  };
-
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        isAuthenticated: !!user,
-        login,
-        signup,
-        logout,
-        switchRole,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+      window.location.assign(current.activeDestination?.path ?? "/workspace");
+    },
+    [],
   );
-};
 
-export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+  const login = useCallback(
+    async (email: string, password: string) => {
+      const user = await api.login({ email, password });
+      const nextContext = await refresh();
+      if (!nextContext) {
+        throw new ApiError(401, "SESSION_NOT_READY", "The session could not be loaded");
+      }
+      await routeFromContext(nextContext);
+      return user;
+    },
+    [refresh, routeFromContext],
+  );
+
+  const register = useCallback(async (input: CreateAccountInput) => {
+    const result = await api.register(input);
+    return result.message;
+  }, []);
+
+  const logout = useCallback(async () => {
+    await api.logout();
+    setContext(null);
+    setStatus("unauthenticated");
+    router.replace("/");
+  }, [router]);
+
+  const requestPasswordReset = useCallback(async (email: string) => {
+    const result = await api.requestPasswordReset(email);
+    return result.message;
+  }, []);
+
+  const selectWorkspace = useCallback(
+    async (destination: ApplicationDestination) => {
+      const nextContext = await api.selectWorkspace({
+        scope: destination.scope,
+        hospitalId: destination.hospitalId,
+      });
+      setContext(nextContext);
+      setStatus("authenticated");
+      window.location.assign(nextContext.activeDestination?.path ?? "/workspace");
+      return nextContext;
+    },
+    [],
+  );
+
+  const value = useMemo<AuthContextValue>(
+    () => ({
+      status,
+      context,
+      isAuthenticated: status === "authenticated" && context !== null,
+      refresh,
+      login,
+      register,
+      logout,
+      selectWorkspace,
+      requestPasswordReset,
+    }),
+    [status, context, refresh, login, register, logout, selectWorkspace, requestPasswordReset],
+  );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export function useAuth(): AuthContextValue {
+  const value = useContext(AuthContext);
+  if (!value) {
+    throw new Error("useAuth must be used within AuthProvider");
   }
-  return context;
-};
+  return value;
+}

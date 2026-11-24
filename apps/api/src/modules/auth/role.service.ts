@@ -1,14 +1,9 @@
-import type { UserRoleCode } from "@repo/contracts/models/user";
-import {
-  auditLogs,
-  getDatabase,
-  roles,
-  userRoles,
-  users,
-} from "@repo/database";
+import { ASSIGNABLE_PLATFORM_ROLE_CODES, type UserRoleCode } from "@repo/contracts";
+import { auditLogs, getDatabase, roles, userRoles, users } from "@repo/database";
 import { and, count, eq } from "drizzle-orm";
 import { randomUUID } from "node:crypto";
 import { AppError } from "../../errors/app-error.js";
+import type { RequestMetadata } from "../access/access.types.js";
 
 type Database = ReturnType<typeof getDatabase>;
 
@@ -20,7 +15,10 @@ export class RoleService {
     targetUserId: string,
     roleCode: UserRoleCode,
     requestId: string,
+    metadata?: RequestMetadata,
   ): Promise<void> {
+    this.assertAssignablePlatformRole(roleCode);
+
     await this.database.transaction(async (transaction) => {
       await this.lockRole(transaction, "admin");
       await this.lockRole(transaction, roleCode);
@@ -30,12 +28,7 @@ export class RoleService {
       const [existingRole] = await transaction
         .select({ userId: userRoles.userId })
         .from(userRoles)
-        .where(
-          and(
-            eq(userRoles.userId, targetUserId),
-            eq(userRoles.roleCode, roleCode),
-          ),
-        )
+        .where(and(eq(userRoles.userId, targetUserId), eq(userRoles.roleCode, roleCode)))
         .limit(1);
 
       if (existingRole) {
@@ -53,6 +46,11 @@ export class RoleService {
         actorUserId,
         targetUserId,
         action: `role.assigned.${roleCode}`,
+        outcome: "success",
+        resourceType: "platform",
+        resourceId: targetUserId,
+        ipAddress: metadata?.ipAddress ?? null,
+        userAgent: metadata?.userAgent ?? null,
         requestId,
       });
     });
@@ -63,7 +61,10 @@ export class RoleService {
     targetUserId: string,
     roleCode: UserRoleCode,
     requestId: string,
+    metadata?: RequestMetadata,
   ): Promise<void> {
+    this.assertAssignablePlatformRole(roleCode);
+
     await this.database.transaction(async (transaction) => {
       await this.lockRole(transaction, "admin");
       await this.lockRole(transaction, roleCode);
@@ -72,12 +73,7 @@ export class RoleService {
       const [existingRole] = await transaction
         .select({ userId: userRoles.userId })
         .from(userRoles)
-        .where(
-          and(
-            eq(userRoles.userId, targetUserId),
-            eq(userRoles.roleCode, roleCode),
-          ),
-        )
+        .where(and(eq(userRoles.userId, targetUserId), eq(userRoles.roleCode, roleCode)))
         .limit(1);
 
       if (!existingRole) {
@@ -101,21 +97,31 @@ export class RoleService {
 
       await transaction
         .delete(userRoles)
-        .where(
-          and(
-            eq(userRoles.userId, targetUserId),
-            eq(userRoles.roleCode, roleCode),
-          ),
-        );
+        .where(and(eq(userRoles.userId, targetUserId), eq(userRoles.roleCode, roleCode)));
 
       await transaction.insert(auditLogs).values({
         id: randomUUID(),
         actorUserId,
         targetUserId,
         action: `role.revoked.${roleCode}`,
+        outcome: "success",
+        resourceType: "platform",
+        resourceId: targetUserId,
+        ipAddress: metadata?.ipAddress ?? null,
+        userAgent: metadata?.userAgent ?? null,
         requestId,
       });
     });
+  }
+
+  private assertAssignablePlatformRole(roleCode: UserRoleCode): void {
+    if (!(ASSIGNABLE_PLATFORM_ROLE_CODES as readonly string[]).includes(roleCode)) {
+      throw new AppError(
+        400,
+        "INVALID_PLATFORM_ROLE",
+        "This endpoint can assign only platform roles",
+      );
+    }
   }
 
   private async lockRole(

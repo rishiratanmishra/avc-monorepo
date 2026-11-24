@@ -1,3 +1,8 @@
+import process from "node:process";
+
+const apiUpstream = process.env.API_UPSTREAM ?? "http://127.0.0.1:4000";
+const adminUpstream = process.env.ADMIN_UPSTREAM ?? "http://127.0.0.1:3002";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
@@ -33,6 +38,29 @@ const nextConfig = {
         permanent: false,
       },
     ];
+  },
+  async rewrites() {
+    const rewrites = [
+      {
+        source: "/api/:path*",
+        destination: `${apiUpstream}/api/:path*`,
+      },
+    ];
+
+    if (process.env.NODE_ENV !== "production") {
+      rewrites.push(
+        {
+          source: "/manage",
+          destination: `${adminUpstream}/manage`,
+        },
+        {
+          source: "/manage/:path*",
+          destination: `${adminUpstream}/manage/:path*`,
+        },
+      );
+    }
+
+    return rewrites;
   },
 };
 

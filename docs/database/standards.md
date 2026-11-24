@@ -6,7 +6,7 @@
 
 ## Current scope
 
-Implemented tables cover authentication and users only:
+Implemented tables cover authentication, identity, tenancy, membership, permissions, and audit records:
 
 - `locations`
 - `roles`
@@ -17,8 +17,15 @@ Implemented tables cover authentication and users only:
 - `auth_tokens`
 - `audit_logs`
 - `email_outbox`
+- `hospitals`
+- `hospital_memberships`
+- `hospital_membership_roles`
+- `hospital_clients`
+- `hospital_invitations`
+- `permissions`
+- `role_permissions`
 
-No pet, appointment, consultation, medical, billing, or inventory tables exist yet.
+No pet, appointment, consultation, medical record, billing, or inventory tables exist yet.
 
 ## Naming
 
@@ -65,7 +72,7 @@ No pet, appointment, consultation, medical, billing, or inventory tables exist y
 
 The following are engineering gaps, not rules to ignore:
 
-- Domain schema is absent.
+- Identity and tenancy schema is implemented; clinical and operational domain schema is absent.
 - Soft deletion policy is not implemented.
 - Account lockout fields are unused.
 - Migration validation is not in CI.

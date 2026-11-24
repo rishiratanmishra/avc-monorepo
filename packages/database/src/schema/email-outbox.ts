@@ -1,22 +1,11 @@
-import {
-  index,
-  int,
-  mysqlEnum,
-  mysqlTable,
-  timestamp,
-  varchar,
-} from "drizzle-orm/mysql-core";
+import { index, int, mysqlEnum, mysqlTable, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 export const EMAIL_OUTBOX_TYPES = [
   "email_verification",
   "password_reset",
+  "hospital_invitation",
 ] as const;
-export const EMAIL_OUTBOX_STATUSES = [
-  "pending",
-  "processing",
-  "sent",
-  "failed",
-] as const;
+export const EMAIL_OUTBOX_STATUSES = ["pending", "processing", "sent", "failed"] as const;
 
 export type EmailOutboxType = (typeof EMAIL_OUTBOX_TYPES)[number];
 export type EmailOutboxStatus = (typeof EMAIL_OUTBOX_STATUSES)[number];
@@ -39,10 +28,7 @@ export const emailOutbox = mysqlTable(
     createdAt: timestamp("created_at").defaultNow().notNull(),
   },
   (table) => [
-    index("email_outbox_status_available_idx").on(
-      table.status,
-      table.availableAt,
-    ),
+    index("email_outbox_status_available_idx").on(table.status, table.availableAt),
     index("email_outbox_locked_at_idx").on(table.lockedAt),
   ],
 );

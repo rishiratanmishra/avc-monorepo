@@ -4,20 +4,23 @@ This directory is the **canonical source of truth** for project engineering rule
 
 ## Rule map
 
-| Document                                   | Authority                                                                                   |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| `AGENTS.md` (root)                         | Globally loaded agent workflow/scope authority; highest authority for instruction discovery |
-| `docs/ai/instruction-hierarchy.md`         | Precedence, conflict resolution, skill usage                                                |
-| `docs/architecture/standards.md`           | App/package boundaries, folder rules, naming, imports                                       |
-| `docs/design-system/standards.md`          | Tokens, components, UI states, accessibility, responsive rules                              |
-| `docs/frontend/standards.md`               | Next.js App Router, layouts, forms, SEO, client/server rules                                |
-| `docs/backend/api-standards.md`            | Express API, contracts, errors, transactions, logging                                       |
-| `docs/backend/auth-rbac.md`                | Authentication, authorization, role matrix                                                  |
-| `docs/database/standards.md`               | Drizzle schema, migrations, integrity, retention                                            |
-| `docs/business-logic/veterinary-domain.md` | Domain invariants and workflow rules                                                        |
-| `docs/security/standards.md`               | Secrets, PII, uploads, vulnerability prevention                                             |
-| `docs/testing/standards.md`                | Test layers, commands, quality gates                                                        |
-| `CONTRIBUTING.md`                          | Git, PR, change-management, validation workflow                                             |
+| Document                                        | Authority                                                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `AGENTS.md` (root)                              | Globally loaded agent workflow/scope authority; highest authority for instruction discovery |
+| `docs/ai/instruction-hierarchy.md`              | Precedence, conflict resolution, skill usage                                                |
+| `docs/architecture/standards.md`                | App/package boundaries, folder rules, naming, imports                                       |
+| `docs/architecture/identity-and-access.md`      | Identity, tenancy, RBAC, permissions, workspace routing, and access-control decisions       |
+| `docs/design-system/standards.md`               | Tokens, components, UI states, accessibility, responsive rules                              |
+| `docs/frontend/standards.md`                    | Next.js App Router, layouts, forms, SEO, client/server rules                                |
+| `docs/backend/api-standards.md`                 | Express API, contracts, errors, transactions, logging                                       |
+| `docs/backend/auth-rbac.md`                     | Authentication, authorization, role matrix                                                  |
+| `docs/database/standards.md`                    | Drizzle schema, migrations, integrity, retention                                            |
+| `docs/business-logic/veterinary-domain.md`      | Domain invariants and workflow rules                                                        |
+| `docs/security/standards.md`                    | Secrets, PII, uploads, vulnerability prevention                                             |
+| `docs/testing/standards.md`                     | Test layers, commands, quality gates                                                        |
+| `docs/reports/identity-and-access-readiness.md` | Phase 6 implementation status, validation results, risks, and next milestone                |
+| `docs/reports/phase7-frontend-integration.md`    | Phase 7 client integration, one-origin routing, journeys, validation, and handover          |
+| `CONTRIBUTING.md`                               | Git, PR, change-management, validation workflow                                             |
 
 ## Usage
 

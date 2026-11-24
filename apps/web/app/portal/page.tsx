@@ -1,26 +1,11 @@
-"use client";
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth, getPanelPath } from "../../contexts/auth-context";
+export const metadata: Metadata = {
+  title: "Portal moved | AVC Pet Hospital",
+  robots: { index: false, follow: false },
+};
 
-export default function PortalIndexPage() {
-  const { user, isAuthenticated } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isAuthenticated || !user) {
-      router.replace("/login");
-    } else {
-      router.replace(getPanelPath(user.role));
-    }
-  }, [user, isAuthenticated, router]);
-
-  return (
-    <div style={{ minHeight: "100vh", display: "grid", placeItems: "center" }}>
-      <p style={{ color: "var(--md-sys-color-primary)", fontWeight: 600 }}>
-        Routing to your dedicated clinical panel...
-      </p>
-    </div>
-  );
+export default function LegacyPortalPage() {
+  redirect("/workspace");
 }

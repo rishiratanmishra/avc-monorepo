@@ -1,6 +1,9 @@
+import { ACCESS_SCOPES } from "@repo/contracts/models/rbac";
+import { hospitals } from "./hospitals.js";
 import { users } from "./users.js";
 import {
   index,
+  mysqlEnum,
   mysqlTable,
   timestamp,
   uniqueIndex,
@@ -16,6 +19,10 @@ export const authSessions = mysqlTable(
       .references(() => users.id, { onDelete: "cascade" }),
     tokenHash: varchar("token_hash", { length: 64 }).notNull(),
     expiresAt: timestamp("expires_at").notNull(),
+    activeHospitalId: varchar("active_hospital_id", { length: 36 }).references(() => hospitals.id, {
+      onDelete: "set null",
+    }),
+    activeScope: mysqlEnum("active_scope", ACCESS_SCOPES),
     createdAt: timestamp("created_at").defaultNow().notNull(),
     lastSeenAt: timestamp("last_seen_at").defaultNow().notNull(),
   },

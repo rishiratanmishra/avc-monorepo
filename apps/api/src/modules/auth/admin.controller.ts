@@ -1,4 +1,4 @@
-import { UserRoleCodeSchema } from "@repo/contracts/models/user";
+import { PlatformRoleCodeSchema } from "@repo/contracts";
 import type { RequestHandler } from "express";
 import { z } from "zod";
 import { AppError } from "../../errors/app-error.js";
@@ -7,7 +7,7 @@ import { RoleService } from "./role.service.js";
 const roleService = new RoleService();
 const roleParamsSchema = z.object({
   userId: z.uuid(),
-  roleCode: UserRoleCodeSchema,
+  roleCode: PlatformRoleCodeSchema,
 });
 
 async function updateRole(
@@ -21,12 +21,7 @@ async function updateRole(
 
   const params = roleParamsSchema.safeParse(request.params);
   if (!params.success) {
-    throw new AppError(
-      400,
-      "VALIDATION_ERROR",
-      "Invalid user ID or role",
-      params.error.issues,
-    );
+    throw new AppError(400, "VALIDATION_ERROR", "Invalid user ID or role", params.error.issues);
   }
 
   await roleService[operation](
@@ -34,6 +29,11 @@ async function updateRole(
     params.data.userId,
     params.data.roleCode,
     request.requestId,
+    {
+      requestId: request.requestId,
+      ipAddress: request.ip ?? null,
+      userAgent: request.get("user-agent") ?? null,
+    },
   );
   response.status(204).end();
 }

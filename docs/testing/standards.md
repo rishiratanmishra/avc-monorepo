@@ -2,7 +2,8 @@
 
 ## Current state
 
-- One API unit test file exists: `apps/api/src/modules/auth/auth.test.ts`.
+- Four API unit/behavior test files exist: `apps/api/src/modules/auth/auth.test.ts`, `apps/api/src/modules/auth/role.service.test.ts`, `apps/api/src/modules/access/access.test.ts`, and `apps/api/src/modules/access/hospital-administration.test.ts`.
+- The API tests use in-memory repository fakes to cover authorization scopes, multiple memberships, cross-hospital denial, suspended/revoked memberships, client resource relationships, session expiry/revocation, invitations, final-owner protection, and platform-role boundaries.
 - No frontend, component, integration, E2E, or database tests are configured.
 - Root and Turbo `test` tasks are configured; CI runs `yarn test`.
 

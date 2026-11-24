@@ -14,6 +14,10 @@ export const ApiErrorResponseSchema = z.object({
   }),
 });
 
+export const MessageResponseSchema = z.object({
+  message: z.string(),
+});
+
 export const PaginationQuerySchema = z.object({
   page: z.coerce.number().int().min(1).default(1),
   pageSize: z.coerce.number().int().min(1).max(100).default(20),
@@ -25,5 +29,6 @@ export const IdParamSchema = z.object({
 
 export type HealthResponse = z.infer<typeof HealthResponseSchema>;
 export type ApiErrorResponse = z.infer<typeof ApiErrorResponseSchema>;
+export type MessageResponse = z.infer<typeof MessageResponseSchema>;
 export type PaginationQuery = z.infer<typeof PaginationQuerySchema>;
 export type IdParam = z.infer<typeof IdParamSchema>;

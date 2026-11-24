@@ -6,13 +6,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Container } from "./container";
 import { NAV_LINKS } from "../../constants";
-import { useAuth, getPanelPath, getRoleLabel } from "../../contexts/auth-context";
-import { User, LogOut } from "lucide-react";
+import { useAuth } from "../../contexts/auth-context";
+import { LayoutGrid, LogOut, User } from "lucide-react";
 import styles from "./header.module.css";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
-  const { user, isAuthenticated, logout } = useAuth();
+  const { status, context, logout } = useAuth();
 
   const isActiveLink = (href: string) => {
     if (href === "/") {
@@ -23,6 +23,11 @@ export const Header: React.FC = () => {
     }
     return pathname === href || pathname.startsWith(`${href}/`);
   };
+
+  const isAuthenticated = status === "authenticated" && context !== null;
+  const dashboardPath = context?.activeDestination?.path ?? "/workspace";
+  const destinationLabel = context?.activeDestination?.label ?? "Choose workspace";
+  const displayName = context?.email.split("@")[0] ?? "Account";
 
   return (
     <header className={styles.header}>
@@ -56,23 +61,32 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className={styles.actions}>
-            {isAuthenticated && user ? (
+            {isAuthenticated ? (
               <div className={styles.userMenu}>
-                <Link
-                  href={getPanelPath(user.role)}
+                <a
+                  href={dashboardPath}
                   className={styles.portalLink}
-                  title={`Open ${getRoleLabel(user.role)} Dashboard`}
+                  title={`Open ${destinationLabel}`}
                 >
                   <div className={styles.avatarPill}>
                     <User size={14} className={styles.userIcon} aria-hidden="true" />
-                    <span className={styles.userName}>{user.name.split(" ")[0]}</span>
-                    <span className={styles.roleTag}>({getRoleLabel(user.role)})</span>
+                    <span className={styles.userName}>{displayName}</span>
+                    <span className={styles.roleTag}>({destinationLabel})</span>
                   </div>
+                </a>
+
+                <Link
+                  href="/workspace?switch=1"
+                  className={styles.logoutBtn}
+                  title="Switch workspace"
+                  aria-label="Switch workspace"
+                >
+                  <LayoutGrid size={14} aria-hidden="true" />
                 </Link>
 
                 <button
                   type="button"
-                  onClick={logout}
+                  onClick={() => void logout()}
                   className={styles.logoutBtn}
                   title="Sign out of account"
                   aria-label="Sign out"

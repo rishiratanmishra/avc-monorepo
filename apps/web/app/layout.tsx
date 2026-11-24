@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Laila, Plus_Jakarta_Sans } from "next/font/google";
 import { AuthProvider } from "../contexts/auth-context";
+import { readOptionalAccessContext } from "../lib/server-access";
 import "./globals.css";
 
 const laila = Laila({
@@ -34,15 +35,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+async function loadInitialContext() {
+  try {
+    return await readOptionalAccessContext();
+  } catch {
+    return null;
+  }
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialContext = await loadInitialContext();
+
   return (
     <html lang="en" className={`${laila.variable} ${plusJakartaSans.variable}`}>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider initialContext={initialContext}>{children}</AuthProvider>
       </body>
     </html>
   );
