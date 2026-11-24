@@ -53,6 +53,8 @@ Rules:
 - A component must expose variants through props, not duplicated class names in callers.
 - New primitives require a documented use case and at least two anticipated call sites.
 - Do not use starter components from `packages/ui` in production without promotion review.
+- The Formik/Zod form system in `@repo/ui/form` is promoted for product use: `FormikForm`, `InputTextField`, `InputTextAreaField`, `InputPasswordField`, `InputSelectField`, `FormSubmitButton`, and `zodValidationSchema`. Do not create app-local field duplicates or hand-wire Formik bindings in pages.
+- Shared form CSS lives with the promoted package and consumes the AVC custom properties below. A consuming app must provide those tokens or a reviewed equivalent mapping before using the fields.
 - Keep interactive state, keyboard behavior, and ARIA relationships in the reusable component.
 
 ## Required component states

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Laila, Plus_Jakarta_Sans } from "next/font/google";
 import { AuthProvider } from "../contexts/auth-context";
 import { readOptionalAccessContext } from "../lib/server-access";
+import { QueryProvider } from "../providers/query-provider";
 import "./globals.css";
 
 const laila = Laila({
@@ -29,9 +30,7 @@ export const metadata: Metadata = {
       { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
       { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
     ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -53,7 +52,9 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${laila.variable} ${plusJakartaSans.variable}`}>
       <body>
-        <AuthProvider initialContext={initialContext}>{children}</AuthProvider>
+        <QueryProvider>
+          <AuthProvider initialContext={initialContext}>{children}</AuthProvider>
+        </QueryProvider>
       </body>
     </html>
   );

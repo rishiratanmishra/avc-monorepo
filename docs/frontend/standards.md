@@ -39,6 +39,32 @@ Applies to `apps/web` and `apps/admin`. `apps/admin` uses Ant Design; the same a
 - Never show success for a request that was not sent.
 - Never collect PII into state without a real submission path and documented retention.
 
+### Reusable form and server-state architecture
+
+- **Form state:** Formik only, mounted through `FormikForm` from `@repo/ui/form`. Do not add per-field `useState` for values, touched state, errors, or submission state.
+- **Fields:** use `InputTextField`, `InputTextAreaField`, `InputPasswordField`, `InputSelectField`, and `FormSubmitButton` from `@repo/ui/form`. They own labels, required indicators, Formik binding, touched/error display, ARIA wiring, disabled/read-only states, and field styling.
+- **Validation:** define flat, app-local Zod form schemas with user-facing messages and adapt them with `zodValidationSchema` from `@repo/ui/form`. Shared request/response shapes remain in `@repo/contracts`; API validation remains authoritative.
+- **API boundary:** `@repo/api-client` owns HTTP transport and standardized errors. Domain service functions such as `LoginUser` wrap individual operations; TanStack Query hooks such as `useLoginUser` own cache lifecycle and navigation side effects. Components consume the hooks; they never call the API client directly.
+- **Session cache:** `QueryClientProvider` is mounted in the web root layout. `GET /api/access/context` is cached under the shared auth query key. Auth mutations must synchronize that cache and route from the authoritative context so identity, workspace, and permission data cannot go stale.
+- **Server errors:** keep API failures separate from field validation. Surface field issues through Formik and request failures through a form-level `role="alert"`; success through `role="status"`. Normalize auth/transport failures with the app-level `authErrorMessage` helper so login, registration, password reset, and workspace selection announce consistent messages.
+
+Illustrative future form (same infrastructure, no new plumbing):
+
+```tsx
+<FormikForm
+  initialValues={petValues}
+  validationSchema={zodValidationSchema(petSchema)}
+  onSubmit={handlePetSubmit}
+>
+  <InputTextField name="petName" label="Pet name" required placeholder="Enter pet name" />
+  <InputSelectField name="species" label="Species" options={speciesOptions} required />
+  <InputTextAreaField name="notes" label="Care notes" />
+  <FormSubmitButton pendingLabel="Saving…">Save pet</FormSubmitButton>
+</FormikForm>
+```
+
+The submit handler calls a domain TanStack mutation such as `useCreatePet()`, which invokes a service function backed by `@repo/api-client`.
+
 ## Authentication and protected pages
 
 - The API session cookie is the only trusted session representation.

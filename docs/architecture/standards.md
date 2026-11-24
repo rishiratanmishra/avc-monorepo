@@ -22,7 +22,7 @@ packages/
 - `apps/web` and `apps/admin` are presentation clients. They must not implement authoritative domain logic.
 - `packages/contracts` owns request/response shapes shared across app and API boundaries.
 - `packages/database` owns all database access. Apps must not create their own pools or import Drizzle directly.
-- `packages/ui` may own reusable primitives only after a component is promoted from an app; do not move starter components into production use without review.
+- `packages/ui` owns promoted reusable primitives. The Formik/Zod form system exported as `@repo/ui/form` is promoted for product use; the remaining starter components still require promotion review before product use.
 
 ## Layer rules
 
@@ -45,14 +45,16 @@ app/routes -> layouts -> page compositions -> section components -> ui primitive
 
 - Pages compose sections; they do not implement business logic.
 - Interactive behavior lives in client components only when required.
-- Server state must come from the API through shared contracts. No typed API client module exists yet; define and document one before adding a new frontend integration.
+- Server state must come from the API through `@repo/contracts` and `@repo/api-client`. No parallel HTTP client layer is allowed.
+- In `apps/web`, domain API operations live in `services/<domain>/`, TanStack Query hooks in `hooks/<domain>/`, and app-wide providers in `providers/`. Pages compose hooks and shared UI; they do not implement HTTP transport or form-state plumbing.
+- Reusable Formik/Zod form primitives live in `@repo/ui/form`. Domain-specific form schemas stay with the owning app.
 
 ## Folder conventions
 
 - Use lowercase kebab-case for directories: `components/pages/contact-form/`.
 - Use lowercase kebab-case for React component files: `contact-form.tsx`, or `index.ts` when exported from a folder barrel. Exported component names remain PascalCase.
 - Use kebab-case for non-component files: `api-conventions.md`; React context files use `.tsx`, for example `auth-context.tsx`.
-- Co-locate CSS Modules with their component.
+- Co-locate CSS Modules with their component; promoted `@repo/ui` components keep their CSS Module inside the package.
 - `apps/web/components/sections/` is a compatibility re-export of `components/pages/`. Do not add new sections there; use `components/pages/`.
 - Keep route folders in `app/` thin: routing, metadata, data loading, and composition only.
 - Do not create a new top-level `apps/` or `packages/` entry without updating this document and `docs/README.md`.

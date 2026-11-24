@@ -147,69 +147,10 @@
   gap: var(--space-4);
 }
 
-.field {
+.passwordGroup {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-}
-
-.label {
-  color: var(--md-sys-color-on-surface);
-  font: var(--typescale-label-large);
-}
-
-.req {
-  color: var(--md-sys-color-error);
-}
-
-.inputWrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.inputIcon {
-  position: absolute;
-  left: var(--space-4);
-  color: var(--md-sys-color-on-surface-variant);
-  pointer-events: none;
-}
-
-.input {
-  width: 100%;
-  min-height: var(--space-12);
-  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-12);
-  border: 1px solid var(--md-sys-color-outline);
-  border-radius: var(--radius-sm);
-  background-color: var(--md-sys-color-surface-container-lowest);
-  color: var(--md-sys-color-on-surface);
-  font-family: inherit;
-  font-size: var(--font-size-body-md);
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.input::placeholder {
-  color: var(--md-sys-color-on-surface-variant);
-  opacity: 1;
-}
-
-.input:hover {
-  border-color: var(--md-sys-color-on-surface-variant);
-}
-
-.input:focus-visible {
-  border-color: var(--md-sys-color-primary);
-  box-shadow: 0 0 0 var(--space-1) var(--md-sys-color-primary-container);
-}
-
-.input[aria-invalid="true"] {
-  border-color: var(--md-sys-color-error);
-}
-
-.inputWithAction {
-  padding-right: var(--space-16);
 }
 
 .textButton {
@@ -229,17 +170,6 @@
 .textButton:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.visibilityButton {
-  position: absolute;
-  right: var(--space-4);
-  font-size: var(--font-size-label-md);
-}
-
-.fieldError {
-  color: var(--md-sys-color-error);
-  font-size: var(--font-size-label-md);
 }
 
 .forgotRow {

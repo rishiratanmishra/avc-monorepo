@@ -1,15 +1,15 @@
 "use client";
 
-import { ApiError } from "@repo/api-client";
 import type { ApplicationDestination } from "@repo/contracts";
 import { ArrowRight, Building2, LayoutGrid, PawPrint } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { authErrorMessage } from "../../../lib/auth/auth-error-message";
+import { selectWorkspaceInput, useLogoutUser, useSelectWorkspace } from "../../../hooks/auth";
 import { Container } from "../../layout/container";
 import { Footer } from "../../layout/footer";
 import { Header } from "../../layout/header";
 import { MobileActionBar } from "../../layout/mobile-action-bar";
-import { useAuth } from "../../../contexts/auth-context";
 import styles from "./workspace.module.css";
 
 function destinationIcon(id: string) {
@@ -31,7 +31,8 @@ export function WorkspaceSelector({
   email: string;
   notice: string | null;
 }) {
-  const { selectWorkspace, logout } = useAuth();
+  const selectWorkspaceMutation = useSelectWorkspace();
+  const logoutMutation = useLogoutUser();
   const [pendingId, setPendingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,13 +40,9 @@ export function WorkspaceSelector({
     setError(null);
     setPendingId(destination.id);
     try {
-      await selectWorkspace(destination);
+      await selectWorkspaceMutation.mutateAsync(selectWorkspaceInput(destination));
     } catch (cause) {
-      setError(
-        cause instanceof ApiError
-          ? cause.message
-          : "That workspace could not be selected. Try again.",
-      );
+      setError(authErrorMessage(cause, "That workspace could not be selected. Try again."));
     } finally {
       setPendingId(null);
     }
@@ -86,7 +83,11 @@ export function WorkspaceSelector({
                   <Link href="/" className={styles.secondaryAction}>
                     Back to website
                   </Link>
-                  <button type="button" className={styles.secondaryAction} onClick={() => void logout()}>
+                  <button
+                    type="button"
+                    className={styles.secondaryAction}
+                    onClick={() => void logoutMutation.mutateAsync().catch(() => undefined)}
+                  >
                     Sign out
                   </button>
                 </div>

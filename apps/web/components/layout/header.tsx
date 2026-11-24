@@ -7,12 +7,14 @@ import { usePathname } from "next/navigation";
 import { Container } from "./container";
 import { NAV_LINKS } from "../../constants";
 import { useAuth } from "../../contexts/auth-context";
+import { useLogoutUser } from "../../hooks/auth";
 import { LayoutGrid, LogOut, User } from "lucide-react";
 import styles from "./header.module.css";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
-  const { status, context, logout } = useAuth();
+  const { status, context } = useAuth();
+  const logoutMutation = useLogoutUser();
 
   const isActiveLink = (href: string) => {
     if (href === "/") {
@@ -86,7 +88,7 @@ export const Header: React.FC = () => {
 
                 <button
                   type="button"
-                  onClick={() => void logout()}
+                  onClick={() => void logoutMutation.mutateAsync().catch(() => undefined)}
                   className={styles.logoutBtn}
                   title="Sign out of account"
                   aria-label="Sign out"
