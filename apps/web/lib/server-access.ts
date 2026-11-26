@@ -26,8 +26,9 @@ export async function readOptionalAccessContext(): Promise<AccessContext | null>
 
 export async function requireDestination(prefix: string): Promise<AccessContext> {
   let context: AccessContext | null;
+  const cookie = await cookieHeader();
   try {
-    context = await readAccessContext();
+    context = await createServerApiClient().getAccessContext(cookie);
   } catch (error) {
     if (error instanceof ApiError && error.status === 401) {
       redirect("/login?reason=expired");
@@ -40,6 +41,22 @@ export async function requireDestination(prefix: string): Promise<AccessContext>
 
   if (!context) {
     redirect("/login?reason=expired");
+  }
+
+  if (!context.activeDestination) {
+    const matchingDestination = context.destinations.find(
+      (d) => d.path === prefix || prefix.startsWith(`${d.path}/`),
+    );
+    if (matchingDestination) {
+      try {
+        context = await createServerApiClient().selectWorkspace(
+          { scope: matchingDestination.scope, hospitalId: matchingDestination.hospitalId },
+          cookie,
+        );
+      } catch {
+        // Fall through to destination check
+      }
+    }
   }
 
   if (!context.activeDestination?.path.startsWith(prefix)) {

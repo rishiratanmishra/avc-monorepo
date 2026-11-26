@@ -10,6 +10,7 @@
     "start:admin": "turbo run dev --filter=admin --filter=api",
     "start:client": "turbo run dev --filter=web --filter=api",
     "start:api": "turbo run dev --filter=api",
+    "seed:admin": "yarn --cwd apps/api tsx ../../scripts/seed-admin.ts",
     "lint": "turbo run lint",
     "verify:eslint-coverage": "node scripts/verify-eslint-coverage.mjs",
     "lint:css": "stylelint \"apps/**/*.css\" \"packages/**/*.css\" && node scripts/check-css-tokens.mjs",

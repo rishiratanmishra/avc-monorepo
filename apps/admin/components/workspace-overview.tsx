@@ -1,3 +1,5 @@
+"use client";
+
 import type { AccessContext } from "@repo/contracts";
 import { Card, Space, Tag, Typography } from "antd";
 import { AdminPage } from "./admin-page";

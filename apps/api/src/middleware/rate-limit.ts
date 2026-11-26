@@ -19,5 +19,11 @@ function createLimiter(limit: number, windowMs: number) {
   });
 }
 
-export const loginRateLimit = createLimiter(10, 15 * 60 * 1000);
-export const emailActionRateLimit = createLimiter(5, 60 * 60 * 1000);
+export const loginRateLimit = createLimiter(
+  process.env.NODE_ENV === "production" ? 10 : 100,
+  15 * 60 * 1000,
+);
+export const emailActionRateLimit = createLimiter(
+  process.env.NODE_ENV === "production" ? 5 : 50,
+  60 * 60 * 1000,
+);

@@ -46,6 +46,7 @@ export const API_SESSION_COOKIE = "avc_session";
 export interface ApiClientOptions {
   baseUrl: string;
   fetchImpl?: ApiFetch;
+  origin?: string;
 }
 
 export class ApiError extends Error {
@@ -75,6 +76,9 @@ export function createApiClient(options: ApiClientOptions) {
     const headers = new Headers(init.headers);
     if (init.body !== undefined) {
       headers.set("content-type", "application/json");
+    }
+    if (options.origin) {
+      headers.set("origin", options.origin);
     }
     if (cookieHeader) {
       headers.set("cookie", cookieHeader);
@@ -313,5 +317,6 @@ export type ApiClient = ReturnType<typeof createApiClient>;
 export function createServerApiClient(): ApiClient {
   return createApiClient({
     baseUrl: process.env.API_UPSTREAM ?? "http://127.0.0.1:4000",
+    origin: process.env.APP_ORIGIN ?? "http://localhost:3000",
   });
 }
