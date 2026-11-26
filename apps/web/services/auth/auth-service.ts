@@ -21,3 +21,5 @@ export const RequestPasswordReset = async (payload: EmailInput) =>
 export const GetAccessContext = () => api.getAccessContext();
 
 export const SelectWorkspace = (payload: SelectWorkspaceInput) => api.selectWorkspace(payload);
+
+export const AcceptInvitation = (token: string) => api.acceptInvitation({ token });

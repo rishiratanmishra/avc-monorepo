@@ -4,6 +4,7 @@ import type { ApplicationDestination } from "@repo/contracts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import {
+  AcceptInvitation,
   LoginUser,
   LogoutUser,
   RegisterUser,
@@ -61,3 +62,11 @@ export const useSelectWorkspace = () => {
 export function selectWorkspaceInput(destination: ApplicationDestination) {
   return { scope: destination.scope, hospitalId: destination.hospitalId };
 }
+
+export const useAcceptInvitation = () => {
+  const syncSession = useAuthSessionSync();
+  return useMutation({
+    mutationFn: AcceptInvitation,
+    onSuccess: () => syncSession(),
+  });
+};

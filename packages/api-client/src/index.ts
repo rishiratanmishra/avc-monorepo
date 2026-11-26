@@ -1,4 +1,5 @@
 import {
+  AcceptInvitationSchema,
   AccessContextSchema,
   AdminCreateUserSchema,
   AdminUserViewSchema,
@@ -8,6 +9,7 @@ import {
   EmailInputSchema,
   HospitalMembershipViewSchema,
   HospitalSummarySchema,
+  InvitationResultSchema,
   InviteMemberSchema,
   LoginSchema,
   MessageResponseSchema,
@@ -15,6 +17,7 @@ import {
   SelectWorkspaceSchema,
   UpdateHospitalStatusSchema,
   UpdateMembershipStatusSchema,
+  type AcceptInvitationInput,
   type AccessContext,
   type AdminCreateUserInput,
   type AdminUserView,
@@ -23,6 +26,7 @@ import {
   type CreateAccountInput,
   type CreateHospitalInput,
   type HospitalMembershipView,
+  type InvitationResultContract,
   type InviteMemberInput,
   type LoginInput,
   type MessageResponse,
@@ -168,6 +172,19 @@ export function createApiClient(options: ApiClientOptions) {
     clearWorkspace(cookieHeader?: string): Promise<AccessContext> {
       const path = "/api/access/workspace";
       return request(path, json("DELETE", path), AccessContextSchema, cookieHeader);
+    },
+
+    acceptInvitation(
+      input: AcceptInvitationInput,
+      cookieHeader?: string,
+    ): Promise<InvitationResultContract> {
+      const path = "/api/access/invitations/accept";
+      return request(
+        path,
+        json("POST", path, AcceptInvitationSchema.parse(input)),
+        InvitationResultSchema,
+        cookieHeader,
+      );
     },
 
     listHospitals(cookieHeader?: string) {
