@@ -13,8 +13,12 @@ routes -> middleware -> controller -> service -> database
 - `*.routes.ts`: path, method, middleware chain only.
 - `*.controller.ts`: HTTP translation only.
 - `*.service.ts`: business rules and transaction boundaries.
+- `*.repository.ts`: module-specific database access where the query surface justifies it; inject repositories into services rather than scattering Drizzle queries through controllers or routes.
+- `*.container.ts`: composition of module services and repositories where dependency injection is used.
 - `errors/`: application error types.
 - `middleware/`: cross-cutting concerns.
+
+Backend work follows the repository-wide responsibility standard in `docs/architecture/standards.md`. Routes and controllers must not absorb domain rules, and services must not bypass API authorization or tenant-scope enforcement.
 
 ## Routes
 

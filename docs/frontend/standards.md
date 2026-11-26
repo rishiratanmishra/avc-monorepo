@@ -28,6 +28,8 @@ Applies to `apps/web` and `apps/admin`. `apps/admin` uses Ant Design; the same a
 
 ## Forms and API integration
 
+All frontend work follows the repository-wide responsibility standard in `docs/architecture/standards.md`. The authentication and form implementation is the reference for layer boundaries; do not copy it into unrelated domains without adapting the structure.
+
 - Define request/response shapes in `@repo/contracts`.
 - Validate on the server; client validation is for UX only.
 - Every form must have:

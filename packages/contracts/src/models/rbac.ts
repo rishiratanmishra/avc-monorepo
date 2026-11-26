@@ -183,6 +183,19 @@ export const HospitalMembershipSchema = MembershipSchema.extend({
 }).strict();
 export type HospitalMembership = z.infer<typeof HospitalMembershipSchema>;
 
+/**
+ * Membership view returned by hospital administration endpoints. Effective
+ * permissions are computed for the active access context and are not part of
+ * this administrative view.
+ */
+export const HospitalMembershipViewSchema = MembershipSchema.omit({ permissions: true })
+  .extend({
+    hospitalName: z.string().trim().min(1).max(120),
+    hospitalStatus: HospitalStatusSchema,
+  })
+  .strict();
+export type HospitalMembershipView = z.infer<typeof HospitalMembershipViewSchema>;
+
 export const ClientRelationshipSchema = z.strictObject({
   id: idSchema,
   hospitalId: idSchema,
@@ -195,9 +208,7 @@ export type ClientRelationship = z.infer<typeof ClientRelationshipSchema>;
 export const HospitalClientRelationshipSchema = ClientRelationshipSchema.extend({
   hospitalName: z.string().trim().min(1).max(120),
 }).strict();
-export type HospitalClientRelationship = z.infer<
-  typeof HospitalClientRelationshipSchema
->;
+export type HospitalClientRelationship = z.infer<typeof HospitalClientRelationshipSchema>;
 
 export const WorkspaceSchema = z.strictObject({
   scope: AccessScopeSchema,

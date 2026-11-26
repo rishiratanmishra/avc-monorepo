@@ -1,7 +1,8 @@
 import { API_SESSION_COOKIE, ApiError, createServerApiClient } from "@repo/api-client";
-import type { AccessContext } from "@repo/contracts";
+import type { AccessContext, PermissionCode } from "@repo/contracts";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import type { AdminArea } from "./admin-nav";
 
 const appOrigin = process.env.APP_ORIGIN ?? "http://localhost:3000";
 
@@ -27,12 +28,20 @@ export async function readAccessContext(): Promise<AccessContext> {
   return createServerApiClient().getAccessContext(await cookieHeader());
 }
 
-export async function readOptionalAccessContext(): Promise<AccessContext | null> {
+export interface AdminLandingState {
+  context: AccessContext | null;
+  unavailable: boolean;
+}
+
+export async function readOptionalAccessContext(): Promise<AdminLandingState> {
   try {
-    return await readAccessContext();
+    return { context: await readAccessContext(), unavailable: false };
   } catch (error) {
-    if (error instanceof ApiError && (error.status === 401 || error.status === 0)) {
-      return null;
+    if (error instanceof ApiError && error.status === 401) {
+      return { context: null, unavailable: false };
+    }
+    if (error instanceof ApiError && error.status === 0) {
+      return { context: null, unavailable: true };
     }
     throw error;
   }
@@ -56,9 +65,30 @@ export async function requireDestination(prefix: string): Promise<AccessContext>
     redirect(webRedirect("/login", "expired"));
   }
 
-  if (!context.activeDestination?.path.startsWith(prefix)) {
+  const destinationPath = context.activeDestination?.path;
+  if (destinationPath !== prefix && !destinationPath?.startsWith(`${prefix}/`)) {
     redirect(webRedirect("/workspace", "forbidden"));
   }
 
+  return context;
+}
+
+/**
+ * Guards every nested route in an area. The API emits only base destinations,
+ * so nested paths must not be passed as the destination prefix.
+ */
+export function requireAdminArea(area: AdminArea): Promise<AccessContext> {
+  return requireDestination(`/manage/${area}`);
+}
+
+/** Server-side UX guard; the API still rechecks every protected request. */
+export async function requireAdminPermission(
+  area: AdminArea,
+  permission: PermissionCode,
+): Promise<AccessContext> {
+  const context = await requireAdminArea(area);
+  if (!context.activeWorkspace.permissions.includes(permission)) {
+    notFound();
+  }
   return context;
 }

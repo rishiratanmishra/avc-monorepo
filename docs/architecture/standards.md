@@ -24,6 +24,18 @@ packages/
 - `packages/database` owns all database access. Apps must not create their own pools or import Drizzle directly.
 - `packages/ui` owns promoted reusable primitives. The Formik/Zod form system exported as `@repo/ui/form` is promoted for product use; the remaining starter components still require promotion review before product use.
 
+## Repository-wide responsibility standard
+
+Every future feature follows the separation-of-concerns standard demonstrated by the authentication and form implementation. That implementation is a reference for layer boundaries and typing discipline, not a template to copy blindly; adapt the structure to the actual domain.
+
+- **One layer, one responsibility.** Do not mix business rules into UI components, route handlers, validation schemas, or shared presentation components.
+- **Frontend:** pages and components compose UI and handle user interactions. Shared UI stays presentation-focused. Forms use Formik + Zod with `@repo/ui/form`. Domain API operations are separately exported service functions. TanStack Query hooks consume those services and own server state, mutations, cache synchronization, and invalidation. Components consume hooks instead of calling the API directly. Local state is limited to genuinely local UI behavior.
+- **Backend:** routes and controllers handle HTTP concerns, status codes, and request/response translation. Schemas handle input validation. Services own business operations, transactions, and domain rules. Repositories or data-access modules own database operations where that abstraction is justified. Authorization and tenant-scope checks are enforced on the backend.
+- **Shared contracts:** reuse `@repo/contracts` and API-client types across boundaries. Avoid `any`, unsafe assertions, duplicated DTOs, and contract drift. Keep client validation aligned with shared shapes without duplicating authoritative business rules.
+- **Consistency:** inspect existing components, hooks, services, utilities, schemas, routes, and repositories before creating new ones. Reuse or extend when they fit. Extract shared abstractions only for genuine reuse or a clear boundary benefit. Keep naming, folder organization, error handling, and testing conventions consistent.
+- **Quality:** every implementation must be maintainable, testable at the appropriate layer, accessible and responsive on the frontend, secure and tenant-isolated on the backend, and free from unnecessary abstractions or duplicated logic.
+- **Change discipline:** do not introduce a new architectural pattern without a clear technical reason. If an existing pattern needs improvement, explain why and update the relevant canonical documentation and examples.
+
 ## Layer rules
 
 ### API
@@ -35,7 +47,8 @@ routes -> middleware -> controller -> service -> database
 - Routes declare HTTP shape and middleware only.
 - Controllers translate HTTP to service calls; no business logic.
 - Services own transactions and domain rules.
-- Database access lives in `@repo/database`.
+- Repositories or data-access modules own module-specific persistence where justified; inject them into services instead of scattering Drizzle queries through controllers or route handlers.
+- Database access lives in `@repo/database`; API repositories are the module-facing persistence boundary, not a second database client layer.
 
 ### Frontend
 
@@ -46,8 +59,9 @@ app/routes -> layouts -> page compositions -> section components -> ui primitive
 - Pages compose sections; they do not implement business logic.
 - Interactive behavior lives in client components only when required.
 - Server state must come from the API through `@repo/contracts` and `@repo/api-client`. No parallel HTTP client layer is allowed.
-- In `apps/web`, domain API operations live in `services/<domain>/`, TanStack Query hooks in `hooks/<domain>/`, and app-wide providers in `providers/`. Pages compose hooks and shared UI; they do not implement HTTP transport or form-state plumbing.
-- Reusable Formik/Zod form primitives live in `@repo/ui/form`. Domain-specific form schemas stay with the owning app.
+- In `apps/web` and `apps/admin`, domain API operations live in `services/<domain>/`, TanStack Query hooks in `hooks/<domain>/`, and app-wide providers in `providers/`. Pages compose hooks and shared UI; they do not implement HTTP transport or form-state plumbing.
+- Navigation visibility may be derived from server-provided permissions, but it is UX only. Authorization is always rechecked by the API for the active scope and hospital.
+- Reusable Formik/Zod form primitives live in `@repo/ui/form`. Domain-specific form schemas stay with the owning app. Ant Design remains the component library in `apps/admin`; Ant `Form` must not become a second form-state architecture.
 
 ## Folder conventions
 

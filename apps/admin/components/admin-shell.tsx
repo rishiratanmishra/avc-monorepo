@@ -1,90 +1,89 @@
 "use client";
 
 import type { AccessContext } from "@repo/contracts";
-import { AppstoreOutlined, SafetyCertificateOutlined } from "@ant-design/icons";
-import { Button, Card, Layout, Menu, Space, Tag, Typography } from "antd";
+import {
+  AppstoreOutlined,
+  AuditOutlined,
+  BankOutlined,
+  SafetyCertificateOutlined,
+  TeamOutlined,
+} from "@ant-design/icons";
+import { Button, Layout, Menu, Space, Tag, Typography } from "antd";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import { visibleAdminNav, type AdminArea, type AdminNavIcon } from "../lib/admin-nav";
 import { siteUrl } from "../lib/site-url";
 import { LogoutButton } from "./logout-button";
 
-const { Content, Header, Sider } = Layout;
-const { Paragraph, Text, Title } = Typography;
+const NAV_ICONS: Record<AdminNavIcon, ReactNode> = {
+  overview: <AppstoreOutlined />,
+  hospitals: <BankOutlined />,
+  staff: <TeamOutlined />,
+  users: <SafetyCertificateOutlined />,
+  audit: <AuditOutlined />,
+};
 
 export function AdminShell({
   context,
   area,
+  section,
+  children,
 }: {
   context: AccessContext;
-  area: "practice" | "platform";
+  area: AdminArea;
+  section?: string;
+  children: ReactNode;
 }) {
-  const isPractice = area === "practice";
-  const permissionPrefix = isPractice ? "hospital." : "platform.";
-  const permissions = context.activeWorkspace.permissions.filter((permission) =>
-    permission.startsWith(permissionPrefix),
-  );
-  const destination = context.activeDestination;
-  const menuItems = [
-    {
-      key: area,
-      icon: isPractice ? <AppstoreOutlined /> : <SafetyCertificateOutlined />,
-      label: isPractice ? "Practice overview" : "Platform overview",
-    },
-  ];
+  const navItems = visibleAdminNav(area, context.activeWorkspace.permissions).map((item) => ({
+    key: item.key,
+    icon: NAV_ICONS[item.icon],
+    label: <Link href={item.href}>{item.label}</Link>,
+  }));
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider theme="light" breakpoint="lg" collapsedWidth="0">
-        <div style={{ padding: "20px 16px" }}>
-          <Title level={4} style={{ margin: 0 }}>
+      <Layout.Sider
+        theme="light"
+        breakpoint="lg"
+        collapsedWidth="0"
+        style={{ borderRight: "1px solid var(--md-sys-color-outline)" }}
+      >
+        <div style={{ padding: "var(--space-5) var(--space-4)" }}>
+          <Typography.Title level={4} style={{ margin: 0 }}>
             AVC Manage
-          </Title>
-          <Text type="secondary">Authorized workspace</Text>
+          </Typography.Title>
+          <Typography.Text type="secondary">Authorized workspace</Typography.Text>
         </div>
-        <Menu mode="inline" selectedKeys={[area]} items={menuItems} />
-      </Sider>
+        <Menu mode="inline" selectedKeys={section ? [section] : []} items={navItems} />
+      </Layout.Sider>
       <Layout>
-        <Header
+        <Layout.Header
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            background: "transparent",
+            gap: "var(--space-4)",
+            background: "var(--md-sys-color-surface-container-lowest)",
+            borderBottom: "1px solid var(--md-sys-color-outline)",
           }}
         >
           <Space size="middle" wrap>
-            <Text strong>{context.email}</Text>
-            <Tag>{destination?.label ?? "No active destination"}</Tag>
+            <Typography.Text strong>{context.email}</Typography.Text>
+            <Tag color="blue">{context.activeDestination?.label ?? "No active destination"}</Tag>
+            {context.activeWorkspace.hospitalName ? (
+              <Typography.Text type="secondary">
+                {context.activeWorkspace.hospitalName}
+              </Typography.Text>
+            ) : null}
           </Space>
           <Space size="small">
-            <Button
-              type="text"
-              onClick={() => window.location.assign(siteUrl("/workspace?switch=1"))}
-            >
+            <Button type="text" href={siteUrl("/workspace?switch=1")}>
               Switch workspace
             </Button>
             <LogoutButton />
           </Space>
-        </Header>
-        <Content style={{ padding: 24 }}>
-          <Card>
-            <Title level={2}>{isPractice ? "Practice workspace" : "Platform workspace"}</Title>
-            <Paragraph>
-              This page is available because the API confirmed an active {area} destination for
-              this session. Every protected request is revalidated server-side.
-            </Paragraph>
-            <Paragraph>
-              <Text strong>Active hospital:</Text>{" "}
-              {context.activeWorkspace.hospitalName ?? "Not applicable"}
-            </Paragraph>
-            <Title level={5}>Effective permissions</Title>
-            <Space size={[8, 8]} wrap>
-              {permissions.length > 0 ? (
-                permissions.map((permission) => <Tag key={permission}>{permission}</Tag>)
-              ) : (
-                <Text type="secondary">No {area} permissions are active.</Text>
-              )}
-            </Space>
-          </Card>
-        </Content>
+        </Layout.Header>
+        <Layout.Content style={{ padding: "var(--space-6)" }}>{children}</Layout.Content>
       </Layout>
     </Layout>
   );

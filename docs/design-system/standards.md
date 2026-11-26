@@ -35,7 +35,7 @@ Rules:
 ## Conflicting tokens
 
 - `apps/web/constants/theme.ts` currently conflicts with `globals.css` and must not be used for new web UI.
-- `apps/admin` uses Ant Design tokens. Keep admin theming inside `apps/admin/app/layout.tsx` until a shared theme pipeline exists.
+- `apps/admin` uses Ant Design tokens. Keep admin theming in `apps/admin/lib/admin-theme.ts`, applied by `apps/admin/app/layout.tsx`, until a shared theme pipeline exists. The file may alias existing AVC brand values for `@repo/ui/form`; it must not invent a second visual language.
 - Never claim cross-app theme synchronization unless both apps consume the same source.
 
 ## Components

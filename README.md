@@ -37,7 +37,7 @@ The root `dev` script starts the configured workspaces:
 
 - Website app: [http://localhost:3000](http://localhost:3000)
 - Docs app: [http://localhost:3001](http://localhost:3001)
-- Staff/admin dashboard: [http://localhost:3002](http://localhost:3002)
+- Staff/admin dashboard: [http://localhost:3002/manage](http://localhost:3002/manage)
 - API: [http://localhost:4000](http://localhost:4000)
 
 To run one app at a time:

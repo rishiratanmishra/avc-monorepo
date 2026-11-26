@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminHomePage() {
-  const context = await readOptionalAccessContext();
+  const { context, unavailable } = await readOptionalAccessContext();
   const adminDestination = context?.activeDestination?.path.startsWith("/manage/")
     ? context.activeDestination
     : null;
@@ -19,18 +19,26 @@ export default async function AdminHomePage() {
     redirect(adminDestination.path.slice("/manage".length) || "/");
   }
 
+  const title = unavailable
+    ? "Management service unavailable"
+    : context
+      ? "No active management workspace"
+      : "Sign in required";
+  const description = unavailable
+    ? "The API could not be reached. Try again after the service is available."
+    : context
+      ? "Select an authorized hospital or platform workspace to continue."
+      : "Your session is not available. Sign in on the main website first.";
+
   return (
-    <PrivateState
-      title={context ? "No active management workspace" : "Sign in required"}
-      description={
-        context
-          ? "Select an authorized hospital or platform workspace to continue."
-          : "Your session is not available. Sign in on the main website first."
-      }
-    >
-      <a href={webUrl("/workspace?switch=1")}>Choose workspace</a>
-      <a href={webUrl("/login")}>Sign in</a>
-      {context ? <LogoutButton /> : null}
+    <PrivateState title={title} description={description}>
+      {unavailable ? null : (
+        <>
+          <a href={webUrl("/workspace?switch=1")}>Choose workspace</a>
+          <a href={webUrl("/login")}>Sign in</a>
+          {context ? <LogoutButton /> : null}
+        </>
+      )}
     </PrivateState>
   );
 }

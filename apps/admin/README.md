@@ -12,12 +12,15 @@ From the monorepo root:
 yarn workspace admin dev
 ```
 
-Open [http://localhost:3002](http://localhost:3002), or start all workspaces
-with `yarn dev`.
+Open [http://localhost:3002/manage](http://localhost:3002/manage), or start all
+workspaces with `yarn dev`.
 
-The current dashboard is a UI preview with sample appointment data. It is not
-connected to the API yet; do not use it to manage real patient or appointment
-records.
+The app is authorized by the Express API session and uses real API data. Sign in
+on the public website first, then select an authorized workspace. Available
+product areas are platform hospital administration and practice staff
+membership administration; clinical, appointment, billing, and communication
+areas are intentionally not implemented until their contracts and invariants
+exist.
 
 ## Checks
 

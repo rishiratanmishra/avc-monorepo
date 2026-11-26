@@ -1,16 +1,29 @@
 import {
   AccessContextSchema,
+  AssignableHospitalRoleCodeSchema,
   CreateAccountSchema,
+  CreateHospitalSchema,
   EmailInputSchema,
+  HospitalMembershipViewSchema,
+  HospitalSummarySchema,
+  InviteMemberSchema,
   LoginSchema,
   MessageResponseSchema,
   SelectWorkspaceSchema,
+  UpdateHospitalStatusSchema,
+  UpdateMembershipStatusSchema,
   type AccessContext,
+  type AssignableHospitalRoleCode,
   type AuthenticatedUser,
   type CreateAccountInput,
+  type CreateHospitalInput,
+  type HospitalMembershipView,
+  type InviteMemberInput,
   type LoginInput,
   type MessageResponse,
   type SelectWorkspaceInput,
+  type UpdateHospitalStatusInput,
+  type UpdateMembershipStatusInput,
 } from "@repo/contracts";
 import { ApiErrorResponseSchema } from "@repo/contracts/models/api";
 import { AuthenticatedUserSchema } from "@repo/contracts/models/user";
@@ -110,7 +123,12 @@ export function createApiClient(options: ApiClientOptions) {
     },
 
     async logout(cookieHeader?: string): Promise<void> {
-      await request("/api/auth/logout", json("POST", "/api/auth/logout"), NoContentSchema, cookieHeader);
+      await request(
+        "/api/auth/logout",
+        json("POST", "/api/auth/logout"),
+        NoContentSchema,
+        cookieHeader,
+      );
     },
 
     requestPasswordReset(email: string): Promise<MessageResponse> {
@@ -123,13 +141,15 @@ export function createApiClient(options: ApiClientOptions) {
     },
 
     getAccessContext(cookieHeader?: string): Promise<AccessContext> {
-      return request("/api/access/context", json("GET", "/api/access/context"), AccessContextSchema, cookieHeader);
+      return request(
+        "/api/access/context",
+        json("GET", "/api/access/context"),
+        AccessContextSchema,
+        cookieHeader,
+      );
     },
 
-    selectWorkspace(
-      input: SelectWorkspaceInput,
-      cookieHeader?: string,
-    ): Promise<AccessContext> {
+    selectWorkspace(input: SelectWorkspaceInput, cookieHeader?: string): Promise<AccessContext> {
       const path = "/api/access/workspace";
       return request(
         path,
@@ -142,6 +162,92 @@ export function createApiClient(options: ApiClientOptions) {
     clearWorkspace(cookieHeader?: string): Promise<AccessContext> {
       const path = "/api/access/workspace";
       return request(path, json("DELETE", path), AccessContextSchema, cookieHeader);
+    },
+
+    listHospitals(cookieHeader?: string) {
+      const path = "/api/platform/hospitals";
+      return request(path, json("GET", path), z.array(HospitalSummarySchema), cookieHeader);
+    },
+
+    createHospital(input: CreateHospitalInput, cookieHeader?: string) {
+      const path = "/api/platform/hospitals";
+      return request(
+        path,
+        json("POST", path, CreateHospitalSchema.parse(input)),
+        HospitalSummarySchema,
+        cookieHeader,
+      );
+    },
+
+    async updateHospitalStatus(
+      hospitalId: string,
+      input: UpdateHospitalStatusInput,
+      cookieHeader?: string,
+    ): Promise<void> {
+      const path = `/api/platform/hospitals/${z.uuid().parse(hospitalId)}/status`;
+      await request(
+        path,
+        json("PATCH", path, UpdateHospitalStatusSchema.parse(input)),
+        NoContentSchema,
+        cookieHeader,
+      );
+    },
+
+    listHospitalMemberships(
+      hospitalId: string,
+      cookieHeader?: string,
+    ): Promise<HospitalMembershipView[]> {
+      const path = `/api/hospitals/${z.uuid().parse(hospitalId)}/memberships`;
+      return request(path, json("GET", path), z.array(HospitalMembershipViewSchema), cookieHeader);
+    },
+
+    inviteHospitalMember(
+      hospitalId: string,
+      input: InviteMemberInput,
+      cookieHeader?: string,
+    ): Promise<MessageResponse> {
+      const path = `/api/hospitals/${z.uuid().parse(hospitalId)}/invitations`;
+      return request(
+        path,
+        json("POST", path, InviteMemberSchema.parse(input)),
+        MessageResponseSchema,
+        cookieHeader,
+      );
+    },
+
+    updateHospitalMembershipStatus(
+      hospitalId: string,
+      membershipId: string,
+      input: UpdateMembershipStatusInput,
+      cookieHeader?: string,
+    ): Promise<HospitalMembershipView> {
+      const path = `/api/hospitals/${z.uuid().parse(hospitalId)}/memberships/${z.uuid().parse(membershipId)}`;
+      return request(
+        path,
+        json("PATCH", path, UpdateMembershipStatusSchema.parse(input)),
+        HospitalMembershipViewSchema,
+        cookieHeader,
+      );
+    },
+
+    async addHospitalMembershipRole(
+      hospitalId: string,
+      membershipId: string,
+      roleCode: AssignableHospitalRoleCode,
+      cookieHeader?: string,
+    ): Promise<void> {
+      const path = `/api/hospitals/${z.uuid().parse(hospitalId)}/memberships/${z.uuid().parse(membershipId)}/roles/${AssignableHospitalRoleCodeSchema.parse(roleCode)}`;
+      await request(path, json("PUT", path), NoContentSchema, cookieHeader);
+    },
+
+    async removeHospitalMembershipRole(
+      hospitalId: string,
+      membershipId: string,
+      roleCode: AssignableHospitalRoleCode,
+      cookieHeader?: string,
+    ): Promise<void> {
+      const path = `/api/hospitals/${z.uuid().parse(hospitalId)}/memberships/${z.uuid().parse(membershipId)}/roles/${AssignableHospitalRoleCodeSchema.parse(roleCode)}`;
+      await request(path, json("DELETE", path), NoContentSchema, cookieHeader);
     },
   };
 }

@@ -17,6 +17,14 @@
 5. Inspect existing implementations that already solve part of the problem.
 6. State the intended change boundaries before editing.
 
+## New feature workflow
+
+1. Inspect the existing architecture and relevant reference implementations before editing.
+2. Identify the layers and responsibilities involved; use `docs/architecture/standards.md` as the canonical responsibility standard.
+3. Reuse existing components, hooks, services, utilities, schemas, contracts, and backend patterns where they fit.
+4. Implement using established conventions; introduce a new pattern only with a clear technical reason and a documentation update.
+5. Add tests at the appropriate layer, then run and report the relevant quality gates.
+
 ## Change rules
 
 - Reuse before creating.

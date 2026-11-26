@@ -41,6 +41,7 @@ If guidance conflicts: tooling/CI > security/data integrity > domain rules > can
 13. Accessibility, responsive behavior, loading, empty, error, and success states are part of done.
 14. Update canonical documentation when architecture, rules, or user-visible behavior changes.
 15. Automated checks win over prose. Prefer ESLint, stylelint, TypeScript, tests, and CI enforcement.
+16. Apply the repository-wide responsibility standard in `docs/architecture/standards.md` to every frontend and backend feature.
 
 ## Skills
 

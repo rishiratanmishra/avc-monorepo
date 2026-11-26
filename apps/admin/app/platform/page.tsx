@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AdminShell } from "../../components/admin-shell";
-import { requireDestination } from "../../lib/server-access";
+import { WorkspaceOverview } from "../../components/workspace-overview";
+import { requireAdminArea } from "../../lib/server-access";
 
 export const metadata: Metadata = {
   title: "Platform workspace | AVC Manage",
@@ -8,6 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default async function PlatformPage() {
-  const context = await requireDestination("/manage/platform");
-  return <AdminShell context={context} area="platform" />;
+  const context = await requireAdminArea("platform");
+  return (
+    <AdminShell context={context} area="platform" section="overview">
+      <WorkspaceOverview context={context} area="platform" />
+    </AdminShell>
+  );
 }
