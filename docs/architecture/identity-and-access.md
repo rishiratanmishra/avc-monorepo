@@ -26,7 +26,7 @@ This document is the production architecture for identity, authentication, autho
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `admin`   | Platform administrator. Manages hospitals, platform users, and audit review. Does not automatically access hospital clinical or client data. |
 
-Public registration never grants this role. Assignment requires the existing platform-admin service re-check and audit flow. Removing the final platform administrator remains forbidden.
+Public registration never grants this role. A platform administrator can create an account as a pet parent or platform administrator through `platform.users.manage`; assignment requires the platform-admin service re-check and audit flow. Removing the final platform administrator remains forbidden. Admin-created accounts start with email verification pending. Hospital roles are never assigned by platform user management; they require an active hospital membership.
 
 ### Hospital scope
 
@@ -144,6 +144,8 @@ Client routing is UX only. Every destination is supplied by `/api/access/context
 | `GET /api/access/client/:hospitalId/relationship`                                 | Active client scope and active client relationship                                                           |
 | `GET/POST /api/platform/hospitals`                                                | `platform.hospitals.manage`                                                                                  |
 | `PATCH /api/platform/hospitals/:hospitalId/status`                                | `platform.hospitals.manage`; status change and session revocation are transactional on suspension or closure |
+| `GET/POST /api/platform/users`                                                    | `platform.users.manage`; creates a pending-verification account with a pet-parent or platform-admin role     |
+| `PUT/DELETE /api/platform/users/:userId/roles/:roleCode`                          | `platform.users.manage`; accepts only the platform `admin` role and protects the final administrator         |
 | `GET /api/hospitals/:hospitalId/memberships`                                      | `hospital.members.manage` for the active workspace                                                           |
 | `POST /api/hospitals/:hospitalId/invitations`                                     | `hospital.members.manage`; owner role invitations require owner or explicit platform authority               |
 | `PATCH /api/hospitals/:hospitalId/memberships/:membershipId`                      | `hospital.members.manage`; last-owner and self-service lockout protections                                   |

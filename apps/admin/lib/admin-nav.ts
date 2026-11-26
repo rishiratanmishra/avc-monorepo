@@ -37,6 +37,13 @@ export const ADMIN_NAV: Readonly<Record<AdminArea, readonly AdminNavItem[]>> = {
       permission: "platform.hospitals.manage",
       icon: "hospitals",
     },
+    {
+      key: "users",
+      label: "Users",
+      href: "/platform/users",
+      permission: "platform.users.manage",
+      icon: "users",
+    },
   ],
 };
 

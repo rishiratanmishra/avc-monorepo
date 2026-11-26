@@ -46,7 +46,7 @@ No operational domain API or persistence exists for:
 - Invoices, payments, refunds, and inventory.
 - Communication consent, templates, campaigns, recipients, and delivery records.
 - Analytics and reporting.
-- Platform user listing/detail and audit-log read endpoints.
+- Platform audit-log read endpoints.
 - Client-facing `/accept-invitation` route.
 - Frontend component, E2E, and database-integration test harnesses.
 
@@ -58,7 +58,7 @@ Platform area:
 
 - `/manage/platform` — platform overview; remains the API destination landing route.
 - `/manage/platform/hospitals` — hospital list and status management.
-- `/manage/platform/users` — deferred until a platform user-list contract exists.
+- `/manage/platform/users` — account list, account creation, and platform-admin role management.
 - `/manage/platform/audit` — deferred until an audit-read endpoint exists.
 
 Practice area:
@@ -161,6 +161,7 @@ Phases must remain incremental and reviewable. A blocked phase must not be repla
 - Phase 1 is implemented: permission-aware navigation, base-area and permission guards, shared page header, aligned Ant/AVC tokens, Query provider, and thin route composition.
 - Phase 2 is implemented for hospital list, create, and status change using real API data. The organization-level ownership question remains an open architectural decision and was not invented.
 - Phase 3 is implemented for hospital membership list, invitation, status change, and role assignment through existing endpoints. Owner-only and last-owner restrictions are enforced by the API and mirrored as UI guards where the active context makes them knowable. A dedicated `HospitalMembershipViewSchema` was added because the administrative membership response intentionally omits the effective permissions carried by access-context memberships.
+- Platform user management is implemented under `/manage/platform/users`: `platform.users.manage` guards list/create and platform-admin role assignment. Creation is limited to `pet_owner` or platform `admin`, requires email verification, and leaves hospital roles to membership management.
 - Phases 4–8 remain blocked as described above. No clinical, billing, communication, or analytics data has been simulated.
 - Browser verification used real data from the isolated `avc_phase7_test` database: platform hospital list and create-form validation, and practice staff list with role/status controls. No test data was fabricated or mutated for verification.
 

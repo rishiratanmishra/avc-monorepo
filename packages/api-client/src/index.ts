@@ -1,5 +1,7 @@
 import {
   AccessContextSchema,
+  AdminCreateUserSchema,
+  AdminUserViewSchema,
   AssignableHospitalRoleCodeSchema,
   CreateAccountSchema,
   CreateHospitalSchema,
@@ -9,10 +11,13 @@ import {
   InviteMemberSchema,
   LoginSchema,
   MessageResponseSchema,
+  PlatformRoleCodeSchema,
   SelectWorkspaceSchema,
   UpdateHospitalStatusSchema,
   UpdateMembershipStatusSchema,
   type AccessContext,
+  type AdminCreateUserInput,
+  type AdminUserView,
   type AssignableHospitalRoleCode,
   type AuthenticatedUser,
   type CreateAccountInput,
@@ -21,6 +26,7 @@ import {
   type InviteMemberInput,
   type LoginInput,
   type MessageResponse,
+  type PlatformRoleCode,
   type SelectWorkspaceInput,
   type UpdateHospitalStatusInput,
   type UpdateMembershipStatusInput,
@@ -191,6 +197,39 @@ export function createApiClient(options: ApiClientOptions) {
         NoContentSchema,
         cookieHeader,
       );
+    },
+
+    listPlatformUsers(cookieHeader?: string): Promise<AdminUserView[]> {
+      const path = "/api/platform/users";
+      return request(path, json("GET", path), AdminUserViewSchema.array(), cookieHeader);
+    },
+
+    createPlatformUser(input: AdminCreateUserInput, cookieHeader?: string): Promise<AdminUserView> {
+      const path = "/api/platform/users";
+      return request(
+        path,
+        json("POST", path, AdminCreateUserSchema.parse(input)),
+        AdminUserViewSchema,
+        cookieHeader,
+      );
+    },
+
+    async assignPlatformUserRole(
+      userId: string,
+      roleCode: PlatformRoleCode,
+      cookieHeader?: string,
+    ): Promise<void> {
+      const path = `/api/platform/users/${z.uuid().parse(userId)}/roles/${PlatformRoleCodeSchema.parse(roleCode)}`;
+      await request(path, json("PUT", path), NoContentSchema, cookieHeader);
+    },
+
+    async revokePlatformUserRole(
+      userId: string,
+      roleCode: PlatformRoleCode,
+      cookieHeader?: string,
+    ): Promise<void> {
+      const path = `/api/platform/users/${z.uuid().parse(userId)}/roles/${PlatformRoleCodeSchema.parse(roleCode)}`;
+      await request(path, json("DELETE", path), NoContentSchema, cookieHeader);
     },
 
     listHospitalMemberships(

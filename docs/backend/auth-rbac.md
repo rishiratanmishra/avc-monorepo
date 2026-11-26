@@ -12,11 +12,14 @@ The production model is specified in `docs/architecture/identity-and-access.md`;
 - Sessions are database-backed and delivered through one secure HTTP-only cookie, `avc_session`. Only an opaque token is sent to the browser.
 - Verification, password-reset, and hospital-invitation tokens are single-use and stored as SHA-256 hashes.
 - Public registration assigns only `pet_owner`. It never assigns a platform or hospital role.
+- Platform administrators can create users through `POST /api/platform/users` with `platform.users.manage`. The only selectable roles are `pet_owner` (default) and platform `admin`; new accounts require email verification.
 - Global `admin` is the platform administrator role. Hospital authority comes only from `hospital_memberships` plus `hospital_membership_roles`.
 - Permissions are stable codes mapped to roles; authorization checks permissions, not UI labels.
 - The active hospital and scope are stored on `auth_sessions.active_hospital_id` and `auth_sessions.active_scope`, not in a client claim or header. A user with both staff and client relationships must select the intended scope explicitly. A null legacy scope grants no privileged permission until a workspace is selected.
 - Access context, workspace selection, hospital provisioning, invitations, and membership management are exposed under `/api/access`, `/api/platform`, and `/api/hospitals`.
 - Legacy `/api/admin/users/:userId/roles/:roleCode` assigns only platform-scoped roles. It must never assign hospital or client roles.
+- `/api/platform/users/:userId/roles/:roleCode` is the permission-guarded platform user-management route. It also accepts only platform roles (`admin`).
+- Platform user management inherits the documented MFA/step-up gap: login-only authorization is the current control until second-factor and step-up policy are implemented. Privileged actions are audited with the fields available in the current `audit_logs` schema.
 
 ## Role matrix
 

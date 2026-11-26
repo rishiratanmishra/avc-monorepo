@@ -9,7 +9,7 @@
     "start": "node dist/server.js",
     "lint": "eslint --max-warnings 0",
     "check-types": "tsc --noEmit -p tsconfig.json",
-    "test": "tsx --test src/modules/auth/auth.test.ts src/modules/auth/role.service.test.ts src/modules/access/access.test.ts src/modules/access/hospital-administration.test.ts"
+    "test": "tsx --test src/modules/auth/auth.test.ts src/modules/auth/admin-user.test.ts src/modules/auth/role.service.test.ts src/modules/access/access.test.ts src/modules/access/hospital-administration.test.ts"
   },
   "dependencies": {
     "@repo/contracts": "*",

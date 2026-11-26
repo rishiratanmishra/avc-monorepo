@@ -159,3 +159,27 @@ export type ResetPasswordInput = z.infer<typeof ResetPasswordSchema>;
 export type UserRole = z.infer<typeof UserRoleSchema>;
 export type UserWithRoles = z.infer<typeof UserWithRolesSchema>;
 export type AuthenticatedUser = z.infer<typeof AuthenticatedUserSchema>;
+
+export const ADMIN_CREATABLE_ROLE_CODES = ["pet_owner", "admin"] as const;
+export const AdminCreatableRoleCodeSchema = z.enum(ADMIN_CREATABLE_ROLE_CODES);
+
+export const AdminCreateUserSchema = z.strictObject({
+  email: emailSchema,
+  password: passwordSchema,
+  profile: CreateUserProfileSchema,
+  roleCode: AdminCreatableRoleCodeSchema.default("pet_owner"),
+});
+export type AdminCreatableRoleCode = z.infer<typeof AdminCreatableRoleCodeSchema>;
+export type AdminCreateUserInput = z.infer<typeof AdminCreateUserSchema>;
+
+export const AdminUserViewSchema = z.strictObject({
+  id: z.uuid(),
+  email: emailSchema,
+  status: UserStatusSchema,
+  roles: z.array(UserRoleCodeSchema),
+  firstName: z.string().trim().min(1).max(100),
+  lastName: z.string().trim().min(1).max(100),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
+});
+export type AdminUserView = z.infer<typeof AdminUserViewSchema>;
